@@ -1,0 +1,15 @@
+@import '../../utilsScss/colors.scss';
+
+.menu {
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+
+  height: 100vh;
+  width: 100%;
+  background: $gray-black;
+}

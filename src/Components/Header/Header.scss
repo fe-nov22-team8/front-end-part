@@ -1,0 +1,318 @@
+@import '../../utilsScss/colors.scss';
+@import '../../utilsScss/mixins.scss';
+
+.header {
+  background-color: $gray-black;
+  box-shadow: 0px 1px 0px $gray-surface2;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1px;
+}
+
+.logo {
+  display: inline-block;
+  height: 64px;
+  width: 128px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../images/logo.svg);
+
+  @media (max-width: 1199px) {
+    height: 48px;
+    width: 96px;
+  }
+}
+
+.icons {
+  display: flex;
+  margin-left: auto;
+
+  &--menu {
+    border-top: 1px solid $gray-elements;
+
+    margin: auto 0 0 0;
+  }
+}
+
+.icon {
+  display: inline-block;
+  cursor: pointer;
+
+  &__heart {
+    height: 14px;
+    width: 16px;
+    padding: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/heart.svg);
+    box-shadow: -1px 0px 0px $gray-surface2;
+
+    @media (max-width: 1199px) {
+      padding: 17px 16px;
+    }
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+
+    &--menu {
+      padding: 25px;
+      box-shadow: 0 0 0;
+      margin: auto;
+
+      @media (max-width: 639px) {
+        display: block;
+      }
+    }
+
+    &--relative {
+      position: relative;
+    }
+  }
+
+  &__card {
+    height: 15px;
+    width: 14px;
+    padding: 24.5px 26px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/basket.svg);
+    box-shadow: -1px 0px 0px $gray-surface2;
+
+    @media (max-width: 1199px) {
+      padding: 16.5px 17px;
+    }
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+
+    &--menu {
+      padding: 24.5px 26px;
+      margin: auto;
+      box-shadow: 0 0 0;
+
+      @media (max-width: 639px) {
+        display: block;
+      }
+    }
+
+    &--relative {
+      position: relative;
+    }
+  }
+
+  &__menu {
+    height: 16px;
+    width: 16px;
+    padding: 16px 17px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/menu-icon.svg);
+    box-shadow: -1px 0px 0px $gray-surface2;
+
+    @media (min-width: 639px) {
+      display: none;
+    }
+  }
+
+  &__close {
+    height: 16px;
+    width: 16px;
+    padding: 16px 17px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/menu-close-icon.svg);
+    box-shadow: -1px 0px 0px $gray-surface2;
+
+    @media (min-width: 1199px) {
+      padding: 24px;
+    }
+  }
+
+  &__user {
+    height: 14px;
+    width: 16px;
+    padding: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/user-solid.svg);
+    box-shadow: -1px 0px 0px $gray-surface2;
+    transition: all 0.3s ease-in;
+
+    @media (max-width: 1199px) {
+      padding: 17px 16px;
+    }
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+
+    &:hover {
+      background-image: url(../../images/user-solid-hover.svg);
+    }
+
+    &--menu {
+      @media (max-width: 639px) {
+        display: block;
+      }
+    }
+  }
+
+  &__log-out {
+    height: 14px;
+    width: 16px;
+    padding: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/right-from-bracket-solid.svg);
+    box-shadow: -1px 0px 0px $gray-surface2;
+    transition: all 0.3s ease-in;
+
+    @media (max-width: 1199px) {
+      padding: 17px 16px;
+    }
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+
+    &:hover {
+      background-image: url(../../images/right-from-bracket-solid-hover.svg);
+    }
+
+    &--menu {
+      @media (max-width: 639px) {
+        display: block;
+      }
+    }
+  }
+
+  &__user-plus {
+    height: 18px;
+    width: 18px;
+    padding: 23px 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/user-plus-solid.svg);
+    box-shadow: -1px 0px 0px $gray-surface2;
+    transition: all 0.3s ease-in;
+
+    @media (max-width: 1199px) {
+      padding: 15px 16px;
+    }
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+
+    &:hover {
+      background-image: url(../../images/user-plus-solid-hover.svg);
+    }
+
+    &--menu {
+      @media (max-width: 639px) {
+        display: block;
+      }
+    }
+  }
+
+  &__log-in {
+    height: 14px;
+    width: 16px;
+    padding: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(../../images/right-to-bracket-solid.svg);
+    box-shadow: -1px 0px 0px $gray-surface2;
+    transition: all 0.3s ease-in;
+
+    @media (max-width: 1199px) {
+      padding: 17px;
+    }
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+
+    &:hover {
+      background-image: url(../../images/right-from-bracket-solid-hover.svg);
+    }
+
+    &--menu {
+      @media (max-width: 639px) {
+        display: block;
+      }
+    }
+  }
+}
+
+.badge-counter {
+  position: absolute;
+  width: 14px;
+
+  font-family: 'Mont', sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  line-height: 12px;
+  text-align: center;
+
+  color: $gray-white;
+  background-color: $red-color;
+  border-radius: 50%;
+
+  &--heart {
+    top: 10.5px;
+    right: 10.5px;
+
+    @include onDesktop {
+      top: 18.5px;
+      right: 18.5px;
+    }
+
+    &-menu {
+      top: 17.5px;
+      right: 19px;
+    }
+  }
+
+  &--card {
+    top: 11px;
+    right: 11px;
+
+    @include onDesktop {
+      top: 19px;
+      right: 19px;
+    }
+
+    &-menu {
+      top: 18px;
+      right: 19px;
+    }
+  }
+}
+
+.nav__link--card {
+  display: flex;
+  flex: 1;
+}
+
+.nav__link--card-menu {
+  box-shadow: -1px 0px 0px $gray-surface2;
+}
+
+.mob-menu-enter {
+  transform: translateY(-100%);
+}
+.mob-menu-enter-active {
+  transform: translateY(0);
+  transition: transform 600ms;
+}
+.mob-menu-exit {
+  transform: translateY(0);
+  transition: opacity 600ms;
+}
+.mob-menu-exit-active {
+  transform: translateY(-100%);
+  transition: transform 600ms;
+}
