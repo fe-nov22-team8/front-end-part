@@ -1,10 +1,31 @@
 {
   "files": {
-    "main.js": "/front-end-part/static/js/main.4b9abf84.js",
+    "main.css": "/front-end-part/static/css/main.7daf646b.css",
+    "main.js": "/front-end-part/static/js/main.78824edd.js",
+    "static/js/787.a4ffb315.chunk.js": "/front-end-part/static/js/787.a4ffb315.chunk.js",
+    "static/media/logo.svg": "/front-end-part/static/media/logo.2889a2bc871809c9a913.svg",
+    "static/media/Mont-SemiBold.eot": "/front-end-part/static/media/Mont-SemiBold.2dc79e1cb836e6342c2e.eot",
+    "static/media/Mont-SemiBold.ttf": "/front-end-part/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
+    "static/media/Mont-SemiBold.woff": "/front-end-part/static/media/Mont-SemiBold.5d4afcfe00f8d6a38e5f.woff",
+    "static/media/Mont-SemiBold.woff2": "/front-end-part/static/media/Mont-SemiBold.95ab478c134f9e9da545.woff2",
+    "static/media/basket.svg": "/front-end-part/static/media/basket.6ad35848725b0ee2e375.svg",
+    "static/media/heart.svg": "/front-end-part/static/media/heart.c941c4e177d6356f81fc.svg",
     "index.html": "/front-end-part/index.html",
-    "main.4b9abf84.js.map": "/front-end-part/static/js/main.4b9abf84.js.map"
+    "static/media/menu-close-icon.svg": "/front-end-part/static/media/menu-close-icon.bb90bddd7590977b2c9c.svg",
+    "static/media/right-from-bracket-solid-hover.svg": "/front-end-part/static/media/right-from-bracket-solid-hover.ff862a62e30d810dce6f.svg",
+    "static/media/right-from-bracket-solid.svg": "/front-end-part/static/media/right-from-bracket-solid.3f2383273acbd3e56a56.svg",
+    "static/media/user-plus-solid-hover.svg": "/front-end-part/static/media/user-plus-solid-hover.5219b145b9e63046442a.svg",
+    "static/media/user-plus-solid.svg": "/front-end-part/static/media/user-plus-solid.65cf64293ad6ec9592a1.svg",
+    "static/media/right-to-bracket-solid.svg": "/front-end-part/static/media/right-to-bracket-solid.73a634cfe46b82b81f50.svg",
+    "static/media/menu-icon.svg": "/front-end-part/static/media/menu-icon.571b3bb49f127bd00746.svg",
+    "static/media/user-solid-hover.svg": "/front-end-part/static/media/user-solid-hover.d2351e9a5eeaa7eed284.svg",
+    "static/media/user-solid.svg": "/front-end-part/static/media/user-solid.563eb5b97ae9d483c75c.svg",
+    "main.7daf646b.css.map": "/front-end-part/static/css/main.7daf646b.css.map",
+    "main.78824edd.js.map": "/front-end-part/static/js/main.78824edd.js.map",
+    "787.a4ffb315.chunk.js.map": "/front-end-part/static/js/787.a4ffb315.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.4b9abf84.js"
+    "static/css/main.7daf646b.css",
+    "static/js/main.78824edd.js"
   ]
 }
