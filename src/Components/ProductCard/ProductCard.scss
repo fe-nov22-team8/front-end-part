@@ -1,0 +1,120 @@
+@import '../../utilsScss/colors.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+$card-width: 272px;
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: $card-width;
+  box-sizing: border-box;
+  background: $gray-surface1;
+  border: 1px solid #f3f3f3;
+  border-radius: 5px;
+  padding: 32px;
+
+  &__image {
+    display: block;
+    height: 208px;
+    width: 196px;
+    margin: 0 auto 24px;
+  }
+
+  &__header {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $gray-white;
+    margin-bottom: 9.5px;
+  }
+
+  &__price-container {
+    display: flex;
+    margin-bottom: 9.5px;
+  }
+
+  // &__price-container::after {
+  //   content: "";
+  //   display: inline;
+  //   height: 1px;
+  //   width: 100%;
+  //   margin-top: 60px;
+  //   background-color: $gray-elements;
+  // }
+
+  &__discont {
+    margin-right: 8px;
+    font-size: 22px;
+    line-height: 31px;
+    color: $gray-white;
+  }
+
+  &__full {
+    font-size: 22px;
+    line-height: 31px;
+    color: $secondary-color;
+    text-decoration-line: line-through;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 9.5px;
+  }
+
+  &__details-title {
+    font-size: 12px;
+    line-height: 100%;
+    color: $secondary-color;
+  }
+
+  &__details-value {
+    font-size: 12px;
+    line-height: 100%;
+    color: $gray-white;
+  }
+
+  &__button-container {
+    display: flex;
+    width: 100%;
+  }
+
+  &__button {
+  flex-grow: 1;
+  justify-content: space-between;
+
+  height: 40px;
+  background-color: $accent-color;
+  border: 1px solid $accent-color;
+
+  color: $gray-white;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  text-decoration: none;
+  }
+
+  &__button-favorite {
+    height: 40px;
+    width: 40px;
+
+    background-color: $gray-surface2;
+    border: 1px solid $gray-surface1;
+
+    // margin-left: 8px;
+  }
+}
+
+.icon-heart {
+  background: url(../../images/heard.png) no-repeat;
+  height: 13px;
+  width: 15px;
+
+  display: block;
+  margin: auto;
+  width: 50%;
+}
