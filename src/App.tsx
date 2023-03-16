@@ -6,7 +6,6 @@ import './App.scss';
 import { Header } from './Components/Header';
 
 export function App() {
-  '123'
   return (
     <div className="App">
       <Header />
