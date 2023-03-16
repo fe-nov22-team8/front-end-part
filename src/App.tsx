@@ -1,5 +1,7 @@
+import { Footer } from 'Components/Footer';
+import { AboutProject } from 'Components/NavBar Footer/AboutProject';
+import { Rights } from 'Components/NavBar Footer/Rights';
 import { PageNotFound } from 'pages/PageNotFound';
-import { PhonesPage } from 'pages/PhonesPage';
 import React from 'react';
 import { Route, Routes } from 'react-router';
 import './App.scss';
@@ -23,12 +25,15 @@ export function App() {
 
         <Route path="/card" element={<Card />} />
 
-        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} /> */}
+        <Route path="/about-project" element={<AboutProject />} />
 
-        <Route path="/about-project" element={<AboutProject />} /> */}
+        <Route path="/rights" element={<Rights />} />
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 }
