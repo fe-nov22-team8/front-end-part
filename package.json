@@ -39,6 +39,9 @@
     "fix-style": "npm run format && npm run lint",
     "prepare": "husky install"
   },
+  "lint-staged":{
+    "*.{tsx,ts,scss}": "npm run lint"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
