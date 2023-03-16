@@ -16,7 +16,6 @@ export const Cart: React.FC = () => (
         <span className="cart__arrow" />
         Back
       </Link>
-
       <h1
         className="cart__h1
             grid__item--desktop-1-4
