@@ -1,8 +1,13 @@
 import React from 'react';
+import { Phone } from 'types/phoneTypes';
 
 import './ProductCard.scss';
 
-export const ProductCard: React.FC = () => (
+type Props = {
+  phone: Phone;
+};
+
+export const ProductCard: React.FC<Props> = ({ phone }) => (
   <article className="product-card">
     <div>
       <img
