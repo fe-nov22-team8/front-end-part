@@ -7,51 +7,56 @@ type Props = {
   phone: Phone;
 };
 
-export const ProductCard: React.FC<Props> = ({ phone }) => (
-  <article className="product-card">
-    <div>
-      <img
-        src=""
-        alt="Apple iPhone Xs 64GB Silver (iMT9G2FS/A)"
-        className="product-card__image"
-      />
-    </div>
+export const ProductCard: React.FC<Props> = ({ phone }) => {
+  const { name, fullPrice, price, screen, capacity, ram, image } = phone;
 
-    <h2 className="product-card__header">
-      Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
-    </h2>
+  return (
+    <article className="product-card">
+      <div>
+        <img
+          src={`https://back-end-part.onrender.com/${image.replace(
+            'jpg',
+            'png',
+          )}`}
+          alt={name}
+          className="product-card__image"
+        />
+      </div>
 
-    <div className="product-card__price-container">
-      <p className="product-card__discont">$799</p>
-      <p className="product-card__full">$899</p>
-    </div>
+      <h2 className="product-card__header">{name}</h2>
 
-    <div className="product-card__details">
-      <p className="product-card__details-title">Screen</p>
+      <div className="product-card__price-container">
+        <p className="product-card__discont">${price}</p>
+        <p className="product-card__full">${fullPrice}</p>
+      </div>
 
-      <p className="product-card__details-value">5.8” OLED</p>
-    </div>
+      <div className="product-card__details">
+        <p className="product-card__details-title">Screen</p>
 
-    <div className="product-card__details">
-      <p className="product-card__details-title">Capacity</p>
+        <p className="product-card__details-value">{screen}</p>
+      </div>
 
-      <p className="product-card__details-value">64 GB</p>
-    </div>
+      <div className="product-card__details">
+        <p className="product-card__details-title">Capacity</p>
 
-    <div className="product-card__details">
-      <p className="product-card__details-title">RAM</p>
+        <p className="product-card__details-value">{capacity}</p>
+      </div>
 
-      <p className="product-card__details-value">4 GB</p>
-    </div>
+      <div className="product-card__details">
+        <p className="product-card__details-title">RAM</p>
 
-    <div className="product-card__button-container">
-      <button type="button" className="product-card__button">
-        Add to cart
-      </button>
+        <p className="product-card__details-value">{ram}</p>
+      </div>
 
-      <button type="button" className="product-card__button-favorite">
-        <i className="icon-heart" />
-      </button>
-    </div>
-  </article>
-);
+      <div className="product-card__button-container">
+        <button type="button" className="product-card__button">
+          Add to cart
+        </button>
+
+        <button type="button" className="product-card__button-favorite">
+          <i className="icon-heart" />
+        </button>
+      </div>
+    </article>
+  );
+};
