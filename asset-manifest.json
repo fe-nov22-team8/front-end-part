@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/front-end-part/static/css/main.df821026.css",
-    "main.js": "/front-end-part/static/js/main.569d8067.js",
+    "main.css": "/front-end-part/static/css/main.f2b6f6c2.css",
+    "main.js": "/front-end-part/static/js/main.9e71445f.js",
     "static/js/787.a4ffb315.chunk.js": "/front-end-part/static/js/787.a4ffb315.chunk.js",
     "static/media/logo.svg": "/front-end-part/static/media/logo.2889a2bc871809c9a913.svg",
     "static/media/logoFooter.svg": "/front-end-part/static/media/logoFooter.7c86cf5336d53d092e30.svg",
@@ -22,12 +22,14 @@
     "static/media/slider.svg": "/front-end-part/static/media/slider.63149f1173408198c06c.svg",
     "static/media/user-solid-hover.svg": "/front-end-part/static/media/user-solid-hover.d2351e9a5eeaa7eed284.svg",
     "static/media/user-solid.svg": "/front-end-part/static/media/user-solid.563eb5b97ae9d483c75c.svg",
-    "main.df821026.css.map": "/front-end-part/static/css/main.df821026.css.map",
-    "main.569d8067.js.map": "/front-end-part/static/js/main.569d8067.js.map",
+    "static/media/arrow-back-hover.svg": "/front-end-part/static/media/arrow-back-hover.9fb5e5069671cc30b9c7.svg",
+    "static/media/arrow-back.svg": "/front-end-part/static/media/arrow-back.4dc386686e1f77999a38.svg",
+    "main.f2b6f6c2.css.map": "/front-end-part/static/css/main.f2b6f6c2.css.map",
+    "main.9e71445f.js.map": "/front-end-part/static/js/main.9e71445f.js.map",
     "787.a4ffb315.chunk.js.map": "/front-end-part/static/js/787.a4ffb315.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.df821026.css",
-    "static/js/main.569d8067.js"
+    "static/css/main.f2b6f6c2.css",
+    "static/js/main.9e71445f.js"
   ]
 }
