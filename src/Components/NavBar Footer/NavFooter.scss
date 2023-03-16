@@ -1,0 +1,48 @@
+@import '../../utilsScss/colors.scss';
+
+.nav {
+  &--footer {
+    justify-self: center;
+    grid-column-start: 4;
+    grid-column-end: 22;
+
+    @media (max-width: 1199px) {
+      grid-column-start: 4;
+      grid-column-end: 10;
+    }
+
+    @media (max-width: 639px) {
+      display: flex;
+      justify-self: left;
+
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
+
+  &__bar--footer {
+    padding: 0;
+
+    @media (max-width: 639px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__link--footer {
+    color: $gray-white;
+    line-height: 11px;
+
+    &:not(:last-child) {
+      margin-right: 100px;
+
+      @media (max-width: 1199px) {
+        margin-right: 14px;
+      }
+
+      @media (max-width: 639px) {
+        margin: 0 0 16px 0;
+      }
+    }
+  }
+}
