@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Footer } from 'Components/Footer';
 import { AboutProject } from 'Components/NavBar Footer/AboutProject';
 import { Rights } from 'Components/NavBar Footer/Rights';
+import { Cart } from 'Components/Cart';
 import { getAllPhones } from 'api/phones';
 import { PageNotFound } from 'pages/PageNotFound';
 import { PhonesPage } from 'pages/PhonesPage';
@@ -49,6 +50,7 @@ export function App() {
         <Route path="/card" element={<Card />} />
 
         <Route path="/favorites" element={<FavoritesPage />} /> */}
+        <Route path="/cart" element={<Cart />} />
         <Route path="/about-project" element={<AboutProject />} />
 
         <Route path="/rights" element={<Rights />} />
