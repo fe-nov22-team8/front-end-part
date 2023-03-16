@@ -1,7 +1,10 @@
+import React, { useEffect, useState } from 'react';
+import { Footer } from 'Components/Footer';
+import { AboutProject } from 'Components/NavBar Footer/AboutProject';
+import { Rights } from 'Components/NavBar Footer/Rights';
 import { getAllPhones } from 'api/phones';
 import { PageNotFound } from 'pages/PageNotFound';
 import { PhonesPage } from 'pages/PhonesPage';
-import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router';
 import { Phone } from 'types/phoneTypes';
 import './App.scss';
@@ -45,12 +48,15 @@ export function App() {
 
         <Route path="/card" element={<Card />} />
 
-        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} /> */}
+        <Route path="/about-project" element={<AboutProject />} />
 
-        <Route path="/about-project" element={<AboutProject />} /> */}
+        <Route path="/rights" element={<Rights />} />
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 }
