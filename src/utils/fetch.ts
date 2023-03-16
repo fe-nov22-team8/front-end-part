@@ -1,5 +1,5 @@
 // eslint-disable-next-line max-len
-const BASE_URL = 'https://';
+const BASE_URL = 'https://back-end-part.onrender.com';
 
 function wait(delay: number) {
   return new Promise((resolve) => {
