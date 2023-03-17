@@ -1,3 +1,5 @@
+@import '../../../utilsScss/colors.scss';
+
 .buttons {
   height: 32px;
   display: flex;
@@ -26,7 +28,7 @@
       }
 
       &:disabled .icon-arrow {
-        background-image: url(../../../images/Vector_gray_right.svg);
+        // background-image: url('../../../images/');
       }
     }
 

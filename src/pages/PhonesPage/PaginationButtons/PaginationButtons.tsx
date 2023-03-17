@@ -1,20 +1,21 @@
 import React from 'react';
 import classNames from 'classnames';
+import './PaginationButtons.scss';
 import { useAppSelector } from '../../../utils/hooks';
 
 type Props = {
   changePage: (num: number) => void;
   currentPage: number;
-  onPage: number;
+  itemsPerPage: number;
 };
 
 export const PaginationButtons: React.FC<Props> = ({
   changePage,
   currentPage,
-  onPage,
+  itemsPerPage,
 }) => {
   const { allPhones } = useAppSelector((state) => state.phones);
-  const pageCount = allPhones ? Math.ceil(allPhones.length / onPage) : 16;
+  const pageCount = allPhones ? Math.ceil(allPhones.length / itemsPerPage) : 16;
   const pagesNums = new Array(pageCount).fill(0).map((_, i) => i + 1);
 
   return (
