@@ -1,0 +1,115 @@
+@import '../../utilsScss/colors';
+@import '../../utilsScss/mixins';
+
+.cart-item {
+  grid-template-rows: min-content;
+  padding: 16px;
+  background-color: #161827;
+  color: $gray-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
+  @include onTablet {
+    flex-direction: row;
+    padding: 24px;
+    width: 752px;
+    height: 128px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+
+    width: 100%;
+
+    @include onTablet {
+      width: 65%;
+      gap: 31px;
+    }
+  }
+
+  &__button-close {
+    background-image: url(../../images/menu-close-icon.svg);
+    height: 9px;
+    width: 9px;
+    padding: 0;
+    box-shadow: 0 0 0;
+  }
+
+  &__discription {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+
+    @include onTablet {
+      gap: 31px;
+    }
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+  }
+
+  &__name {
+    font-family: 'Mont';
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__price-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 43px;
+
+    @include onTablet {
+      width: 35%;
+    }
+  }
+
+  &__counter-block {
+    display: flex;
+    align-items: center;
+    font-family: 'Mont', sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__counter {
+    font-size: 14px;
+    line-height: 21px;
+    width: 32px;
+    text-align: center;
+  }
+
+  &__total-price {
+    font-family: 'Mont', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+.icon {
+  height: 32px;
+  width: 32px;
+  background-color: $gray-surface2;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__minus {
+    background-image: url('../../images/minus.svg');
+  }
+
+  &__plus {
+    background-image: url('../../images/plus.svg');
+  }
+}
