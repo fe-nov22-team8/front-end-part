@@ -17,7 +17,7 @@
       font-size: 120px;
     }
 
-    @include onDesktop{
+    @include onDesktop {
       font-size: 180px;
     }
   }
@@ -28,7 +28,7 @@
       font-size: 30px;
     }
 
-    @include onDesktop{
+    @include onDesktop {
       font-size: 40px;
     }
   }

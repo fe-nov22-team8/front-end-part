@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import React from 'react';
 import { Phone } from 'types/phoneTypes';
 
@@ -12,18 +13,22 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
 
   return (
     <article className="product-card">
-      <div>
-        <img
-          src={`https://back-end-part.onrender.com/${image.replace(
-            'jpg',
-            'png',
-          )}`}
-          alt={name}
-          className="product-card__image"
-        />
+      <div className="product-card__container">
+        <div>
+          <img
+            src={`https://back-end-part.onrender.com/${image.replace(
+              'jpg',
+              'png',
+            )}`}
+            alt={name}
+            width="208px"
+            height="196px"
+            className="product-card__image"
+          />
+        </div>
       </div>
 
-      <h2 className="product-card__header">{name}</h2>
+      <h2 className="product-card__title">{name}</h2>
 
       <div className="product-card__price-container">
         <p className="product-card__discont">${price}</p>
@@ -31,31 +36,39 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       </div>
 
       <div className="product-card__details">
-        <p className="product-card__details-title">Screen</p>
+        <p className="product-card__detail">
+          <span className="product-card__detail-name">Screen</span>
 
-        <p className="product-card__details-value">{screen}</p>
-      </div>
+          <span className="product-card__detail-value">{screen}</span>
+        </p>
 
-      <div className="product-card__details">
-        <p className="product-card__details-title">Capacity</p>
+        <p className="product-card__detail">
+          <span className="product-card__detail-name">Capacity</span>
 
-        <p className="product-card__details-value">{capacity}</p>
-      </div>
+          <span className="product-card__detail-value">{capacity}</span>
+        </p>
 
-      <div className="product-card__details">
-        <p className="product-card__details-title">RAM</p>
+        <p className="product-card__detail">
+          <span className="product-card__detail-name">RAM</span>
 
-        <p className="product-card__details-value">{ram}</p>
+          <span className="product-card__detail-value">{ram}</span>
+        </p>
       </div>
 
       <div className="product-card__button-container">
-        <button type="button" className="product-card__button">
+        <a
+          href="/"
+          className="product-card__button-add"
+          aria-label="add to cart"
+        >
           Add to cart
-        </button>
+        </a>
 
-        <button type="button" className="product-card__button-favorite">
-          <i className="icon-heart" />
-        </button>
+        <a
+          href="/"
+          className="product-card__button-favorite"
+          aria-label="add to favorite"
+        />
       </div>
     </article>
   );

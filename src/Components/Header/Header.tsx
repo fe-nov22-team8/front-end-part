@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -155,7 +156,7 @@ export const Header: React.FC = () => {
                   </NavLink>
 
                   <NavLink
-                    to="/card"
+                    to="/cart"
                     className="nav__link--card nav__link--card-menu"
                   >
                     <span
@@ -199,7 +200,7 @@ export const Header: React.FC = () => {
             </span>
           </NavLink>
 
-          <NavLink to="/card" className="nav__link--card">
+          <NavLink to="/cart" className="nav__link--card">
             <div className="icon icon__card icon__card--relative">
               <div className="badge-counter badge-counter--card">
                 {currentCard.length}
