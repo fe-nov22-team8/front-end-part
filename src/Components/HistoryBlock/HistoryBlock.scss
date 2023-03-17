@@ -1,0 +1,49 @@
+.history-block {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  &__home {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../images/Home.png');
+    height: 16px;
+    width: 16px;
+    display: block;
+  }
+
+  &__arrow {
+    padding-left: 16px;
+    padding-right: 14px;
+  }
+
+  &__title {
+    color: $secondary-color;
+    text-decoration: none;
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+
+    &--white {
+      color: $gray-white;
+    }
+
+    &--desktop {
+      display: block;
+
+      @media (max-width: 380px) {
+      display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+
+      @media (max-width: 380px) {
+        display: block;
+      }
+    }
+  }
+}
