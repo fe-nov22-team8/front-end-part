@@ -1,0 +1,64 @@
+@import '../../utilsForScss/colors';
+@import '../../utilsForScss/mixins';
+
+.modal {
+  z-index: 100;
+  position: fixed;
+  top: 22vh;
+  left: 0;
+  right: 0;
+
+  width: calc(100% - 32px);
+  box-sizing: border-box;
+  font-family: 'Mont', sans-serif;
+  color: $gray-white;
+  background-color: $gray-black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+
+  margin: auto;
+
+  @include onTablet {
+    width: 406px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 16px;
+    line-height: 150%;
+  }
+
+  &__content {
+    color: $secondary-color;
+    padding: 0 16px 24px;
+  }
+
+  &-enter {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  &-exit {
+    opacity: 1;
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+  }
+}
+
+.icon__close--modal {
+  height: 16px;
+  width: 16px;
+  align-self: start;
+  background-position: center;
+  background-repeat: no-repeat;
+}
