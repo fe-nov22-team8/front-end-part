@@ -4,7 +4,7 @@
 .cart-item {
   grid-template-rows: min-content;
   padding: 16px;
-  background-color: #161827;
+  background-color: $gray-surface1;
   color: $gray-white;
   display: flex;
   flex-direction: column;
@@ -17,8 +17,8 @@
   @include onTablet {
     flex-direction: row;
     padding: 24px;
-    width: 752px;
-    height: 128px;
+    // width: 752px;
+    // height: 128px;
   }
 
   &__info {
@@ -37,7 +37,7 @@
   &__button-close {
     background-image: url(../../images/menu-close-icon.svg);
     height: 9px;
-    width: 9px;
+    width: 11px;
     padding: 0;
     box-shadow: 0 0 0;
   }
@@ -68,7 +68,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 43px;
+    // gap: 43px;
 
     @include onTablet {
       width: 35%;

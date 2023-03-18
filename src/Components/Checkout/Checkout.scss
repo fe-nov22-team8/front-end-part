@@ -1,0 +1,62 @@
+@import '../../utilsScss/colors';
+@import '../../utilsScss/mixins';
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  max-height: 206px;
+  box-sizing: border-box;
+  font-family: 'Mont', sans-serif;
+  text-align: center;
+
+  border: 1px solid $gray-elements;
+  padding: 24px;
+  margin: 32px 0 64px;
+
+  @include onDesktop {
+    margin: 0;
+  }
+
+  &__total-sum {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $gray-white;
+  }
+
+  &__total-items {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $secondary-color;
+    padding-bottom: 16px;
+    border-bottom: 1px solid $gray-elements;
+    margin-bottom: 16px;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    text-decoration: none;
+    cursor: pointer;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+
+    background: $accent-color;
+    color: $gray-white;
+
+    transition: background-color 0.5s ease-in;
+
+    &:hover {
+      background-color: $accent-hover;
+    }
+  }
+
+}
