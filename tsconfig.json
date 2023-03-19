@@ -15,7 +15,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "snake-game-react": [ "src/client/@custom_types/snake-game-react"]
+  }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": [ "node_modules", "src/client/@custom_types"]
 }
