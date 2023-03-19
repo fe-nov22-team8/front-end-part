@@ -1,0 +1,104 @@
+@import '../../utilsScss/colors.scss';
+@import '../../utilsScss/mixins.scss';
+
+.favorites-page {
+  background-color: $gray-black;
+  min-height: 100vh;
+  &__container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 16px;
+
+    @include onTablet {
+      padding: 0 24px;
+    }
+
+    @include onDesktop {
+      padding: 0 32px;
+    }
+  }
+
+  &__text {
+    width: 270px;
+    display: block;
+    text-align: left;
+    grid-column: 1 / 1;
+  }
+
+  &__title {
+    display: block;
+    color: $gray-white;
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    margin-bottom: 8px;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__models-number {
+    display: block;
+    color: $secondary-color;
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 32px;
+
+    @include onTablet {
+      font-size: 14px;
+      line-height: 21px;
+      margin-bottom: 40px;
+    }
+
+    @include onDesktop {
+      font-size: 14px;
+      line-height: 21px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__all-favorites {
+    padding-bottom: 56px;
+
+    @include onTablet {
+      padding-bottom: 80px;
+    }
+
+    @include onDesktop {
+      padding-bottom: 80px;
+    }
+  }
+
+  &__grid {
+
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(1, 270px);
+  column-gap: 16px;
+
+    @include onTablet {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 270px);
+  column-gap: 16px;
+  }
+
+  @include onDesktop {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  }
+  }
+}

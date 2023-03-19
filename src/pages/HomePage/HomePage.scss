@@ -1,0 +1,43 @@
+@import '../../utilsScss/colors.scss';
+@import '../../utilsScss/mixins.scss';
+
+.home-page {
+  min-height: 100vh;
+  background-color: $gray-black;
+  &__container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: $gray-black;
+  }
+}
+
+.welcome {
+  &__title {
+    box-sizing: border-box;
+    text-align: left;
+    display: inline-block;
+    font-family: 'Mont', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    margin: 24px 16px;
+    color: $gray-white;
+    background-color: $gray-black;
+    text-align: left;
+
+    @include onDesktop {
+      font-size: 48px;
+      line-height: 56px;
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+    @include onTablet {
+      font-size: 48px;
+      line-height: 56px;
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+  }
+}

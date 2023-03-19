@@ -1,64 +1,50 @@
 import React from 'react';
-import classNames from 'classnames';
 import './PaginationButtons.scss';
-import { useAppSelector } from '../../../utils/hooks';
 
-type Props = {
-  changePage: (num: number) => void;
+export const Pagination: React.FC<{
   currentPage: number;
-  itemsPerPage: number;
-};
+  totalPages: number;
+  onPageChange: (newPageNum: number) => void;
+}> = ({ currentPage, totalPages, onPageChange }) => {
+  const showPrevious = currentPage > 1;
+  const showNext = currentPage < totalPages;
 
-export const PaginationButtons: React.FC<Props> = ({
-  changePage,
-  currentPage,
-  itemsPerPage,
-}) => {
-  const { allPhones } = useAppSelector((state) => state.phones);
-  const pageCount = allPhones ? Math.ceil(allPhones.length / itemsPerPage) : 16;
-  const pagesNums = new Array(pageCount).fill(0).map((_, i) => i + 1);
+  const handlePageChange = (newPage: number) => {
+    onPageChange(newPage);
+  };
 
   return (
     <div className="buttons">
-      <button
-        type="button"
-        disabled={currentPage === 1}
-        className="buttons__button buttons__button--arrow"
-        onClick={() => {
-          changePage(currentPage > 1 ? currentPage - 1 : currentPage);
-          window.scrollTo(0, 0);
-        }}
-      >
-        <div className="icon-arrow icon-arrow--left" />
-      </button>
-
-      {pagesNums.map((page) => (
+      {showPrevious && (
         <button
           type="button"
-          key={page}
-          className={classNames('buttons__button', {
-            'buttons__button--active': currentPage === page,
-          })}
-          onClick={() => {
-            changePage(page);
-            window.scrollTo(0, 0);
-          }}
+          className="buttons__button buttons__button--arrow"
+          onClick={() => handlePageChange(currentPage - 1)}
         >
-          <div className="buttons__text">{page}</div>
+          <div className="icon-arrow icon-arrow--left" />
+        </button>
+      )}
+      {[...Array(totalPages)].map((_, i) => (
+        <button
+          key={i}
+          type="button"
+          className={`buttons__button ${
+            i + 1 === currentPage ? 'buttons__button--active' : ''
+          }`}
+          onClick={() => handlePageChange(i + 1)}
+        >
+          <div className="buttons__text">{i + 1}</div>
         </button>
       ))}
-
-      <button
-        type="button"
-        disabled={currentPage === pageCount}
-        className="buttons__button buttons__button--arrow"
-        onClick={() => {
-          changePage(currentPage < pageCount ? currentPage + 1 : currentPage);
-          window.scrollTo(0, 0);
-        }}
-      >
-        <div className="icon-arrow" />
-      </button>
+      {showNext && (
+        <button
+          type="button"
+          className="buttons__button buttons__button--arrow"
+          onClick={() => handlePageChange(currentPage + 1)}
+        >
+          <div className="icon-arrow" />
+        </button>
+      )}
     </div>
   );
 };
