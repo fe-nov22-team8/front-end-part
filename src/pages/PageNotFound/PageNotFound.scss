@@ -32,4 +32,18 @@
       font-size: 40px;
     }
   }
+
+  &__subsubtitle {
+    font-size: 20px;
+    @include onTablet {
+      font-size: 10px;
+    }
+
+    @include onDesktop {
+      font-size: 20px;
+    }
+  }
+  .snake-container{
+    margin-top: 25px;
+  }
 }
