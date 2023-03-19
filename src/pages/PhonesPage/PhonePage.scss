@@ -300,5 +300,9 @@
   height: 16px;
   width: 16px;
   display: block;
+
+  &--left {
+    background-image: url('../../images/Vector_gray_left.svg');
+  }
 }
 

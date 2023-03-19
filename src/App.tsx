@@ -7,6 +7,9 @@ import { PageNotFound } from 'pages/PageNotFound';
 import { PhonesPage } from 'pages/PhonesPage';
 import { Route, Routes } from 'react-router';
 import './App.scss';
+import { HomePage } from 'pages/HomePage';
+import { TabletPage } from 'pages/TabletPage';
+import { FavoritesPage } from 'pages/FavoritesPage';
 import { Header } from './Components/Header';
 
 export function App() {
@@ -15,17 +18,18 @@ export function App() {
       <Header />
 
       <Routes>
+        <Route path="/" element={<HomePage />} />
+
         <Route path="/phones">
           <Route index element={<PhonesPage />} />
+          {/* <Route path=":phoneSlug" element={<OnePhonePage />} /> */}
         </Route>
 
-        {/* for future */}
-        {/*
-        <Route path="/tablets" element={<TabletsPage />} />
+        <Route path="/tablets" element={<TabletPage />} />
 
-        <Route path="/accessories" element={<AccessoriesPage />} />
+        {/* <Route path="/accessories" element={<AccessoriesPage />} /> */}
 
-        <Route path="/favorites" element={<FavoritesPage />} /> */}
+        <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/about-project" element={<AboutProject />} />
 

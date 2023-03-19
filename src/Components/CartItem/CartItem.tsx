@@ -33,11 +33,11 @@ export const CartItem: React.FC = () => (
 
     <div className="cart-item__price-container">
       <div className="cart-item__counter-block">
-        <a className="icon icon__minus"> </a>
+        <a className="icon-cart icon__minus"> </a>
 
         <span className="cart-item__counter">0</span>
 
-        <a className="icon icon__plus"> </a>
+        <a className="icon-cart icon__plus"> </a>
       </div>
 
       <div className="cart-item__total-price">$1099</div>
