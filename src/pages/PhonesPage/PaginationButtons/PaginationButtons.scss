@@ -1,6 +1,5 @@
 @import '../../../utilsScss/colors.scss';
 
-
 .phones-page__buttons {
   padding-bottom: 64px;
 }
@@ -11,10 +10,10 @@
   justify-content: center;
   align-items: center;
   &__button {
-     font-family: 'Mont', sans-serif;
-     font-weight: 600px;
-     font-size: 14px;
-     line-height: 21px;
+    font-family: 'Mont', sans-serif;
+    font-weight: 600px;
+    font-size: 14px;
+    line-height: 21px;
     border: 0px;
     margin-right: 8px;
     height: 32px;
@@ -32,9 +31,9 @@
         background-color: $gray-black;
       }
 
-        &:disabled .icon-arrow {
+      &:disabled .icon-arrow {
         background-image: url(../../../images/Vector_gray_right.svg);
-        }
+      }
     }
 
     &:first-child {
