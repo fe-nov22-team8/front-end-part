@@ -1,6 +1,6 @@
 import { client } from '../utils/fetch';
-import { Phone } from '../types/phoneTypes';
+import { Product } from '../types/productType';
 
 export function fetchPhones() {
-  return client.get<Phone[]>(`/products`);
+  return client.get<Product[]>(`/products`);
 }

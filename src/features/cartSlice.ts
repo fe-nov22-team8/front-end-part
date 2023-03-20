@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Phone } from '../types/phoneTypes';
+import { Product } from '../types/productType';
 
 export interface PhonesState {
-  currentCart: Phone[];
+  currentCart: Product[];
 }
 
 const initialState: PhonesState = {
@@ -13,17 +13,17 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<Phone>) => {
+    addToCart: (state, action: PayloadAction<Product>) => {
       // eslint-disable-next-line no-param-reassign
       state.currentCart.push(action.payload);
     },
-    removeFromCart: (state, action: PayloadAction<Phone>) => {
+    removeFromCart: (state, action: PayloadAction<Product>) => {
       // eslint-disable-next-line no-param-reassign
       state.currentCart = state.currentCart.filter(
         (item) => item.itemId !== action.payload.itemId,
       );
     },
-    setCart: (state, action: PayloadAction<Phone[]>) => {
+    setCart: (state, action: PayloadAction<Product[]>) => {
       // eslint-disable-next-line no-param-reassign
       state.currentCart = action.payload;
     },

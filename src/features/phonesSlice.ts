@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Phone } from '../types/phoneTypes';
+import { Product } from '../types/productType';
 import { fetchPhones } from './phonesAPI';
 
 export interface PhonesState {
-  allPhones: Phone[] | null;
-  selectedPhone: Phone | null;
+  allPhones: Product[] | null;
+  selectedPhone: Product | null;
   status: 'idle' | 'loading' | 'failed';
 }
 
@@ -25,7 +25,7 @@ export const phonesSlice = createSlice({
   name: 'phones',
   initialState,
   reducers: {
-    setPhone: (state, action: PayloadAction<Phone | null>) => {
+    setPhone: (state, action: PayloadAction<Product | null>) => {
       // eslint-disable-next-line no-param-reassign
       state.selectedPhone = action.payload;
     },

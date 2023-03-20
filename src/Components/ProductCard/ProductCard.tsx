@@ -1,12 +1,13 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import classNames from 'classnames';
 import React from 'react';
-import { Phone } from 'types/phoneTypes';
+import { Link } from 'react-router-dom';
+import { Product } from 'types/productType';
 
 import './ProductCard.scss';
 
 type Props = {
-  phone: Phone;
+  phone: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
@@ -18,16 +19,18 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
     <article className="product-card">
       <div className="product-card__container">
         <div>
-          <img
-            src={`https://back-end-part.onrender.com/${image.replace(
-              'jpg',
-              'png',
-            )}`}
-            alt={name}
-            width="208px"
-            height="196px"
-            className="product-card__image"
-          />
+          <Link to="/phones/">
+            <img
+              src={`https://back-end-part.onrender.com/${image.replace(
+                'jpg',
+                'png',
+              )}`}
+              alt={name}
+              width="208px"
+              height="196px"
+              className="product-card__image"
+            />
+          </Link>
         </div>
       </div>
 

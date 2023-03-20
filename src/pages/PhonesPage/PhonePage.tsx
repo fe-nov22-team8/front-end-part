@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { sort } from 'types/sortBy';
-import { Phone } from 'types/phoneTypes';
+import { Product } from 'types/productType';
 import { getAllPhonesByPage } from 'api/phones';
 import { ProductCard } from 'Components/ProductCard';
 import { LoaderBox } from 'Components/LoaderBox';
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { Pagination } from './PaginationButtons';
 
 export const PhonesPage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const [phones, setPhones] = useState<Product[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
@@ -62,7 +62,7 @@ export const PhonesPage: React.FC = () => {
             <Link to="/" className="history-block__home" />
             <div className="history-block__arrow icon-arrow" />
             <Link className="history-block__title" to="/">
-              Pnones
+              Phones
             </Link>
           </div>
 
