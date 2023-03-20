@@ -17,9 +17,9 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "snake-game-react": [ "src/client/@custom_types/snake-game-react"]
-  }
+      "snake-game-react": ["src/client/@custom_types/snake-game-react"]
+    }
   },
   "include": ["src"],
-  "exclude": [ "node_modules", "src/client/@custom_types"]
+  "exclude": ["node_modules", "src/client/@custom_types"]
 }

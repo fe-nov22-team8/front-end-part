@@ -83,22 +83,21 @@
   }
 
   &__grid {
-
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(1, 270px);
-  column-gap: 16px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(1, 270px);
+    column-gap: 16px;
 
     @include onTablet {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 270px);
-  column-gap: 16px;
-  }
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 270px);
+      column-gap: 16px;
+    }
 
-  @include onDesktop {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 16px;
-  }
+    @include onDesktop {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 16px;
+    }
   }
 }
