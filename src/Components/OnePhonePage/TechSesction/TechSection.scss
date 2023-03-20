@@ -1,0 +1,58 @@
+TechSpecs {
+  &__title {
+    font-family: 'Mont';
+    font-weight: 800;
+    text-align: left;
+    font-size: 22px;
+    line-height: 140%;
+
+    color: #F1F2F9;
+
+    &::after {
+      display: block;
+      content: url('../../../images/LineLong2.svg');
+
+      @media (min-width: 1200px) {
+        content: url('../../../images/Line.svg');
+      }
+    }
+  }
+}
+
+.sect {
+  display: flex;
+  justify-content: space-between;
+
+  &__textChar {
+    margin-top: 8px;
+
+    font-family: 'MontRegular';
+    font-style: normal;
+    text-align: left;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #75767F;
+
+    &--first {
+      margin-top: 16px;
+    }
+  }
+
+  &__textValue {
+    margin-top: 8px;
+
+    font-family: 'MontRegular';
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    text-align: right;
+
+    color: #F1F2F9;
+
+    &--first {
+      margin-top: 16px;
+    }
+  }
+}
