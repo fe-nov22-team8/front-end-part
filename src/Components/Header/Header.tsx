@@ -220,13 +220,13 @@ export const Header: React.FC = () => {
             </>
           ) : (
             <>
-              <NavLink to="/sing-up" className="nav__link--card">
+              {/* <NavLink to="/sing-up" className="nav__link--card">
                 <span className="icon icon__user-plus" />
-              </NavLink>
+              </NavLink> */}
 
-              <NavLink to="/login" className="nav__link--card">
+              {/* <NavLink to="/login" className="nav__link--card">
                 <span className="icon icon__log-in" />
-              </NavLink>
+              </NavLink> */}
             </>
           )}
 

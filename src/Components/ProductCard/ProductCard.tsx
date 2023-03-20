@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
+import classNames from 'classnames';
 import React from 'react';
 import { Phone } from 'types/phoneTypes';
 
@@ -10,6 +11,8 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
   const { name, fullPrice, price, screen, capacity, ram, image } = phone;
+  // const [hasToCart, setHasToCart] = useState(false);
+  // const [hasToFavorite, hasToFavorite] = useState(false);
 
   return (
     <article className="product-card">
@@ -56,6 +59,28 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       </div>
 
       <div className="product-card__button-container">
+        {/* {hasToCart ? (
+          <a
+            href="/"
+            onClick={yourHandleFunction}
+            aria-label="remove from cart"
+            className="product-card__button-add
+            product-card__button-add--active
+              "
+          >
+            Added
+          </a>
+        ) : (
+          <a
+            href="/"
+            onClick={yourHandleFunction}
+            className="product-card__button-add"
+            aria-label="add to cart"
+          >
+            Add to cart
+          </a>
+        )} */}
+
         <a
           href="/"
           className="product-card__button-add"
@@ -63,6 +88,29 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
         >
           Add to cart
         </a>
+
+        {/* <a
+          href="/"
+          onClick={yourOutherHandleFunction}
+          className="product-card__button-favorite"
+          aria-label="add to favorite"
+        /> */}
+
+        {/* {hasToFavorite ? (
+          <a
+          href="/"
+          onClick={yourOutherHandleFunction}
+          className="product-card__button-favorite product-card__button-favorite--active"
+          aria-label="remove from favorite"
+        />
+        ) : (
+          <a
+          href="/"
+          onClick={yourOutherHandleFunction}
+          className="product-card__button-favorite"
+          aria-label="add to favorite"
+        />
+        )} */}
 
         <a
           href="/"

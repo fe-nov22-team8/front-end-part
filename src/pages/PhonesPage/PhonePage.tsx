@@ -1,12 +1,13 @@
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
+import { sort } from 'types/sortBy';
 import { Phone } from 'types/phoneTypes';
 import { getAllPhonesByPage } from 'api/phones';
 import { ProductCard } from 'Components/ProductCard';
 import { LoaderBox } from 'Components/LoaderBox';
 import './PhonePage.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Pagination } from './PaginationButtons';
 
 export const PhonesPage: React.FC = () => {
@@ -16,6 +17,14 @@ export const PhonesPage: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const [size, updateItemsPerPage] = useState<number>(16);
   const [totalPages, setTotalPages] = useState<number>(1);
+  const [sortBy, setSortBy] = useState<string>(sort.Newest);
+  const order =
+    sortBy === sort.Newest || sortBy === sort.Expensive ? 'desc' : 'asc';
+  console.log(order);
+  const handleSortBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = event.target;
+    setSortBy(value);
+  };
 
   const handleItemsPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     updateItemsPerPage(+event.target.value);
@@ -27,7 +36,7 @@ export const PhonesPage: React.FC = () => {
       setIsLoading(true);
       try {
         setIsError(false);
-        const data = await getAllPhonesByPage(page, size);
+        const data = await getAllPhonesByPage(page, size, sortBy, order);
         setPhones(data);
         setTotalPages(Math.ceil(data.length / size));
       } catch (error) {
@@ -39,7 +48,7 @@ export const PhonesPage: React.FC = () => {
     };
 
     fetchAllPhones();
-  }, [page, size]);
+  }, [page, size, sortBy, order]);
 
   const onPageChange = (newPageNum: number) => {
     setPage(newPageNum);
@@ -64,21 +73,21 @@ export const PhonesPage: React.FC = () => {
               <div className="filter">
                 <div className="filter__sortBy sortBy">
                   <p className="sortBy__title">Sort by</p>
-                  <select className="sortBy__select">
+                  <select className="sortBy__select" onChange={handleSortBy}>
                     <option
                       className="select__option"
-                      value="newest"
+                      value={sort.Newest}
                       defaultChecked
                     >
                       Newest
                     </option>
-                    <option className="select__option" value="alph">
+                    <option className="select__option" value={sort.Alphabet}>
                       Alphabetically
                     </option>
-                    <option className="select__option" value="cheapest">
+                    <option className="select__option" value={sort.Cheapest}>
                       Cheapest
                     </option>
-                    <option className="select__option" value="expensive">
+                    <option className="select__option" value={sort.Expensive}>
                       Expensive
                     </option>
                   </select>
