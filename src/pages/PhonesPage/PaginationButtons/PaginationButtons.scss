@@ -1,5 +1,9 @@
 @import '../../../utilsScss/colors.scss';
 
+.phones-page__buttons {
+  padding-bottom: 64px;
+}
+
 .buttons {
   height: 32px;
   display: flex;
@@ -28,7 +32,7 @@
       }
 
       &:disabled .icon-arrow {
-        // background-image: url('../../../images/');
+        background-image: url(../../../images/Vector_gray_right.svg);
       }
     }
 

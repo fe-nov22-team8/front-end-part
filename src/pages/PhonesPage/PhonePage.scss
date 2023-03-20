@@ -151,7 +151,6 @@
       background-repeat: no-repeat;
       background-position: 90% 50%;
       background-size: 12px 12px;
-
     }
 
     &:focus {
@@ -278,7 +277,7 @@
       display: block;
 
       @media (max-width: 380px) {
-      display: none;
+        display: none;
       }
     }
 
@@ -300,5 +299,8 @@
   height: 16px;
   width: 16px;
   display: block;
-}
 
+  &--left {
+    background-image: url('../../images/Vector_gray_left.svg');
+  }
+}

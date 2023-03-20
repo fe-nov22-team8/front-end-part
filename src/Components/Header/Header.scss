@@ -35,6 +35,7 @@
 }
 
 .icon {
+  box-sizing: content-box;
   display: inline-block;
   cursor: pointer;
 
@@ -262,12 +263,12 @@
   border-radius: 50%;
 
   &--heart {
-    top: 10.5px;
-    right: 10.5px;
+    top: 11.5px;
+    right: 9.5px;
 
     @include onDesktop {
-      top: 18.5px;
-      right: 18.5px;
+      top: 21px;
+      right: 17px;
     }
 
     &-menu {
@@ -277,12 +278,12 @@
   }
 
   &--card {
-    top: 11px;
-    right: 11px;
+    top: 11.5px;
+    right: 9.5px;
 
     @include onDesktop {
-      top: 19px;
-      right: 19px;
+      top: 21px;
+      right: 17px;
     }
 
     &-menu {

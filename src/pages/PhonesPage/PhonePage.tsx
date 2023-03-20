@@ -1,18 +1,16 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
+import { sort } from 'types/sortBy';
 import { Phone } from 'types/phoneTypes';
 import { getAllPhonesByPage } from 'api/phones';
 import { ProductCard } from 'Components/ProductCard';
 import { LoaderBox } from 'Components/LoaderBox';
 import './PhonePage.scss';
-import { useAppSelector } from 'utils/hooks';
-import { HistoryBlock } from 'Components/HistoryBlock';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { Item } from 'types/Item';
-import { PaginationButtons } from './PaginationButtons';
-import { Buttons } from './Buttons';
-// import { Pagination } from './Pagination';
+import { Pagination } from './PaginationButtons';
 
 type Props = {
   changeCartItems: (
@@ -29,37 +27,44 @@ export const PhonesPage: React.FC<Props> = ({ changeCartItems, cartItems }) => {
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
-  const [itemsPerPage, updateItemsPerPage] = useState<number>(16);
+  const [size, updateItemsPerPage] = useState<number>(16);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [sortBy, setSortBy] = useState<string>(sort.Newest);
+  const order =
+    sortBy === sort.Newest || sortBy === sort.Expensive ? 'desc' : 'asc';
+  console.log(order);
+  const handleSortBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = event.target;
+    setSortBy(value);
+  };
 
   const handleItemsPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
     updateItemsPerPage(+event.target.value);
-  };
-
-  // const { allPhones } = useAppSelector((state) => state.phones);
-  // const { phonesOnPage, status: pagePhonesStatus } = useAppSelector(
-  //   (state) => state.phonesPage,
-  // );
-
-  const fetchAllPhones = async () => {
-    setIsLoading(true);
-    try {
-      setIsError(false);
-      const data = await getAllPhonesByPage(page, itemsPerPage);
-      setPhones(data);
-    } catch (error) {
-      setIsError(true);
-    }
-
-    setIsLoading(false);
+    setPage(1);
   };
 
   useEffect(() => {
-    fetchAllPhones();
-  }, [itemsPerPage]);
+    const fetchAllPhones = async () => {
+      setIsLoading(true);
+      try {
+        setIsError(false);
+        const data = await getAllPhonesByPage(page, size, sortBy, order);
+        setPhones(data);
+        setTotalPages(Math.ceil(data.length / size));
+      } catch (error) {
+        setIsError(true);
+        console.log(error);
+      }
 
-  // const onPageChange = (newPageNum: number) => {
-  //   setPage(newPageNum);
-  // };
+      setIsLoading(false);
+    };
+
+    fetchAllPhones();
+  }, [page, size, sortBy, order]);
+
+  const onPageChange = (newPageNum: number) => {
+    setPage(newPageNum);
+  };
 
   return (
     <section className="phones-page">
@@ -80,20 +85,22 @@ export const PhonesPage: React.FC<Props> = ({ changeCartItems, cartItems }) => {
               <div className="filter">
                 <div className="filter__sortBy sortBy">
                   <p className="sortBy__title">Sort by</p>
-
-                  <select className="sortBy__select">
+                  <select className="sortBy__select" onChange={handleSortBy}>
                     <option
                       className="select__option"
-                      value="newest"
+                      value={sort.Newest}
                       defaultChecked
                     >
                       Newest
                     </option>
-                    <option className="select__option" value="alph">
-                      Alphabetic
+                    <option className="select__option" value={sort.Alphabet}>
+                      Alphabetically
                     </option>
-                    <option className="select__option" value="cheapest">
+                    <option className="select__option" value={sort.Cheapest}>
                       Cheapest
+                    </option>
+                    <option className="select__option" value={sort.Expensive}>
+                      Expensive
                     </option>
                   </select>
                 </div>
@@ -102,7 +109,7 @@ export const PhonesPage: React.FC<Props> = ({ changeCartItems, cartItems }) => {
                   <p className="sortBy__title">Items on page</p>
                   <select
                     onChange={handleItemsPerPage}
-                    value={itemsPerPage}
+                    value={size}
                     className="sortBy__select sortBy__select-items"
                     name="amount-select"
                     id="amount-select"
@@ -152,32 +159,12 @@ export const PhonesPage: React.FC<Props> = ({ changeCartItems, cartItems }) => {
             <h2 className="headingError">There are no phones</h2>
           )}
         </div>
-
-        <div className="buttons">
-          <button
-            type="button"
-            className="buttons__button buttons__button--arrow"
-          >
-            <div className="icon-arrow icon-arrow--left" />
-          </button>
-          <button type="button" className="buttons__button">
-            <div className="buttons__text">1</div>
-          </button>
-          <button type="button" className="buttons__button">
-            <div className="buttons__text">2</div>
-          </button>
-          <button type="button" className="buttons__button">
-            <div className="buttons__text">3</div>
-          </button>
-          <button type="button" className="buttons__button">
-            <div className="buttons__text">4</div>
-          </button>
-          <button
-            type="button"
-            className="buttons__button buttons__button--arrow"
-          >
-            <div className="icon-arrow" />
-          </button>
+        <div className="phones-page__buttons">
+          <Pagination
+            currentPage={page}
+            totalPages={8}
+            onPageChange={onPageChange}
+          />
         </div>
       </div>
     </section>

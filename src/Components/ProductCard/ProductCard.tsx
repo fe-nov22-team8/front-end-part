@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useState } from 'react';
 import { Item } from 'types/Item';
+import classNames from 'classnames';
 import { Phone } from 'types/phoneTypes';
 
 import './ProductCard.scss';
@@ -85,6 +86,51 @@ export const ProductCard: React.FC<Props> = ({
         >
           Add to cart
         </button>
+
+        {/* {hasToCart ? (
+          <a
+            href="/"
+            onClick={yourHandleFunction}
+            aria-label="remove from cart"
+            className="product-card__button-add
+            product-card__button-add--active
+              "
+          >
+            Added
+          </a>
+        ) : (
+          <a
+            href="/"
+            onClick={yourHandleFunction}
+            className="product-card__button-add"
+            aria-label="add to cart"
+          >
+            Add to cart
+          </a>
+        )} */}
+
+        {/* <a
+          href="/"
+          onClick={yourOutherHandleFunction}
+          className="product-card__button-favorite"
+          aria-label="add to favorite"
+        /> */}
+
+        {/* {hasToFavorite ? (
+          <a
+          href="/"
+          onClick={yourOutherHandleFunction}
+          className="product-card__button-favorite product-card__button-favorite--active"
+          aria-label="remove from favorite"
+        />
+        ) : (
+          <a
+          href="/"
+          onClick={yourOutherHandleFunction}
+          className="product-card__button-favorite"
+          aria-label="add to favorite"
+        />
+        )} */}
 
         <a
           href="/"
