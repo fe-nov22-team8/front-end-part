@@ -1,15 +1,36 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React from 'react';
+import React, { useState } from 'react';
+import { Item } from 'types/Item';
 import { Phone } from 'types/phoneTypes';
 
 import './ProductCard.scss';
 
 type Props = {
   phone: Phone;
+  changeCartItems: (
+    item: Item,
+    id: string,
+    isAdded: boolean,
+    items: Item[],
+  ) => void;
+  cartItems: Item[];
 };
 
-export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image } = phone;
+export const ProductCard: React.FC<Props> = ({
+  phone,
+  changeCartItems,
+  cartItems,
+}) => {
+  const { name, fullPrice, price, screen, capacity, ram, image, id } = phone;
+  const [isAddToCart, setIsAddToCart] = useState(false);
+
+  const handlerAddToCart = () => {
+    const cartItem = { id, name, price, image };
+
+    setIsAddToCart(!isAddToCart);
+
+    changeCartItems(cartItem, id, isAddToCart, cartItems);
+  };
 
   return (
     <article className="product-card">
@@ -56,13 +77,14 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       </div>
 
       <div className="product-card__button-container">
-        <a
-          href="/"
+        <button
+          type="button"
+          onClick={handlerAddToCart}
           className="product-card__button-add"
           aria-label="add to cart"
         >
           Add to cart
-        </a>
+        </button>
 
         <a
           href="/"
