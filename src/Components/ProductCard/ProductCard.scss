@@ -158,6 +158,15 @@ $card-width: 272px;
     &:hover {
       background-color: $accent-hover;
     }
+
+    &--active {
+      background: $gray-surface2;
+      color: $gray-white;
+
+      &:hover {
+        background: #3B3E4A;
+      }
+    }
   }
 
   &__button-favorite {
@@ -172,6 +181,18 @@ $card-width: 272px;
 
     cursor: pointer;
     transition: background-color 0.3s;
+
+    &--active {
+      height: 40px;
+      width: 40px;
+
+      border: 1px solid #3B3E4A;
+      background-color: #161827;
+
+      background-image: url('../../images/heart-active.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
     &:hover {
       background-color: #4a4d58;

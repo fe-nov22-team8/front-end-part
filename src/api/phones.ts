@@ -6,9 +6,18 @@ import { client } from 'utils/fetch';
 export async function getAllPhonesByPage(
   page: number,
   size: number,
+  sort: string,
+  order: string,
 ): Promise<Phone[]> {
+  const sortBy =
+    sort === 'up' || sort === 'down'
+      ? 'price'
+      : sort === 'name'
+      ? 'name'
+      : 'year';
+
   const response = await client.get<Phone[]>(
-    `/products?page=${page}&size=${size}`,
+    `/products?page=${page}&size=${size}&sort=${sortBy}&order=${order}`,
   );
 
   return response;
