@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllPhones } from 'api/phones';
+import { getDiscountPhones, getNewPhones } from 'api/phones';
 import { ShopByCategory } from 'Components/ShopByCategory';
 import { TopSlider } from 'Components/TopSlider';
 import { LoaderBox } from 'Components/LoaderBox';
@@ -8,7 +8,8 @@ import { BrandSlider } from 'Components/ShopBySlider';
 import { Product } from 'types/productType';
 
 export const HomePage: React.FC = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+  const [newPhones, setNewPhones] = useState<Product[]>([]);
+  const [discountPhones, setDiscountPhones] = useState<Product[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -17,8 +18,11 @@ export const HomePage: React.FC = () => {
       setIsLoading(true);
       try {
         setIsError(false);
-        const data = await getAllPhones();
-        setPhones(data);
+        const newPhones = await getNewPhones();
+        const discountPhones = await getDiscountPhones();
+
+        setNewPhones(newPhones);
+        setDiscountPhones(discountPhones);
       } catch (error) {
         setIsError(true);
       }
@@ -46,27 +50,24 @@ export const HomePage: React.FC = () => {
 
           <TopSlider />
 
-          {!phones.length && <LoaderBox />}
+          {!newPhones.length && <LoaderBox />}
 
-          {!!phones.length && !isLoading && (
-            <BrandSlider
-              phones={phones?.slice(10, 20)}
-              title="Brand new models"
-            />
+          {!!newPhones.length && !isLoading && (
+            <BrandSlider phones={newPhones} title="Brand new models" />
           )}
 
-          {!phones.length && isError && (
+          {!newPhones.length && isError && (
             <h2 className="headingError">Something went wrong</h2>
           )}
 
           <ShopByCategory />
-          {!phones.length && <LoaderBox />}
+          {!discountPhones.length && <LoaderBox />}
 
-          {!!phones.length && !isLoading && (
-            <BrandSlider phones={phones?.slice(0, 10)} title="Hot prices" />
+          {!!discountPhones.length && !isLoading && (
+            <BrandSlider phones={discountPhones} title="Hot prices" />
           )}
 
-          {!phones.length && isError && (
+          {!discountPhones.length && isError && (
             <h2 className="headingError">Something went wrong</h2>
           )}
         </section>
