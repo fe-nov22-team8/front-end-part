@@ -10,6 +10,7 @@ body {
 .phone-page {
   background-color: $gray-black;
   min-height: 100vh;
+
   &__container {
     box-sizing: border-box;
     margin: 0 auto;
@@ -43,6 +44,12 @@ body {
   @media (max-width: 386px) {
     font-size: 32px;
     line-height: 41px;
+  }
+}
+
+.phone-block {
+  &:last-child {
+    margin-top: 80px;
   }
 }
 

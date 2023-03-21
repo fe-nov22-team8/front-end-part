@@ -1,6 +1,5 @@
-TechSpecs {
+.TechSpecs {
   &__title {
-    font-family: 'Mont';
     font-weight: 800;
     text-align: left;
     font-size: 22px;
@@ -10,11 +9,9 @@ TechSpecs {
 
     &::after {
       display: block;
-      content: url('../../../images/LineLong2.svg');
-
-      @media (min-width: 1200px) {
-        content: url('../../../images/Line.svg');
-      }
+      content: '';
+      height: 1px;
+      background-color: #3b3e4a;
     }
   }
 }
