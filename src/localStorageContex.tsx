@@ -2,7 +2,7 @@
 /* eslint-disable arrow-body-style */
 import React, { useMemo } from 'react';
 import { Item } from 'types/Item';
-import { Phone } from 'types/phoneTypes';
+import { Product } from 'types/productType';
 import { useLocalStorage } from 'utils/customHook';
 
 export type CartItem = {
@@ -12,10 +12,10 @@ export type CartItem = {
 
 type ContextType = {
   cartItems: CartItem[] | undefined;
-  favoritesItems: Phone[] | undefined;
+  favoritesItems: Product[] | undefined;
   addToCart: (item: Item) => void;
   removeFromCart: (item: Item) => void;
-  changeFavoritesItems: (phone: Phone) => void;
+  changeFavoritesItems: (phone: Product) => void;
 };
 
 export const LocalStorageContext = React.createContext<ContextType>(
@@ -28,7 +28,7 @@ interface Props {
 
 export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('cart', []);
-  const [favoritesItems, setFavoritesItems] = useLocalStorage<Phone[]>(
+  const [favoritesItems, setFavoritesItems] = useLocalStorage<Product[]>(
     'favorite',
     [],
   );
@@ -54,7 +54,7 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
     setCartItems(updatedCart);
   };
 
-  const changeFavoritesItems = (phone: Phone) => {
+  const changeFavoritesItems = (phone: Product) => {
     const hasToFavorite = favoritesItems.find((item) => item.id === phone.id);
 
     if (hasToFavorite) {
