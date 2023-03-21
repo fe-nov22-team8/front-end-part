@@ -16,7 +16,7 @@ export const OnePhonePage = () => {
 
   useEffect(() => {
     const getPhone = async () => {
-      const data = await getPhoneById('apple-iphone-11-128gb-black');
+      const data = await getPhoneById('apple-iphone-11-256gb-red');
       setIphone(data);
     };
 
@@ -42,7 +42,7 @@ export const OnePhonePage = () => {
             <h1 className="phone-title">{iphone?.name}</h1>
           </div>
           <div className="phone-block grid">
-            <div className="images grid__item--desktop-1-12">
+            <div className="images grid__item--desktop-1-12 grid__item--tablet-1-6">
               <div className="images-column">
                 {iphone?.images.map((image) => (
                   <div
@@ -71,7 +71,7 @@ export const OnePhonePage = () => {
                 />
               </div>
             </div>
-            <div className="purchase grid__item--desktop-14-20">
+            <div className="purchase grid__item--desktop-14-20 grid__item--tablet-8-12">
               <div className="purchase-color">
                 <p className="purchase-name">Available colors</p>
                 <div className="purchase-colors">
@@ -155,10 +155,10 @@ export const OnePhonePage = () => {
             </div>
           </div>
           <div className="phone-block grid">
-            <div className="techSpecs grid__item--desktop-1-12">
+            <div className="techSpecs grid__item--desktop-1-12 grid__item--tablet-1-12">
               <AboutPhone />
             </div>
-            <div className="techSpecs grid__item--desktop-14-24">
+            <div className="techSpecs grid__item--desktop-14-24 grid__item--tablet-1-12">
               <TechSpecs phoneInfo={iphone} />
             </div>
           </div>
@@ -167,5 +167,5 @@ export const OnePhonePage = () => {
     );
   }
 
-  return <div>huy</div>;
+  return <div>loading</div>;
 };
