@@ -22,12 +22,11 @@ import { setUser } from '../../features/userSlice';
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const { currentFavorites } = useAppSelector((state) => state.favorites);
   const { user } = useAppSelector((state) => state.user);
   const [storedFavorites] = useLocalStorage('favorites');
   const [storedCard] = useLocalStorage('card');
 
-  const { cartItems } = useContext(LocalStorageContext);
+  const { cartItems, favoritesItems } = useContext(LocalStorageContext);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -155,7 +154,7 @@ export const Header: React.FC = () => {
                         badge-counter--heart-menu
                       "
                       >
-                        {currentFavorites.length}
+                        {favoritesItems?.length}
                       </div>
                     </span>
                   </NavLink>
@@ -200,7 +199,7 @@ export const Header: React.FC = () => {
           <NavLink to="/favorites" className="nav__link--card">
             <span className="icon icon__heart icon__heart--relative">
               <div className="badge-counter badge-counter--heart">
-                {currentFavorites.length}
+                {favoritesItems?.length}
               </div>
             </span>
           </NavLink>
