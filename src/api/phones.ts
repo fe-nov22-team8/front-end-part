@@ -1,4 +1,3 @@
-import { Phone } from 'types/phoneType';
 import { Product } from 'types/productType';
 import { client } from 'utils/fetch';
 
@@ -28,4 +27,14 @@ export async function getAllPhonesByPage(
 export const getAllPhones = () => client.get<Product[]>(`/products`);
 
 export const getPhoneById = (phoneId: string) =>
-  client.get<Phone>(`/phones/${phoneId}`);
+  client.get<Product>(`/phones/${phoneId}`);
+
+export const getNewPhones = async () => {
+  const response = await client.get<Product[]>(`/products/new`);
+  return response;
+};
+
+export const getDiscountPhones = async () => {
+  const response = await client.get<Product[]>(`/products/discount`);
+  return response;
+};
