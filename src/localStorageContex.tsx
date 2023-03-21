@@ -5,17 +5,19 @@ import { Item } from 'types/Item';
 import { Product } from 'types/productType';
 import { useLocalStorage } from 'utils/customHook';
 
-export type CartItem = {
+export type ItemCart = {
   good: Item;
   count: number;
 };
 
 type ContextType = {
-  cartItems: CartItem[] | undefined;
+  cartItems: ItemCart[] | undefined;
   favoritesItems: Product[] | undefined;
   addToCart: (item: Item) => void;
   removeFromCart: (item: Item) => void;
-  changeFavoritesItems: (phone: Product) => void;
+  removeFavoritesItems: (phone: Product) => void;
+  removeOneItem: (item: Item) => void;
+  addToFavorites: (phone: Product) => void;
 };
 
 export const LocalStorageContext = React.createContext<ContextType>(
@@ -27,7 +29,7 @@ interface Props {
 }
 
 export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
-  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('cart', []);
+  const [cartItems, setCartItems] = useLocalStorage<ItemCart[]>('cart', []);
   const [favoritesItems, setFavoritesItems] = useLocalStorage<Product[]>(
     'favorite',
     [],
@@ -54,16 +56,25 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
     setCartItems(updatedCart);
   };
 
-  const changeFavoritesItems = (phone: Product) => {
-    const hasToFavorite = favoritesItems.find((item) => item.id === phone.id);
+  const removeOneItem = (item: Item) => {
+    const cartItem = cartItems.find(({ good }) => good.id === item.id);
 
-    if (hasToFavorite) {
-      setFavoritesItems(favoritesItems.filter((item) => item.id !== phone.id));
-
-      // return;
+    if (cartItem) {
+      cartItem.count--;
+      setCartItems([...cartItems]);
     }
+  };
 
-    // setFavoritesItems((prevState) => [...prevState, hasToFavorite]);
+  const removeFavoritesItems = (phone: Product) => {
+    const filteredFavorites = favoritesItems.filter(
+      (item) => item.id !== phone.id,
+    );
+
+    setFavoritesItems(filteredFavorites);
+  };
+
+  const addToFavorites = (phone: Product) => {
+    setFavoritesItems((prevState) => [...prevState, phone]);
   };
 
   const contextVariables = useMemo(() => {
@@ -72,7 +83,9 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
       favoritesItems,
       addToCart,
       removeFromCart,
-      changeFavoritesItems,
+      removeFavoritesItems,
+      removeOneItem,
+      addToFavorites,
     };
   }, [cartItems]);
 
