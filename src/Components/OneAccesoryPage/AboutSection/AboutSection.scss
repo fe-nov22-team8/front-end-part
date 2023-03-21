@@ -1,0 +1,61 @@
+font-face {
+  font-family: 'Mont';
+  src: url('../../../fonts/Mont-SemiBold.eot');
+  src: local('../../../fonts/Mont SemiBold'), local('Mont-SemiBold'),
+    url('../../../fonts/Mont-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('../../../fonts/Mont-SemiBold.woff2') format('woff2'),
+    url('../../../fonts/Mont-SemiBold.woff') format('woff'),
+    url('../../../fonts/Mont-SemiBold.ttf') format('truetype');
+
+  font-weight: 600;
+  font-style: normal;
+}
+
+.AboutAccessory {
+  &__title {
+    font-weight: 800;
+    text-align: left;
+    font-size: 22px;
+    line-height: 140%;
+
+    color: #f1f2f9;
+
+    &::after {
+      display: block;
+      content: url('../../../images/LineLong.svg');
+
+      @media (min-width: 1200px) {
+        content: url('../../../images/Line.svg');
+      }
+    }
+
+    @media (min-width: 1200px) {
+      width: 560px;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 20px;
+    margin-bottom: 16px;
+
+    font-family: 'Mont';
+    font-weight: 700;
+    text-align: left;
+    font-size: 20px;
+    line-height: 26px;
+
+    color: #f1f2f9;
+  }
+
+  &__text {
+    padding-bottom: 16px;
+
+    font-family: 'MontRegular';
+    font-weight: 600;
+    text-align: left;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #75767f;
+  }
+}
