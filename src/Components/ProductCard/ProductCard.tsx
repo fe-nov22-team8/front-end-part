@@ -1,37 +1,66 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, { useState } from 'react';
-import { Item } from 'types/Item';
-import classNames from 'classnames';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+// import classNames from 'classnames';
 import { Phone } from 'types/phoneTypes';
 
 import './ProductCard.scss';
+import { LocalStorageContext } from 'localStorageContex';
 
 type Props = {
   phone: Phone;
-  changeCartItems: (
-    item: Item,
-    id: string,
-    isAdded: boolean,
-    items: Item[],
-  ) => void;
-  cartItems: Item[];
 };
 
-export const ProductCard: React.FC<Props> = ({
-  phone,
-  changeCartItems,
-  cartItems,
-}) => {
+export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
   const { name, fullPrice, price, screen, capacity, ram, image, id } = phone;
-  const [isAddToCart, setIsAddToCart] = useState(false);
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
 
-  const handlerAddToCart = () => {
-    const cartItem = { id, name, price, image };
+  const {
+    cartItems,
+    favoritesItems,
+    addToCart,
+    removeFromCart,
+    changeFavoritesItems,
+  } = useContext(LocalStorageContext);
 
-    setIsAddToCart(!isAddToCart);
+  const item = { name, price, image, id };
 
-    changeCartItems(cartItem, id, isAddToCart, cartItems);
+  const checkAddToCart = () => {
+    const cartItem = cartItems?.find(({ good }) => good.id === id);
+
+    if (cartItem) {
+      setIsAddedToCart(true);
+    }
   };
+
+  const checkAddToFavorites = () => {
+    const favoriteItem = favoritesItems?.find((phone) => phone.id === id);
+
+    if (favoriteItem) {
+      setIsAddedToFavorite(true);
+    }
+  };
+
+  useEffect(() => {
+    checkAddToCart();
+    checkAddToFavorites();
+  }, [cartItems, isAddedToFavorite]);
+
+  const henlerAddToCart = useCallback(() => {
+    setIsAddedToCart(true);
+    addToCart(item);
+  }, [cartItems]);
+
+  const henlerRemoveToCart = useCallback(() => {
+    setIsAddedToCart(false);
+    removeFromCart(item);
+  }, [cartItems]);
+
+  const henlerCangeFavorite = useCallback(() => {
+    setIsAddedToFavorite(!isAddedToFavorite);
+    changeFavoritesItems(phone);
+  }, [favoritesItems]);
 
   return (
     <article className="product-card">
@@ -78,66 +107,44 @@ export const ProductCard: React.FC<Props> = ({
       </div>
 
       <div className="product-card__button-container">
-        <button
-          type="button"
-          onClick={handlerAddToCart}
-          className="product-card__button-add"
-          aria-label="add to cart"
-        >
-          Add to cart
-        </button>
-
-        {/* {hasToCart ? (
-          <a
-            href="/"
-            onClick={yourHandleFunction}
+        {isAddedToCart ? (
+          <button
+            type="button"
+            onClick={henlerRemoveToCart}
             aria-label="remove from cart"
             className="product-card__button-add
             product-card__button-add--active
               "
           >
             Added
-          </a>
+          </button>
         ) : (
-          <a
-            href="/"
-            onClick={yourHandleFunction}
+          <button
+            type="button"
+            onClick={henlerAddToCart}
             className="product-card__button-add"
             aria-label="add to cart"
           >
             Add to cart
-          </a>
-        )} */}
+          </button>
+        )}
 
-        {/* <a
-          href="/"
-          onClick={yourOutherHandleFunction}
-          className="product-card__button-favorite"
-          aria-label="add to favorite"
-        /> */}
-
-        {/* {hasToFavorite ? (
-          <a
-          href="/"
-          onClick={yourOutherHandleFunction}
-          className="product-card__button-favorite product-card__button-favorite--active"
-          aria-label="remove from favorite"
-        />
+        {isAddedToFavorite ? (
+          <button
+            type="button"
+            onClick={henlerCangeFavorite}
+            className="product-card__button-favorite product-card__button-favorite--active"
+            aria-label="remove from favorite"
+          />
         ) : (
-          <a
-          href="/"
-          onClick={yourOutherHandleFunction}
-          className="product-card__button-favorite"
-          aria-label="add to favorite"
-        />
-        )} */}
-
-        <a
-          href="/"
-          className="product-card__button-favorite"
-          aria-label="add to favorite"
-        />
+          <button
+            type="button"
+            onClick={henlerCangeFavorite}
+            className="product-card__button-favorite"
+            aria-label="add to favorite"
+          />
+        )}
       </div>
     </article>
   );
-};
+});

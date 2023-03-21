@@ -8,21 +8,10 @@ import { ProductCard } from 'Components/ProductCard';
 import { LoaderBox } from 'Components/LoaderBox';
 import './PhonePage.scss';
 import { Link } from 'react-router-dom';
-import classnames from 'classnames';
-import { Item } from 'types/Item';
+// import classnames from 'classnames';
 import { Pagination } from './PaginationButtons';
 
-type Props = {
-  changeCartItems: (
-    item: Item,
-    id: string,
-    isAdded: boolean,
-    items: Item[],
-  ) => void;
-  cartItems: Item[];
-};
-
-export const PhonesPage: React.FC<Props> = ({ changeCartItems, cartItems }) => {
+export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -142,14 +131,7 @@ export const PhonesPage: React.FC<Props> = ({ changeCartItems, cartItems }) => {
         <div className="phones-page__all-phones all-phones">
           {!!phones.length &&
             !isLoading &&
-            phones.map((phone) => (
-              <ProductCard
-                phone={phone}
-                changeCartItems={changeCartItems}
-                cartItems={cartItems}
-                key={phone.id}
-              />
-            ))}
+            phones.map((phone) => <ProductCard phone={phone} key={phone.id} />)}
 
           {!phones.length && isError && (
             <h2 className="headingError">Something went wrong</h2>
