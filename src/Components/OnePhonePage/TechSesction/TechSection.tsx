@@ -1,9 +1,9 @@
 import React from 'react';
-import { Phoneinfo } from 'types/phoneInfo';
+import { Phone } from 'types/phoneType';
 import './TechSection.scss';
 
 type Props = {
-  phoneInfo: Phoneinfo;
+  phoneInfo: Phone;
 };
 
 export const TechSpecs: React.FC<Props> = ({ phoneInfo }) => {
@@ -51,7 +51,7 @@ export const TechSpecs: React.FC<Props> = ({ phoneInfo }) => {
 
       <div className="TechSpects__sect sect">
         <p className="sect__textChar">Cell</p>
-        <p className="sect__textValue sect__textValue">{cell}</p>
+        <p className="sect__textValue sect__textValue">{cell.join(',')}</p>
       </div>
     </div>
   );
