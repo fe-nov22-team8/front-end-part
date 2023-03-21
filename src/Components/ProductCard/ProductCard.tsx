@@ -1,17 +1,67 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, { useState } from 'react';
+
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from 'types/productType';
 
 import './ProductCard.scss';
+import { LocalStorageContext } from 'localStorageContex';
 
 type Props = {
   phone: Product;
 };
 
-export const ProductCard: React.FC<Props> = ({ phone }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image } = phone;
-  const [isAddToCart, setIsAddToCart] = useState(false);
+export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
+  const { name, fullPrice, price, screen, capacity, ram, image, id } = phone;
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
+
+  const {
+    cartItems,
+    favoritesItems,
+    addToCart,
+    removeFromCart,
+    changeFavoritesItems,
+  } = useContext(LocalStorageContext);
+
+  const item = { name, price, image, id };
+
+  const checkAddToCart = () => {
+    const cartItem = cartItems?.find(({ good }) => good.id === id);
+
+    if (cartItem) {
+      setIsAddedToCart(true);
+    }
+  };
+
+  const checkAddToFavorites = () => {
+    const favoriteItem = favoritesItems?.find((phone) => phone.id === id);
+
+    if (favoriteItem) {
+      setIsAddedToFavorite(true);
+    }
+  };
+
+  useEffect(() => {
+    checkAddToCart();
+    checkAddToFavorites();
+  }, [cartItems, isAddedToFavorite]);
+
+  const henlerAddToCart = useCallback(() => {
+    setIsAddedToCart(true);
+    addToCart(item);
+  }, [cartItems]);
+
+  const henlerRemoveToCart = useCallback(() => {
+    setIsAddedToCart(false);
+    removeFromCart(item);
+  }, [cartItems]);
+
+  const henlerCangeFavorite = useCallback(() => {
+    setIsAddedToFavorite(!isAddedToFavorite);
+    changeFavoritesItems(phone);
+  }, [favoritesItems]);
 
   return (
     <article className="product-card">
@@ -60,65 +110,44 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       </div>
 
       <div className="product-card__button-container">
-        <button
-          type="button"
-          className="product-card__button-add"
-          aria-label="add to cart"
-        >
-          Add to cart
-        </button>
-
-        {/* {hasToCart ? (
-          <a
-            href="/"
-            onClick={yourHandleFunction}
+        {isAddedToCart ? (
+          <button
+            type="button"
+            onClick={henlerRemoveToCart}
             aria-label="remove from cart"
             className="product-card__button-add
             product-card__button-add--active
               "
           >
             Added
-          </a>
+          </button>
         ) : (
-          <a
-            href="/"
-            onClick={yourHandleFunction}
+          <button
+            type="button"
+            onClick={henlerAddToCart}
             className="product-card__button-add"
             aria-label="add to cart"
           >
             Add to cart
-          </a>
-        )} */}
+          </button>
+        )}
 
-        {/* <a
-          href="/"
-          onClick={yourOutherHandleFunction}
-          className="product-card__button-favorite"
-          aria-label="add to favorite"
-        /> */}
-
-        {/* {hasToFavorite ? (
-          <a
-          href="/"
-          onClick={yourOutherHandleFunction}
-          className="product-card__button-favorite product-card__button-favorite--active"
-          aria-label="remove from favorite"
-        />
+        {isAddedToFavorite ? (
+          <button
+            type="button"
+            onClick={henlerCangeFavorite}
+            className="product-card__button-favorite product-card__button-favorite--active"
+            aria-label="remove from favorite"
+          />
         ) : (
-          <a
-          href="/"
-          onClick={yourOutherHandleFunction}
-          className="product-card__button-favorite"
-          aria-label="add to favorite"
-        />
-        )} */}
-
-        <a
-          href="/"
-          className="product-card__button-favorite"
-          aria-label="add to favorite"
-        />
+          <button
+            type="button"
+            onClick={henlerCangeFavorite}
+            className="product-card__button-favorite"
+            aria-label="add to favorite"
+          />
+        )}
       </div>
     </article>
   );
-};
+});
