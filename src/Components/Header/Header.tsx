@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { LocalStorageContext } from 'localStorageContex';
+
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { NavLinks } from 'Components/NavLinks';
@@ -20,11 +22,12 @@ import { setUser } from '../../features/userSlice';
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const { currentCard } = useAppSelector((state) => state.card);
   const { currentFavorites } = useAppSelector((state) => state.favorites);
   const { user } = useAppSelector((state) => state.user);
   const [storedFavorites] = useLocalStorage('favorites');
   const [storedCard] = useLocalStorage('card');
+
+  const { cartItems } = useContext(LocalStorageContext);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -45,6 +48,8 @@ export const Header: React.FC = () => {
       console.log(e);
     }
   };
+
+  const totalGoods = cartItems?.reduce((acc, item) => acc + item.count, 0);
 
   useEffect(() => {
     const userForState = 'id' in userStores ? userStores : null;
@@ -175,7 +180,7 @@ export const Header: React.FC = () => {
                         badge-counter--card-menu
                       "
                       >
-                        {currentCard.length}
+                        {totalGoods}
                       </div>
                     </span>
                   </NavLink>
@@ -203,7 +208,7 @@ export const Header: React.FC = () => {
           <NavLink to="/cart" className="nav__link--card">
             <div className="icon icon__card icon__card--relative">
               <div className="badge-counter badge-counter--card">
-                {currentCard.length}
+                {totalGoods}
               </div>
             </div>
           </NavLink>
