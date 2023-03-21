@@ -55,7 +55,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #C4C4C4;
+  border: 1px solid #c4c4c4;
   height: 80px;
   width: 80px;
 
@@ -77,9 +77,9 @@ body {
   &-color {
     &::after {
       display: block;
-      content: "";
+      content: '';
       height: 1px;
-      background-color: #3B3E4A;
+      background-color: #3b3e4a;
     }
   }
 
@@ -104,27 +104,27 @@ body {
     }
 
     &--black {
-      background-color: #403E3D;
+      background-color: #403e3d;
     }
 
     &--green {
-      background-color: #DAF0D9;
+      background-color: #daf0d9;
     }
 
     &--yellow {
-      background-color: #F4E8CE;
+      background-color: #f4e8ce;
     }
 
     &--white {
-      background-color: #D5D4D4;
+      background-color: #d5d4d4;
     }
 
     &--purple {
-      background-color: #594F63;
+      background-color: #594f63;
     }
 
     &--red {
-      background-color: #DB3D3D;
+      background-color: #db3d3d;
     }
 
     &--active {
@@ -137,9 +137,9 @@ body {
 
     &::after {
       display: block;
-      content: "";
+      content: '';
       height: 1px;
-      background-color: #3B3E4A;
+      background-color: #3b3e4a;
     }
 
     &__buttons {
@@ -149,20 +149,20 @@ body {
     &__item {
       margin: 8px 8px 24px 0;
       font-size: 14px;
-      color: #F1F2F9;
-      border: 1px solid #4A4D58;
+      color: #f1f2f9;
+      border: 1px solid #4a4d58;
       padding: 7px 8px;
       cursor: pointer;
       background-color: inherit;
 
       &:hover {
-        background-color: #F1F2F9;
-        color:#161827
+        background-color: #f1f2f9;
+        color: #161827;
       }
 
       &--active {
-        background-color: #F1F2F9;
-        color:#161827
+        background-color: #f1f2f9;
+        color: #161827;
       }
     }
   }
@@ -200,7 +200,7 @@ body {
         color: $gray-white;
 
         &:hover {
-          background: #3B3E4A;
+          background: #3b3e4a;
         }
       }
     }
@@ -222,7 +222,7 @@ body {
         height: 40px;
         width: 40px;
 
-        border: 1px solid #3B3E4A;
+        border: 1px solid #3b3e4a;
         background-color: #161827;
 
         background-image: url('../../images/heart-active.png');
@@ -236,8 +236,6 @@ body {
     }
   }
 
-
-
   &-price {
     margin-top: 24px;
     margin-bottom: 24px;
@@ -247,12 +245,12 @@ body {
     &__discont {
       font-size: 32px;
       font-weight: 800;
-      color: #F1F2F9
+      color: #f1f2f9;
     }
 
     &__full {
       font-size: 22px;
-      color: #75767F;
+      color: #75767f;
       font-weight: 300;
     }
   }

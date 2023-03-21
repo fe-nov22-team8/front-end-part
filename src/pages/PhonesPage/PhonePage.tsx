@@ -12,6 +12,7 @@ import { Pagination } from './PaginationButtons';
 
 export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
+
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
@@ -20,7 +21,6 @@ export const PhonesPage: React.FC = () => {
   const [sortBy, setSortBy] = useState<string>(sort.Newest);
   const order =
     sortBy === sort.Newest || sortBy === sort.Expensive ? 'desc' : 'asc';
-  console.log(order);
   const handleSortBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     setSortBy(value);
@@ -41,7 +41,6 @@ export const PhonesPage: React.FC = () => {
         setTotalPages(Math.ceil(data.length / size));
       } catch (error) {
         setIsError(true);
-        console.log(error);
       }
 
       setIsLoading(false);

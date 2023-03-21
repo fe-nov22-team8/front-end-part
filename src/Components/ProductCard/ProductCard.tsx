@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import classNames from 'classnames';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from 'types/productType';
 
@@ -12,8 +11,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ phone }) => {
   const { name, fullPrice, price, screen, capacity, ram, image } = phone;
-  // const [hasToCart, setHasToCart] = useState(false);
-  // const [hasToFavorite, hasToFavorite] = useState(false);
+  const [isAddToCart, setIsAddToCart] = useState(false);
 
   return (
     <article className="product-card">
@@ -62,6 +60,14 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
       </div>
 
       <div className="product-card__button-container">
+        <button
+          type="button"
+          className="product-card__button-add"
+          aria-label="add to cart"
+        >
+          Add to cart
+        </button>
+
         {/* {hasToCart ? (
           <a
             href="/"
@@ -83,14 +89,6 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
             Add to cart
           </a>
         )} */}
-
-        <a
-          href="/"
-          className="product-card__button-add"
-          aria-label="add to cart"
-        >
-          Add to cart
-        </a>
 
         {/* <a
           href="/"
