@@ -1,0 +1,55 @@
+@import '../../utilsScss/mixins.scss';
+@import '../../utilsScss/colors.scss';
+
+.ContactsPage {
+  height:100vh;
+  background-color: #0F1121;
+
+  &__title {
+    font-family: 'Mont';
+    font-weight: 800;
+    text-align: left;
+    font-size: 32px;
+    line-height: 140%;
+
+    color: #F1F2F9;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $gray-elements;
+      margin-top: 24px;
+    }
+
+    @include onDesktop {
+      width: 50%;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 20px;
+    margin-bottom: 16px;
+
+    font-family: 'Mont';
+    font-weight: 700;
+    text-align: left;
+    font-size: 20px;
+    line-height: 26px;
+
+    color: #F1F2F9;
+  }
+
+  &__text {
+    padding-bottom: 16px;
+
+    font-family: 'MontRegular';
+    font-weight: 600;
+    text-align: left;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #75767F;
+  }
+}
