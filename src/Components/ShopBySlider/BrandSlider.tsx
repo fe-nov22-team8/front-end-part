@@ -27,7 +27,7 @@ export const BrandSlider: React.FC<Props> = ({ phones, title }) => {
 
     if (block) {
       block.style.scrollBehavior = 'smooth';
-      block.scrollTo(1000, 1000);
+      block.scrollTo(570, 570);
     }
   };
 

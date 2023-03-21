@@ -17,7 +17,8 @@ export const PhonesPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const [size, updateItemsPerPage] = useState<number>(16);
-  const [totalPages, setTotalPages] = useState<number>(1);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [totalPages, setTotalPages] = useState<number>(0);
   const [sortBy, setSortBy] = useState<string>(sort.Newest);
   const order =
     sortBy === sort.Newest || sortBy === sort.Expensive ? 'desc' : 'asc';
@@ -30,6 +31,9 @@ export const PhonesPage: React.FC = () => {
     updateItemsPerPage(+event.target.value);
     setPage(1);
   };
+
+  const totalItems = 71;
+  const totalPage = Math.ceil(totalItems / size);
 
   useEffect(() => {
     const fetchAllPhones = async () => {
@@ -52,6 +56,8 @@ export const PhonesPage: React.FC = () => {
   const onPageChange = (newPageNum: number) => {
     setPage(newPageNum);
   };
+
+  // const totalPage = Math.ceil(data.length / size);
 
   return (
     <section className="phones-page">
@@ -142,7 +148,7 @@ export const PhonesPage: React.FC = () => {
         <div className="phones-page__buttons">
           <Pagination
             currentPage={page}
-            totalPages={8}
+            totalPage={totalPage}
             onPageChange={onPageChange}
           />
         </div>
