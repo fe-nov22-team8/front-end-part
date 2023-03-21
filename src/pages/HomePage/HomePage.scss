@@ -1,14 +1,45 @@
-@import '../../utilsScss/colors.scss';
-@import '../../utilsScss/mixins.scss';
+@import '../../utilsScss/colors';
+@import '../../utilsScss/mixins';
 
 .home-page {
-  min-height: 100vh;
   background-color: $gray-black;
+  min-height: 100vh;
   &__container {
-    box-sizing: border-box;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1300px;
     background-color: $gray-black;
+  }
+}
+
+.page {
+  &__section {
+    &--1 {
+      margin-bottom: 56px;
+      @include onTablet {
+        padding: 0 24px 0;
+        margin-bottom: 64px;
+      }
+
+      @include onDesktop {
+        padding: 0 32px 0;
+        margin-bottom: 80px;
+      }
+    }
+
+    &--2 {
+      padding: 0 16px 57px;
+      @include onTablet {
+        padding: 0 24px 64px;
+      }
+
+      @include onDesktop {
+        padding: 0 32px 80px;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 

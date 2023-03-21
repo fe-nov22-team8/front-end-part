@@ -1,0 +1,104 @@
+@import '../../utilsScss/colors.scss';
+@import '../../utilsScss/mixins.scss';
+
+.shopByCategory {
+  &__title {
+    margin-bottom: 24px;
+
+    font-family: 'Mont';
+    text-align: center;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+
+    letter-spacing: -0.01em;
+
+    color: #f1f2f9;
+
+    @media (min-width: 640px) {
+      text-align: left;
+    }
+  }
+}
+
+.section {
+  column-gap: 20px;
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include onTablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin-top: 24px;
+    margin-bottom: 0px;
+
+    font-family: 'Mont';
+    font-weight: 700;
+    text-align: left;
+    font-size: 20px;
+    line-height: 26px;
+
+    color: #f1f2f9;
+  }
+
+  &__numberOfModels {
+    margin-top: 4px;
+    margin-bottom: 32px;
+    font-family: 'Mont';
+    font-weight: 600;
+    text-align: left;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #75767f;
+
+    @media (min-width: 640px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__img {
+    transition: transform 0.3s;
+    display: inline-block;
+    width: 288px;
+    height: 288px;
+    cursor: pointer;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @include onTablet {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include onDesktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    &--1 {
+      background-image: url('Category-1.png');
+    }
+
+    &--2 {
+      background-image: url('Category-2.png');
+    }
+
+    &--3 {
+      background-image: url('Category-3.png');
+    }
+  }
+}
