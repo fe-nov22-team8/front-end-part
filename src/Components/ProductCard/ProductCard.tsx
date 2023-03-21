@@ -73,7 +73,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     <article className="product-card">
       <div className="product-card__container">
         <div>
-          <Link to="/phones/">
+          <Link to={`/phones/${id}`}>
             <img
               src={`https://back-end-part.onrender.com/${image.replace(
                 'jpg',
