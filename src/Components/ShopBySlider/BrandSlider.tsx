@@ -2,11 +2,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { ProductCard } from 'Components/ProductCard';
 import React from 'react';
-import { Phone } from 'types/phoneTypes';
+import { Product } from 'types/productType';
 import './BrandSlider.scss';
 
 type Props = {
-  phones: Phone[];
+  phones: Product[];
   title: string;
 };
 
@@ -55,7 +55,7 @@ export const BrandSlider: React.FC<Props> = ({ phones, title }) => {
         </div>
 
         <ul id={id} className="cards-slider__phone">
-          {phones.map((phone: Phone) => (
+          {phones.map((phone: Product) => (
             <li key={phone.id}>
               <ProductCard phone={phone} key={phone.id} />
             </li>

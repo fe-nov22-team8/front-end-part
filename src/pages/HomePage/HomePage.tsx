@@ -5,10 +5,10 @@ import { TopSlider } from 'Components/TopSlider';
 import { LoaderBox } from 'Components/LoaderBox';
 import './HomePage.scss';
 import { BrandSlider } from 'Components/ShopBySlider';
-import { Phone } from 'types/phoneTypes';
+import { Product } from 'types/productType';
 
 export const HomePage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const [phones, setPhones] = useState<Product[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 

@@ -1,52 +1,34 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { useState } from 'react';
-import { Item } from 'types/Item';
-import classNames from 'classnames';
-import { Phone } from 'types/phoneTypes';
+import { Link } from 'react-router-dom';
+import { Product } from 'types/productType';
 
 import './ProductCard.scss';
 
 type Props = {
-  phone: Phone;
-  changeCartItems: (
-    item: Item,
-    id: string,
-    isAdded: boolean,
-    items: Item[],
-  ) => void;
-  cartItems: Item[];
+  phone: Product;
 };
 
-export const ProductCard: React.FC<Props> = ({
-  phone,
-  changeCartItems,
-  cartItems,
-}) => {
-  const { name, fullPrice, price, screen, capacity, ram, image, id } = phone;
+export const ProductCard: React.FC<Props> = ({ phone }) => {
+  const { name, fullPrice, price, screen, capacity, ram, image } = phone;
   const [isAddToCart, setIsAddToCart] = useState(false);
-
-  const handlerAddToCart = () => {
-    const cartItem = { id, name, price, image };
-
-    setIsAddToCart(!isAddToCart);
-
-    changeCartItems(cartItem, id, isAddToCart, cartItems);
-  };
 
   return (
     <article className="product-card">
       <div className="product-card__container">
         <div>
-          <img
-            src={`https://back-end-part.onrender.com/${image.replace(
-              'jpg',
-              'png',
-            )}`}
-            alt={name}
-            width="208px"
-            height="196px"
-            className="product-card__image"
-          />
+          <Link to="/phones/">
+            <img
+              src={`https://back-end-part.onrender.com/${image.replace(
+                'jpg',
+                'png',
+              )}`}
+              alt={name}
+              width="208px"
+              height="196px"
+              className="product-card__image"
+            />
+          </Link>
         </div>
       </div>
 
@@ -80,7 +62,6 @@ export const ProductCard: React.FC<Props> = ({
       <div className="product-card__button-container">
         <button
           type="button"
-          onClick={handlerAddToCart}
           className="product-card__button-add"
           aria-label="add to cart"
         >

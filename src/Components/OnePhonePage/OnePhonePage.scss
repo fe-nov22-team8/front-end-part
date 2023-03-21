@@ -1,0 +1,283 @@
+@import '../../utilsScss/colors';
+@import '../../utilsScss/mixins';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Mont', sans-serif;
+}
+
+.phone-page {
+  background-color: $gray-black;
+  min-height: 100vh;
+  &__container {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 16px;
+
+    @include onTablet {
+      padding: 0 24px;
+    }
+
+    @include onDesktop {
+      padding: 0 32px;
+    }
+  }
+
+  &__header {
+    margin-bottom: 40px;
+  }
+}
+
+.phone-title {
+  font-family: 'Mont', sans-serif;
+  text-align: left;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+
+  color: #f1f2f9;
+
+  @media (max-width: 386px) {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.images {
+  display: flex;
+  justify-content: space-between;
+}
+
+.images-column__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #c4c4c4;
+  height: 80px;
+  width: 80px;
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.images-main {
+  display: flex;
+  justify-content: center;
+  width: 464px;
+}
+
+.purchase {
+  display: flex;
+  flex-direction: column;
+
+  &-color {
+    &::after {
+      display: block;
+      content: '';
+      height: 1px;
+      background-color: #3b3e4a;
+    }
+  }
+
+  &-colors {
+    display: flex;
+    margin-top: 9px;
+    margin-bottom: 24px;
+  }
+
+  &-color__item {
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.6;
+    }
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    &--black {
+      background-color: #403e3d;
+    }
+
+    &--green {
+      background-color: #daf0d9;
+    }
+
+    &--yellow {
+      background-color: #f4e8ce;
+    }
+
+    &--white {
+      background-color: #d5d4d4;
+    }
+
+    &--purple {
+      background-color: #594f63;
+    }
+
+    &--red {
+      background-color: #db3d3d;
+    }
+
+    &--active {
+      border: 1px solid white;
+    }
+  }
+
+  &-capacity {
+    margin-top: 24px;
+
+    &::after {
+      display: block;
+      content: '';
+      height: 1px;
+      background-color: #3b3e4a;
+    }
+
+    &__buttons {
+      display: flex;
+    }
+
+    &__item {
+      margin: 8px 8px 24px 0;
+      font-size: 14px;
+      color: #f1f2f9;
+      border: 1px solid #4a4d58;
+      padding: 7px 8px;
+      cursor: pointer;
+      background-color: inherit;
+
+      &:hover {
+        background-color: #f1f2f9;
+        color: #161827;
+      }
+
+      &--active {
+        background-color: #f1f2f9;
+        color: #161827;
+      }
+    }
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    &__add {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+      max-width: 263px;
+      max-height: 48px;
+
+      height: 40px;
+      background-color: $accent-color;
+
+      color: $gray-white;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 21px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $accent-hover;
+      }
+
+      &--active {
+        background: $gray-surface2;
+        color: $gray-white;
+
+        &:hover {
+          background: #3b3e4a;
+        }
+      }
+    }
+
+    &__favorite {
+      height: 40px;
+      width: 40px;
+
+      background-color: $gray-surface2;
+      background-image: url('../../images/heart.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 1px solid $gray-surface1;
+
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &--active {
+        height: 40px;
+        width: 40px;
+
+        border: 1px solid #3b3e4a;
+        background-color: #161827;
+
+        background-image: url('../../images/heart-active.png');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      &:hover {
+        background-color: #4a4d58;
+      }
+    }
+  }
+
+  &-price {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+
+    &__discont {
+      font-size: 32px;
+      font-weight: 800;
+      color: #f1f2f9;
+    }
+
+    &__full {
+      font-size: 22px;
+      color: #75767f;
+      font-weight: 300;
+    }
+  }
+
+  &-info {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+
+    &__block {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+    }
+  }
+
+  &-name {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: $secondary-color;
+  }
+
+  &-value {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: $gray-white;
+  }
+}

@@ -1,4 +1,5 @@
-import { Phone } from 'types/phoneTypes';
+import { Phone } from 'types/phoneType';
+import { Product } from 'types/productType';
 import { client } from 'utils/fetch';
 
 // запит за телефонами відносно параметрів, які користувач обирає на сторінці
@@ -8,7 +9,7 @@ export async function getAllPhonesByPage(
   size: number,
   sort: string,
   order: string,
-): Promise<Phone[]> {
+): Promise<Product[]> {
   const sortBy =
     sort === 'up' || sort === 'down'
       ? 'price'
@@ -16,7 +17,7 @@ export async function getAllPhonesByPage(
       ? 'name'
       : 'year';
 
-  const response = await client.get<Phone[]>(
+  const response = await client.get<Product[]>(
     `/products?page=${page}&size=${size}&sort=${sortBy}&order=${order}`,
   );
 
@@ -24,4 +25,7 @@ export async function getAllPhonesByPage(
 }
 
 // запит за усіма телефонами
-export const getAllPhones = () => client.get<Phone[]>(`/products`);
+export const getAllPhones = () => client.get<Product[]>(`/products`);
+
+export const getPhoneById = (phoneId: string) =>
+  client.get<Phone>(`/phones/${phoneId}`);
