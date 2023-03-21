@@ -42,7 +42,18 @@ export const OnePhonePage = () => {
             <h1 className="phone-title">{iphone?.name}</h1>
           </div>
           <div className="phone-block grid">
-            <div className="images grid__item--desktop-1-12 grid__item--tablet-1-6">
+            <div className="images grid__item--desktop-1-12 grid__item--tablet-1-6 grid__item--mobile-1-4">
+              <div className="images-main ">
+                <img
+                  src={`https://back-end-part.onrender.com/${iphone?.images[0].replace(
+                    'jpg',
+                    'png',
+                  )}`}
+                  alt={iphone?.name}
+                  height={442}
+                  className="images-main__img"
+                />
+              </div>
               <div className="images-column">
                 {iphone?.images.map((image) => (
                   <div
@@ -55,23 +66,13 @@ export const OnePhonePage = () => {
                         'png',
                       )}`}
                       alt={iphone?.name}
-                      height={66}
+                      className="images-column__img"
                     />
                   </div>
                 ))}
               </div>
-              <div className="images-main ">
-                <img
-                  src={`https://back-end-part.onrender.com/${iphone?.images[0].replace(
-                    'jpg',
-                    'png',
-                  )}`}
-                  alt={iphone?.name}
-                  height={442}
-                />
-              </div>
             </div>
-            <div className="purchase grid__item--desktop-14-20 grid__item--tablet-8-12">
+            <div className="purchase grid__item--desktop-14-20 grid__item--tablet-8-12 grid__item--mobile-1-4">
               <div className="purchase-color">
                 <p className="purchase-name">Available colors</p>
                 <div className="purchase-colors">
@@ -155,10 +156,10 @@ export const OnePhonePage = () => {
             </div>
           </div>
           <div className="phone-block grid">
-            <div className="techSpecs grid__item--desktop-1-12 grid__item--tablet-1-12">
+            <div className="techSpecs grid__item--desktop-1-12 grid__item--tablet-1-12 grid__item--mobile-1-4">
               <AboutPhone />
             </div>
-            <div className="techSpecs grid__item--desktop-14-24 grid__item--tablet-1-12">
+            <div className="techSpecs grid__item--desktop-14-24 grid__item--tablet-1-12 grid__item--mobile-1-4">
               <TechSpecs phoneInfo={iphone} />
             </div>
           </div>

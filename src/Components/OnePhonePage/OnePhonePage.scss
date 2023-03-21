@@ -45,41 +45,127 @@ body {
     font-size: 32px;
     line-height: 41px;
   }
+
+  @include onTablet {
+    font-size: 32px;
+  }
 }
 
 .phone-block {
+  justify-content: center;
   &:last-child {
-    margin-top: 80px;
+    margin-top: 64px;
+    padding-bottom: 56px;
+  }
+
+  @include onTablet {
+    &:last-child {
+      margin-top: 80px;
+      margin-bottom: 0;
+    }
   }
 }
 
 .images {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 40px;
+
+  @include onTablet {
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+}
+
+.images-column {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+
+  @include onTablet {
+    flex-direction: column;
+    justify-content: flex-start;
+    order: -1;
+  }
 }
 
 .images-column__item {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #c4c4c4;
-  height: 80px;
-  width: 80px;
+  border: 1px solid #3B3E4A;
+  height: 50px;
+  width: 50px;
 
   &:not(:last-child) {
-    margin-bottom: 16px;
+    margin-right: 8px;
+  }
+
+  @include onTablet {
+    height: 35px;
+    width: 35px;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+
+  @include onDesktop {
+    height: 80px;
+    width: 80px;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.images-column__img {
+  height: 43px;
+
+  @include onTablet {
+    height: 29px;
+  }
+
+  @include onDesktop {
+    height: 66px;
   }
 }
 
 .images-main {
   display: flex;
   justify-content: center;
-  width: 464px;
+  margin-bottom: 24px;
+
+  @include onTablet {
+    width: 464px;
+    margin-bottom: 0;
+  }
+}
+
+.images-main__img {
+  height: 275px;
+
+  @include onTablet {
+    height: 274px;
+  }
+
+  @include onDesktop {
+    height: 442px;
+  }
 }
 
 .purchase {
   display: flex;
   flex-direction: column;
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: 0;
+  }
 
   &-color {
     &::after {
