@@ -34,7 +34,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         </span>
 
         <div className="cart-item__discription">
-          <Link to="/">
+          <Link to={`/phones/${good.id}`}>
             <img
               src={`https://back-end-part.onrender.com/${good.image.replace(
                 'jpg',
