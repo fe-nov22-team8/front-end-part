@@ -24,6 +24,11 @@
   box-sizing: border-box;
 }
 
+body,
+body * {
+  font-family: 'Mont', sans-serif !important;
+}
+
 .App {
   min-height: 90vh;
 }

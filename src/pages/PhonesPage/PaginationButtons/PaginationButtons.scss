@@ -1,4 +1,5 @@
 @import '../../../utilsScss/colors.scss';
+@import '../../../utilsScss/mixins';
 
 .phones-page__buttons {
   padding-bottom: 64px;
@@ -32,12 +33,21 @@
       }
 
       &:disabled .icon-arrow {
-        background-image: url(../../../images/Vector_gray_right.svg);
+        background-image: url('../../../images/Vector_gray_right.svg');
       }
     }
 
-    &:first-child {
-      margin-left: 8px;
+    &:not(:first-child):not(:last-child) {
+      display: none;
+
+      @include onTablet {
+        display: block;
+      }
+    }
+
+    &:first-child,
+    &:last-child {
+      display: inline-block;
     }
 
     &:hover {
@@ -45,11 +55,30 @@
     }
 
     &--active {
+      display: inline-block;
       background-color: $accent-color;
     }
   }
 
   &__text {
     color: $gray-white;
+  }
+
+  &__ellipsis {
+    width: 30px;
+    display: none;
+
+    @include onTablet {
+      display: block;
+    }
+
+    &--dot {
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      background-color: $accent-color;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
   }
 }

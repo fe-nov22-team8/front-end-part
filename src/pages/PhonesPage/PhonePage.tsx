@@ -2,26 +2,26 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { sort } from 'types/sortBy';
-import { Phone } from 'types/phoneTypes';
+import { Product } from 'types/productType';
 import { getAllPhonesByPage } from 'api/phones';
 import { ProductCard } from 'Components/ProductCard';
 import { LoaderBox } from 'Components/LoaderBox';
 import './PhonePage.scss';
 import { Link } from 'react-router-dom';
-// import classnames from 'classnames';
 import { Pagination } from './PaginationButtons';
 
 export const PhonesPage: React.FC = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const [phones, setPhones] = useState<Product[]>([]);
+
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const [size, updateItemsPerPage] = useState<number>(16);
-  const [totalPages, setTotalPages] = useState<number>(1);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [totalPages, setTotalPages] = useState<number>(0);
   const [sortBy, setSortBy] = useState<string>(sort.Newest);
   const order =
     sortBy === sort.Newest || sortBy === sort.Expensive ? 'desc' : 'asc';
-  console.log(order);
   const handleSortBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     setSortBy(value);
@@ -31,6 +31,9 @@ export const PhonesPage: React.FC = () => {
     updateItemsPerPage(+event.target.value);
     setPage(1);
   };
+
+  const totalItems = 71;
+  const totalPage = Math.ceil(totalItems / size);
 
   useEffect(() => {
     const fetchAllPhones = async () => {
@@ -42,7 +45,6 @@ export const PhonesPage: React.FC = () => {
         setTotalPages(Math.ceil(data.length / size));
       } catch (error) {
         setIsError(true);
-        console.log(error);
       }
 
       setIsLoading(false);
@@ -55,6 +57,8 @@ export const PhonesPage: React.FC = () => {
     setPage(newPageNum);
   };
 
+  // const totalPage = Math.ceil(data.length / size);
+
   return (
     <section className="phones-page">
       <div className="phones-page__container">
@@ -63,7 +67,7 @@ export const PhonesPage: React.FC = () => {
             <Link to="/" className="history-block__home" />
             <div className="history-block__arrow icon-arrow" />
             <Link className="history-block__title" to="/">
-              Pnones
+              Phones
             </Link>
           </div>
 
@@ -144,7 +148,7 @@ export const PhonesPage: React.FC = () => {
         <div className="phones-page__buttons">
           <Pagination
             currentPage={page}
-            totalPages={8}
+            totalPage={totalPage}
             onPageChange={onPageChange}
           />
         </div>

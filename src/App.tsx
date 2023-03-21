@@ -11,6 +11,7 @@ import './App.scss';
 import { HomePage } from 'pages/HomePage';
 import { TabletPage } from 'pages/TabletPage';
 import { FavoritesPage } from 'pages/FavoritesPage';
+import { OnePhonePage } from 'Components/OnePhonePage';
 import { Header } from './Components/Header';
 
 export function App() {
@@ -24,6 +25,7 @@ export function App() {
 
           <Route path="/phones">
             <Route index element={<PhonesPage />} />
+            <Route path=":phoneSlug" element={<OnePhonePage />} />
           </Route>
 
           <Route path="/tablets" element={<TabletPage />} />

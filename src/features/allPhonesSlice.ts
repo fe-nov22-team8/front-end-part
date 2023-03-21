@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Phone } from '../types/phoneTypes';
+import { Product } from '../types/productType';
 import { fetchPhonesPage } from './allPhonesAPI';
 
 export interface allPhonesState {
-  phonesOnPage: Phone[] | null;
+  phonesOnPage: Product[] | null;
   status: 'idle' | 'loading' | 'failed';
 }
 
@@ -28,7 +28,7 @@ export const phonesPageSlice = createSlice({
   name: 'phonesPage',
   initialState,
   reducers: {
-    setPhonesOnPage: (state, action: PayloadAction<Phone[] | null>) => {
+    setPhonesOnPage: (state, action: PayloadAction<Product[] | null>) => {
       // eslint-disable-next-line no-param-reassign
       state.phonesOnPage = action.payload;
     },

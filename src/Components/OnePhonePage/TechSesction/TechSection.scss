@@ -1,0 +1,55 @@
+.TechSpecs {
+  &__title {
+    font-weight: 800;
+    text-align: left;
+    font-size: 22px;
+    line-height: 140%;
+
+    color: #f1f2f9;
+
+    &::after {
+      display: block;
+      content: '';
+      height: 1px;
+      background-color: #3b3e4a;
+    }
+  }
+}
+
+.sect {
+  display: flex;
+  justify-content: space-between;
+
+  &__textChar {
+    margin-top: 8px;
+
+    font-family: 'MontRegular';
+    font-style: normal;
+    text-align: left;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #75767f;
+
+    &--first {
+      margin-top: 16px;
+    }
+  }
+
+  &__textValue {
+    margin-top: 8px;
+
+    font-family: 'MontRegular';
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    text-align: right;
+
+    color: #f1f2f9;
+
+    &--first {
+      margin-top: 16px;
+    }
+  }
+}
