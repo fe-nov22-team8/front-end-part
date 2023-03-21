@@ -1,0 +1,114 @@
+@import '../../utilsScss/colors';
+@import '../../utilsScss/mixins';
+@import 'slick-carousel/slick/slick.scss';
+@import 'slick-carousel/slick/slick-theme.scss';
+
+.slider-wrapp {
+  margin: 0 auto;
+  margin: 40px 0 60px;
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
+}
+
+.slick-slider {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  @include onTablet {
+    padding: 0 24px;
+  }
+}
+
+.slick-slide--baner {
+  display: inline-block;
+  background-image: url('../../images/baner-mobile.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 320px;
+
+  @include onTablet {
+    background-image: url('../../images/baner-tablet.jpg');
+    height: 300px;
+  }
+
+  @include onDesktop {
+    background-image: url('../../images/baner-desktop.jpg');
+    background-size: cover;
+    height: 400px;
+  }
+}
+
+.slick-arrow {
+  position: relative;
+  width: 32px;
+  display: none;
+  border: 1px solid $gray-surface2;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transform: translateY(0);
+
+  @include onTablet {
+    height: 300px;
+    display: block;
+  }
+
+  @include onDesktop {
+    height: 400px;
+    width: 48px;
+  }
+}
+
+.slick-arrow:hover {
+  background-color: $gray-surface2;
+}
+
+.slick-arrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateY(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slick-prev::before {
+  content: '';
+  background-image: url('../../images/Vector_gray_left.svg');
+}
+
+.slick-next::before {
+  content: '';
+  background-image: url('../../images/Vector_gray_right.svg');
+}
+
+.slick-list {
+  width: 100vw;
+  height: 100%;
+}
+
+.slick-dots {
+  bottom: -50px;
+}
+
+.slick-dots li button::before {
+  content: '';
+  width: 14px;
+  height: 4px;
+  background-color: $gray-elements;
+  opacity: 0.25;
+}
+
+.slick-dots li.slick-active button::before {
+  background-color: $gray-white;
+}

@@ -1,0 +1,95 @@
+@import '../../utilsScss/colors';
+@import '../../utilsScss/mixins';
+
+.cards-slider {
+  &__container {
+    margin: 0 auto;
+    margin-right: -16px;
+    max-width: 1148px;
+    @include onTablet {
+      margin-right: -24px;
+    }
+
+    @include onDesktop {
+      margin-right: 0;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    display: flex;
+    font-family: 'Mont', sans-serif;
+    font-weight: 800;
+    color: $gray-white;
+    font-size: 22px;
+    line-height: 31px;
+
+    @include onTablet {
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  &__phone {
+    display: flex;
+    flex: 0;
+    gap: 16px;
+    list-style: none;
+    cursor: pointer;
+
+    overflow-x: auto;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-right: 16px;
+
+    @include onTablet {
+      margin-right: 24px;
+    }
+
+    @include onDesktop {
+      margin-right: 0;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    background-color: $gray-surface2;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $icons-color;
+    }
+
+    &:disabled {
+      background-color: transparent;
+      border: 1px solid $gray-elements;
+    }
+  }
+}
+
+.arrow-icon {
+  display: inline-block;
+  height: 10px;
+  width: 6px;
+  background-image: url(../../images/arrow-back.svg);
+
+  &--right {
+    transform: rotate(180deg);
+  }
+}

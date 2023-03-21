@@ -20,7 +20,6 @@ export const PhonesPage: React.FC = () => {
   const [sortBy, setSortBy] = useState<string>(sort.Newest);
   const order =
     sortBy === sort.Newest || sortBy === sort.Expensive ? 'desc' : 'asc';
-  console.log(order);
   const handleSortBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
     setSortBy(value);
@@ -41,7 +40,6 @@ export const PhonesPage: React.FC = () => {
         setTotalPages(Math.ceil(data.length / size));
       } catch (error) {
         setIsError(true);
-        console.log(error);
       }
 
       setIsLoading(false);
