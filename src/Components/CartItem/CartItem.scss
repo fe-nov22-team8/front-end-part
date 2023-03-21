@@ -17,8 +17,6 @@
   @include onTablet {
     flex-direction: row;
     padding: 24px;
-    // width: 752px;
-    // height: 128px;
   }
 
   &__info {
@@ -42,6 +40,7 @@
     width: 17px;
     padding: 0;
     box-shadow: 0 0 0;
+    cursor: pointer;
   }
 
   &__discription {

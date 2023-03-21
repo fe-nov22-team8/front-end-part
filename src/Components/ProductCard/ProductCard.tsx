@@ -17,8 +17,14 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
 
-  const { cartItems, favoritesItems, addToCart, removeFromCart } =
-    useContext(LocalStorageContext);
+  const {
+    cartItems,
+    favoritesItems,
+    addToCart,
+    removeFromCart,
+    removeFavoritesItems,
+    addToFavorites,
+  } = useContext(LocalStorageContext);
 
   const item = { name, price, image, id };
 
@@ -53,10 +59,15 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     removeFromCart(item);
   }, [cartItems]);
 
-  // const henlerCangeFavorite = useCallback(() => {
-  //   setIsAddedToFavorite(!isAddedToFavorite);
-  //   changeFavoritesItems(phone);
-  // }, [favoritesItems]);
+  const henlerRemoveToFavorites = useCallback(() => {
+    setIsAddedToFavorite(false);
+    removeFavoritesItems(phone);
+  }, [favoritesItems]);
+
+  const henlerAddToFavorites = useCallback(() => {
+    setIsAddedToFavorite(true);
+    addToFavorites(phone);
+  }, [favoritesItems]);
 
   return (
     <article className="product-card">
@@ -130,14 +141,14 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
         {isAddedToFavorite ? (
           <button
             type="button"
-            // onClick={}
+            onClick={henlerRemoveToFavorites}
             className="product-card__button-favorite product-card__button-favorite--active"
             aria-label="remove from favorite"
           />
         ) : (
           <button
             type="button"
-            // onClick={}
+            onClick={henlerAddToFavorites}
             className="product-card__button-favorite"
             aria-label="add to favorite"
           />

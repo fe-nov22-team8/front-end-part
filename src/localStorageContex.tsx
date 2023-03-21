@@ -59,6 +59,10 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
   const removeOneItem = (item: Item) => {
     const cartItem = cartItems.find(({ good }) => good.id === item.id);
 
+    if (cartItem?.count === 1) {
+      return;
+    }
+
     if (cartItem) {
       cartItem.count--;
       setCartItems([...cartItems]);
@@ -87,7 +91,7 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
       removeOneItem,
       addToFavorites,
     };
-  }, [cartItems]);
+  }, [cartItems, favoritesItems]);
 
   return (
     <LocalStorageContext.Provider value={contextVariables}>

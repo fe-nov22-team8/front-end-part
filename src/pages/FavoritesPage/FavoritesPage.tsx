@@ -1,10 +1,11 @@
-import React from 'react';
+import { ProductCard } from 'Components/ProductCard';
+import { LocalStorageContext } from 'localStorageContex';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppSelector } from 'utils/hooks';
 import './FavoritesPage.scss';
 
 export const FavoritesPage: React.FC = () => {
-  const { currentFavorites } = useAppSelector((state) => state.favorites);
+  const { favoritesItems } = useContext(LocalStorageContext);
 
   return (
     <div className="phones-page">
@@ -23,9 +24,13 @@ export const FavoritesPage: React.FC = () => {
             </h1>
             <h2 className="favorites-page__title">Favourites</h2>
             <div className="favorites-page__models-number">
-              {currentFavorites.length} models
+              {favoritesItems?.length} models
             </div>
           </div>
+
+          {favoritesItems?.map((phone) => (
+            <ProductCard phone={phone} key={phone.id} />
+          ))}
         </div>
       </div>
     </div>
