@@ -1,8 +1,6 @@
 import React from 'react';
 import { LocalStorageProvider } from 'localStorageContex';
 import { Footer } from 'Components/Footer';
-import { AboutProject } from 'Components/NavBar Footer/AboutProject';
-import { Rights } from 'Components/NavBar Footer/Rights';
 import { Cart } from 'Components/Cart';
 import { PageNotFound } from 'pages/PageNotFound';
 import { PhonesPage } from 'pages/PhonesPage';
@@ -12,6 +10,8 @@ import { HomePage } from 'pages/HomePage';
 import { TabletPage } from 'pages/TabletPage';
 import { FavoritesPage } from 'pages/FavoritesPage';
 import { OnePhonePage } from 'Components/OnePhonePage';
+import { ContactsPage } from 'pages/ContactsPage';
+import { RightsPage } from 'pages/RightsPage/RightsPage';
 import { Header } from './Components/Header';
 
 export function App() {
@@ -34,9 +34,9 @@ export function App() {
 
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/about-project" element={<AboutProject />} />
+          <Route path="/contactpage" element={<ContactsPage />} />
 
-          <Route path="/rights" element={<Rights />} />
+          <Route path="/rightspage" element={<RightsPage />} />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>

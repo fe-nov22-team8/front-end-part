@@ -13,10 +13,10 @@ export const NavFooter: React.FC = () => (
       >
         Github
       </a>
-      <Link to="/about-project" className="nav__link nav__link--footer">
-        About
+      <Link to="/contactpage" className="nav__link nav__link--footer">
+        Contacts
       </Link>
-      <Link to="/rights" className="nav__link nav__link--footer">
+      <Link to="/rightspage" className="nav__link nav__link--footer">
         Rights
       </Link>
     </div>
