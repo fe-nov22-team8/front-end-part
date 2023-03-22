@@ -1,0 +1,40 @@
+@import '../../utilsScss/colors';
+
+.empty-cart {
+  text-align: center;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+
+  font-family: 'Mont', sans-serif;
+  color: $gray-white;
+
+  border: 1px solid $gray-elements;
+
+
+  .empty-cart__title {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .empty-cart__item {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: #fff;
+    background: $green-color;
+    border-radius: 5px;
+    text-decoration: none;
+
+    transition: background-color 0.5s ease-in;
+
+    &:hover {
+      background-color: $accent-hover;
+    }
+  }
+}
