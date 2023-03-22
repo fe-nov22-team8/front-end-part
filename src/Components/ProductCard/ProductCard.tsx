@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
-  const { name, fullPrice, price, screen, capacity, ram, image, id, phoneId } =
+  const { name, fullPrice, price, screen, capacity, ram, image, id, itemId } =
     phone;
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
@@ -74,7 +74,7 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     <article className="product-card">
       <div className="product-card__container">
         <div>
-          <Link to={`/phones/${phoneId}`}>
+          <Link to={`/phones/${itemId}`}>
             <img
               src={`https://back-end-part.onrender.com/${image.replace(
                 'jpg',
