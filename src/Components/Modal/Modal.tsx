@@ -1,56 +1,50 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import { CSSTransition } from 'react-transition-group';
-import { Backdrop } from '../Backdrop';
+import { LocalStorageContext } from 'localStorageContex';
+import React, { useContext } from 'react';
+import ReactDOM from 'react-dom';
 import './Modal.scss';
 
-type Props = {
-  children: React.ReactNode;
-  header: string;
-  show: boolean;
-  className: string;
-  onCancel: () => void;
+interface Props {
+  shouldShowLocal: boolean;
+}
+
+export const Modal: React.FC<Props> = ({ shouldShowLocal }) => {
+  const { removeAll, handleModal, isModalVisible } =
+    useContext(LocalStorageContext);
+
+  const handleConfirm = () => {
+    removeAll();
+    handleModal();
+  };
+
+  return isModalVisible && shouldShowLocal
+    ? ReactDOM.createPortal(
+        <div className="modal-backdrop">
+          <div className="modal">
+            <div className="modal__content">
+              <h4 className="modal__text">Would you like to checkout?</h4>
+              <div className="modal__line" />
+              <div className="modal__button-container">
+                <button
+                  type="button"
+                  className="modal__button"
+                  aria-label="confirm"
+                  onClick={handleConfirm}
+                >
+                  Confirm
+                </button>
+                <button
+                  type="button"
+                  className="modal__button"
+                  aria-label="cancel"
+                  onClick={handleModal}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>,
+        document.body,
+      )
+    : null;
 };
-
-const ModalOverlay: React.FC<Props> = (props) => {
-  const { header, children, onCancel, className } = props;
-
-  const modalHook = document.getElementById('modal-hook') as HTMLElement;
-
-  const content = (
-    <div className={`modal ${className}`}>
-      <header className="modal__header">
-        <h2>{header}</h2>
-        <span
-          className="
-          icon
-          icon__close--modal
-          icon__close--cart-item
-        "
-          onClick={onCancel}
-          role="button"
-          tabIndex={0}
-          aria-label="button"
-        />
-      </header>
-      <div className="modal__content">{children}</div>
-    </div>
-  );
-
-  return ReactDom.createPortal(content, modalHook);
-};
-
-export const Modal: React.FC<Props> = (props) => (
-  <>
-    {props.show && <Backdrop onClick={props.onCancel} />}
-    <CSSTransition
-      in={props.show}
-      mountOnEnter
-      unmountOnExit
-      timeout={300}
-      classNames="modal"
-    >
-      <ModalOverlay {...props} />
-    </CSSTransition>
-  </>
-);
