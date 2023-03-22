@@ -1,5 +1,5 @@
 import { LocalStorageContext } from 'localStorageContex';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.scss';
 
@@ -15,6 +15,13 @@ export const Modal: React.FC<Props> = ({ shouldShowLocal }) => {
     removeAll();
     handleModal();
   };
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   return isModalVisible && shouldShowLocal
     ? ReactDOM.createPortal(
