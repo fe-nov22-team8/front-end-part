@@ -1,11 +1,11 @@
 import { LocalStorageContext } from 'localStorageContex';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Modal } from '../Modal';
 
 import './Checkout.scss';
 
 export const Checkout: React.FC = () => {
-  const { cartItems } = useContext(LocalStorageContext);
+  const { cartItems, handleModal } = useContext(LocalStorageContext);
 
   const getTotalPrice = () => {
     const total = cartItems
@@ -14,7 +14,7 @@ export const Checkout: React.FC = () => {
     return total;
   };
 
-  const totalPrice = getTotalPrice();
+  const totalPrice = getTotalPrice() || 0;
   const totalGoods = cartItems?.reduce((acc, item) => acc + item.count, 0);
 
   return (
@@ -23,15 +23,15 @@ export const Checkout: React.FC = () => {
         grid__item--tablet-1-12
         grid__item--mobile-1-4"
     >
+      <Modal shouldShowLocal={Boolean(totalPrice)} />
       <p className="checkout__total-sum">${totalPrice}</p>
 
       <span className="checkout__total-items">
         Total for {totalGoods} items
       </span>
-
-      <Link to="/" className="checkout__btn">
+      <button type="button" className="checkout__btn" onClick={handleModal}>
         Checkout
-      </Link>
+      </button>
     </div>
   );
 };

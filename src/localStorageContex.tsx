@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable arrow-body-style */
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Item } from 'types/Item';
 import { Product } from 'types/productType';
 import { useLocalStorage } from 'utils/customHook';
@@ -13,11 +13,14 @@ export type ItemCart = {
 type ContextType = {
   cartItems: ItemCart[] | undefined;
   favoritesItems: Product[] | undefined;
+  isModalVisible: boolean;
   addToCart: (item: Item) => void;
   removeFromCart: (item: Item) => void;
   removeFavoritesItems: (phone: Product) => void;
   removeOneItem: (item: Item) => void;
   addToFavorites: (phone: Product) => void;
+  removeAll: () => void;
+  handleModal: () => void;
 };
 
 export const LocalStorageContext = React.createContext<ContextType>(
@@ -34,6 +37,12 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
     'favorite',
     [],
   );
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleModal = () => {
+    setIsModalVisible((prevVal) => !prevVal);
+  };
 
   // const [totalGoods, setTotalGoods] = useState(0);
 
@@ -83,6 +92,10 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
     setFavoritesItems((prevState) => [...prevState, phone]);
   };
 
+  const removeAll = (): void => {
+    setCartItems([]);
+  };
+
   // useEffect(() => {
   //   setTotalGoods(cartItems.reduce((acc, item) => acc + item.count, 0));
   // }, [cartItems]);
@@ -91,13 +104,16 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
     return {
       cartItems,
       favoritesItems,
+      isModalVisible,
       addToCart,
       removeFromCart,
       removeFavoritesItems,
       removeOneItem,
       addToFavorites,
+      removeAll,
+      handleModal,
     };
-  }, [cartItems, favoritesItems]);
+  }, [cartItems, favoritesItems, isModalVisible]);
 
   return (
     <LocalStorageContext.Provider value={contextVariables}>

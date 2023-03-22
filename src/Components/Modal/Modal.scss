@@ -1,64 +1,82 @@
-@import '../../utilsForScss/colors';
-@import '../../utilsForScss/mixins';
+@import '../../utilsScss/colors';
+@import '../../utilsScss/mixins';
 
 .modal {
-  z-index: 100;
-  position: fixed;
-  top: 22vh;
-  left: 0;
-  right: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
 
-  width: calc(100% - 32px);
-  box-sizing: border-box;
+  z-index: 10000;
   font-family: 'Mont', sans-serif;
   color: $gray-white;
   background-color: $gray-black;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-
-  margin: auto;
 
   @include onTablet {
-    width: 406px;
-  }
-
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    padding: 24px 16px;
-    line-height: 150%;
+    width: 300px;
   }
 
   &__content {
-    color: $secondary-color;
-    padding: 0 16px 24px;
+    height: 200px;
+    width: 400px;
+    display: block;
+    text-align: center;
+    padding: 20px;
+    background-color: $gray-black;
+    border: 1px solid $gray-elements;
+    display: flex;
+    flex-direction: column;
+
+    @include onTablet {
+      width: 360px;
+    }
+  }
+  &__text {
+    margin-bottom: 16px;
   }
 
-  &-enter {
-    opacity: 0;
-    transform: scale(0.9);
+  &__line {
+    height: 0;
+    border: 1px solid $gray-elements;
+    margin-bottom: 16px;
   }
 
-  &-enter-active {
-    opacity: 1;
-    transform: translateX(0);
-    transition: opacity 300ms, transform 300ms;
+  &__button-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex: 1;
+    align-items: center;
   }
 
-  &-exit {
-    opacity: 1;
+  &__button {
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: $accent-color;
+    color: $gray-white;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    margin:10px 10px;
+
+    &:hover {
+      background-color: $accent-hover;
+    }
+
+    }
   }
 
-  &-exit-active {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 300ms, transform 300ms;
+  .modal-backdrop{
+    width: 100%;
+    height: 100vh;
+    background-color:  rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
   }
-}
-
-.icon__close--modal {
-  height: 16px;
-  width: 16px;
-  align-self: start;
-  background-position: center;
-  background-repeat: no-repeat;
-}
