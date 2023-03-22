@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
 
   return (
     <div className="footer">
-      <Link to="/" className="logo" />
+      <Link to="/" className="logo--footer" />
       <NavFooter />
       {isVisible ? (
         <div

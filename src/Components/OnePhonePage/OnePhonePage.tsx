@@ -1,19 +1,37 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/anchor-has-content */
-import { getPhoneById } from 'api/phones';
+import { getDiscountPhones, getPhoneById } from 'api/phones';
 import classNames from 'classnames';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Phone } from 'types/phoneType';
 import './OnePhonePage.scss';
 import '../../grid.scss';
+import { BrandSlider } from 'Components/ShopBySlider';
+import { Product } from 'types/productType';
 import { TechSpecs } from './TechSesction';
 import { AboutPhone } from './AboutSection';
 
 export const OnePhonePage = () => {
   const [product, setProduct] = useState<Phone | null>(null);
   const [mainPhoto, setMainPhoto] = useState('');
+  const [isError, setIsError] = useState<boolean>(false);
+  const [discountPhones, setDiscountPhones] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchAllPhones = async () => {
+      try {
+        const discountPhones = await getDiscountPhones();
+
+        setDiscountPhones(discountPhones);
+      } catch (error) {
+        setIsError(true);
+      }
+    };
+
+    fetchAllPhones();
+  }, []);
 
   const { phoneSlug } = useParams();
 
@@ -74,6 +92,7 @@ export const OnePhonePage = () => {
             </div>
             <h1 className="phone-title">{product?.name}</h1>
           </div>
+
           <div className="phone-block grid">
             <div className="images grid__item--desktop-1-12 grid__item--tablet-1-6 grid__item--mobile-1-4">
               <div className="images-main ">
@@ -195,6 +214,7 @@ export const OnePhonePage = () => {
               </div>
             </div>
           </div>
+
           <div className="phone-block grid">
             <div className="techSpecs grid__item--desktop-1-12 grid__item--tablet-1-12 grid__item--mobile-1-4">
               <AboutPhone />
@@ -202,6 +222,10 @@ export const OnePhonePage = () => {
             <div className="techSpecs grid__item--desktop-14-24 grid__item--tablet-1-12 grid__item--mobile-1-4">
               <TechSpecs phoneInfo={product} />
             </div>
+          </div>
+
+          <div>
+            <BrandSlider phones={discountPhones} title="You may also like" />
           </div>
         </div>
       </div>

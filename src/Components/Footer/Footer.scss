@@ -25,15 +25,19 @@
 
 .logo {
   &--footer {
-    height: 32px;
-    width: 89px;
+    margin: 0;
+    width: 64px;
+    height: 20px;
     background-image: url('../../images/logoFooter.svg');
+    background-size: 64px 20px;
 
     grid-column-start: 1;
     grid-column-end: 4;
 
-    @media (max-width: 639px) {
-      margin: 34px 0 32px 0;
+    @include onTablet {
+      width: 80px;
+      height: 26px;
+      background-size: 80px 26px;
     }
   }
 }
