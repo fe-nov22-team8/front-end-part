@@ -35,6 +35,8 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
     [],
   );
 
+  // const [totalGoods, setTotalGoods] = useState(0);
+
   const addToCart = (item: Item) => {
     const cartItem = cartItems.find(({ good }) => good.id === item.id);
 
@@ -80,6 +82,10 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
   const addToFavorites = (phone: Product) => {
     setFavoritesItems((prevState) => [...prevState, phone]);
   };
+
+  // useEffect(() => {
+  //   setTotalGoods(cartItems.reduce((acc, item) => acc + item.count, 0));
+  // }, [cartItems]);
 
   const contextVariables = useMemo(() => {
     return {

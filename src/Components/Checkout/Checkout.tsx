@@ -15,6 +15,7 @@ export const Checkout: React.FC = () => {
   };
 
   const totalPrice = getTotalPrice();
+  const totalGoods = cartItems?.reduce((acc, item) => acc + item.count, 0);
 
   return (
     <div
@@ -25,7 +26,7 @@ export const Checkout: React.FC = () => {
       <p className="checkout__total-sum">${totalPrice}</p>
 
       <span className="checkout__total-items">
-        Total for {cartItems?.length} items
+        Total for {totalGoods} items
       </span>
 
       <Link to="/" className="checkout__btn">
