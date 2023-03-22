@@ -1,5 +1,6 @@
 import { CartItem } from 'Components/CartItem';
 import { Checkout } from 'Components/Checkout';
+import { EmptyCart } from 'Components/EmptyCart';
 import { LocalStorageContext } from 'localStorageContex';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
@@ -7,6 +8,8 @@ import './Cart.scss';
 
 export const Cart: React.FC = () => {
   const { cartItems } = useContext(LocalStorageContext);
+
+  const isCartEmpty = cartItems?.length === 0;
 
   return (
     <div className="container">
@@ -38,16 +41,20 @@ export const Cart: React.FC = () => {
             grid__item--tablet-1-12
             grid__item--mobile-1-4"
         >
-          <div
-            className="cart__list
-              grid__item--desktop-1-16
-              grid__item--tablet-1-12
-              grid__item--mobile-1-4"
-          >
-            {cartItems?.map((item) => (
-              <CartItem item={item} key={item.good.id} />
-            ))}
-          </div>
+          {isCartEmpty ? (
+            <EmptyCart />
+          ) : (
+            <div
+              className="cart__list
+                grid__item--desktop-1-16
+                grid__item--tablet-1-12
+                grid__item--mobile-1-4"
+            >
+              {cartItems?.map((item) => (
+                <CartItem item={item} key={item.good.id} />
+              ))}
+            </div>
+          )}
 
           <Checkout />
         </div>
