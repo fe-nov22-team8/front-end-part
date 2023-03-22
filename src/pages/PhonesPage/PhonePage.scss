@@ -20,18 +20,18 @@
   }
 
   &__header {
-    margin-bottom: 24px;
+    padding-bottom: 24px;
   }
 
   &__all-phones {
-    margin-bottom: 24px;
+    padding-bottom: 24px;
 
     @include onTablet {
-      margin-bottom: 40px;
+      padding-bottom: 40px;
     }
 
     @include onDesktop {
-      margin-bottom: 40px;
+      padding-bottom: 40px;
     }
   }
 
