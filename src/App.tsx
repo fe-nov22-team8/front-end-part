@@ -12,6 +12,7 @@ import { FavoritesPage } from 'pages/FavoritesPage';
 import { OnePhonePage } from 'Components/OnePhonePage';
 import { ContactsPage } from 'pages/ContactsPage';
 import { RightsPage } from 'pages/RightsPage/RightsPage';
+import { AccessoriesPage } from 'pages/AccessoriesPage';
 import { Header } from './Components/Header';
 
 export function App() {
@@ -30,7 +31,7 @@ export function App() {
 
           <Route path="/tablets" element={<TabletPage />} />
 
-          {/* <Route path="/accessories" element={<AccessoriesPage />} /> */}
+          <Route path="/accessories" element={<AccessoriesPage />} />
 
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/cart" element={<Cart />} />
