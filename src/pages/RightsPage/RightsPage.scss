@@ -2,7 +2,7 @@
 @import '../../utilsScss/colors.scss';
 
 .Rights {
-  background-color: #0F1121;
+  background-color: #0f1121;
   &__history {
     display: grid;
     grid-column: 1 / 4;
@@ -23,7 +23,7 @@
     font-size: 32px;
     line-height: 140%;
 
-    color: #F1F2F9;
+    color: #f1f2f9;
 
     &::after {
       content: '';
@@ -49,7 +49,7 @@
     font-size: 20px;
     line-height: 26px;
 
-    color: #F1F2F9;
+    color: #f1f2f9;
   }
 
   &__text {
@@ -61,6 +61,6 @@
     font-size: 14px;
     line-height: 21px;
 
-    color: #75767F;
+    color: #75767f;
   }
 }
