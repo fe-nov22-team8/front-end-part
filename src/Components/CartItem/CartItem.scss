@@ -2,18 +2,19 @@
 @import '../../utilsScss/mixins';
 
 .cart-item {
-  grid-template-rows: min-content;
-  padding: 16px;
-  background-color: $gray-surface1;
-  color: $gray-white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  gap: 16px;
+
+  background-color: $gray-surface1;
+  color: $gray-white;
+  padding: 16px;
 
   &:last-child {
     margin-bottom: 20px;
   }
+
   @include onTablet {
     flex-direction: row;
     padding: 24px;
@@ -23,7 +24,6 @@
     display: flex;
     align-items: center;
     gap: 23px;
-
     width: 100%;
 
     @include onTablet {
@@ -63,20 +63,20 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
+    text-align: left;
   }
 
-  &__price-container {
+  &__price-block {
     display: flex;
     justify-content: space-between;
-    margin-top: 16px;
-    width: 100%;
+    align-items: center;
 
     @include onTablet {
       width: 35%;
     }
   }
 
-  &__counter-block {
+  &__icons-block {
     display: flex;
     align-items: center;
     font-family: 'Mont', sans-serif;
@@ -85,10 +85,9 @@
   }
 
   &__counter {
-    font-size: 14px;
-    line-height: 21px;
+    display: flex;
+    justify-content: center;
     width: 32px;
-    text-align: center;
   }
 
   &__total-price {
@@ -100,20 +99,32 @@
 }
 
 .icon {
-  &-cart {
+  &__cart-item {
+    margin: 0;
     height: 32px;
-    width: 32px;
-    border: solid 1px $gray-surface2;
-    background-position: center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-  }
+    width: 27px;
+    border: 1px solid $gray-surface2;
 
-  &__minus {
-    background-image: url('../../images/minus.svg');
-  }
+    &--plus {
+      background: url('../../images/plus.svg') no-repeat center;
+    }
 
-  &__plus {
-    background-image: url('../../images/plus.svg');
+    &--plus:hover, &--plus:focus {
+      background: $gray-surface2 url('../../images/plus.svg') no-repeat center;
+    }
+
+    &--minus {
+      background: url('../../images/minus.svg') no-repeat center;
+    }
+
+    &--minus:hover {
+      background: $gray-surface2 url('../../images/minus.svg') no-repeat center;
+    }
   }
+}
+
+.card__img--cart {
+  width: 51px;
+  height: 66px;
+  margin: 0;
 }

@@ -17,7 +17,11 @@ export const Checkout: React.FC = () => {
   const totalPrice = getTotalPrice();
 
   return (
-    <div className="checkout">
+    <div
+      className="checkout grid__item--desktop-17-24
+        grid__item--tablet-1-12
+        grid__item--mobile-1-4"
+    >
       <p className="checkout__total-sum">${totalPrice}</p>
 
       <span className="checkout__total-items">

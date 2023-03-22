@@ -19,16 +19,11 @@ export const CartItem: React.FC<Props> = ({ item }) => {
     useContext(LocalStorageContext);
 
   return (
-    <div
-      className="cart-item
-      grid__item--desktop-1-4
-      grid__item--tablet-1-4
-      grid__item--mobile-1-4"
-    >
+    <div className="cart-item">
       <div className="cart-item__info">
         <span
           onClick={() => removeFromCart(good)}
-          className="cart-item__button-close"
+          className=" cart-item__button-close"
         >
           {' '}
         </span>
@@ -41,7 +36,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
                 'png',
               )}`}
               alt={good.name}
-              className="cart-item__image"
+              className="card__img card__img--cart"
             />
           </Link>
 
@@ -49,11 +44,11 @@ export const CartItem: React.FC<Props> = ({ item }) => {
         </div>
       </div>
 
-      <div className="cart-item__price-container">
-        <div className="cart-item__counter-block">
+      <div className="cart-item__price-block">
+        <div className="cart-item__icons-block">
           <button
             onClick={() => removeOneItem(good)}
-            className="icon-cart icon__minus"
+            className="icon icon__cart-item icon__cart-item--minus"
           >
             {' '}
           </button>
@@ -62,13 +57,15 @@ export const CartItem: React.FC<Props> = ({ item }) => {
 
           <button
             onClick={() => addToCart(good)}
-            className="icon-cart icon__plus"
+            className="icon
+            icon__cart-item
+            icon__cart-item--plus"
           >
             {' '}
           </button>
         </div>
 
-        <div className="cart-item__total-price">{good.price}</div>
+        <div className="cart-item__total-price">${good.price}</div>
       </div>
     </div>
   );
