@@ -32,13 +32,7 @@ export const BrandSlider: React.FC<Props> = ({ phones, title }) => {
   };
 
   return (
-    <section
-      className="
-    page__section
-    page__section--2
-    cards-slider
-    "
-    >
+    <section className="cards-slider">
       <div className="cards-slider__container">
         <div className="cards-slider__top">
           <h2 className="cards-slider__title">{title}</h2>

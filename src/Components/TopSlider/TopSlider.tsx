@@ -30,10 +30,10 @@ export const TopSlider: React.FC = () => {
           <span className="slick-slide--baner" />
         </div>
         <div className="slick-slide">
-          <span className="slick-slide--baner" />
+          <span className="slick-slide--baner slick-slide--baner-2" />
         </div>
         <div className="slick-slide">
-          <span className="slick-slide--baner" />
+          <span className="slick-slide--baner slick-slide--baner-3" />
         </div>
       </Slider>
     </div>

@@ -2,17 +2,15 @@
 @import '../../utilsScss/mixins';
 
 .cards-slider {
+  padding: 80px 10px;
+
+  @include onTablet {
+    padding: 80px 0;
+  }
+
   &__container {
     margin: 0 auto;
-    margin-right: -16px;
     max-width: 1148px;
-    @include onTablet {
-      margin-right: -24px;
-    }
-
-    @include onDesktop {
-      margin-right: 0;
-    }
   }
 
   &__top {
@@ -71,6 +69,7 @@
     height: 32px;
     background-color: $gray-surface2;
     cursor: pointer;
+    border-radius: 10%;
 
     &:hover {
       background-color: $icons-color;

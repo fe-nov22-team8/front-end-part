@@ -1,24 +1,25 @@
 @import '../../utilsScss/colors.scss';
+@import '../../utilsScss/mixins.scss';
 
 .footer {
   display: grid;
-  grid-template-columns: repeat(24, minmax(0, 32px));
-  column-gap: 16px;
-
-  justify-content: center;
-  align-items: center;
+  padding: 32px 16px 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 
   background-color: $gray-black;
   border-top: 1px solid $gray-elements;
 
-  @media (max-width: 1199px) {
+  @include onTablet {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    padding: 0 24px;
+    padding: 32px;
+    align-items: center;
   }
 
-  @media (max-width: 639px) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    padding: 0 16px;
+  @include onDesktop {
+    grid-template-columns: repeat(24, minmax(0, 32px));
+    column-gap: 16px;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -26,7 +27,7 @@
   &--footer {
     height: 32px;
     width: 89px;
-    background-image: url(../../images/logoFooter.svg);
+    background-image: url('../../images/logoFooter.svg');
 
     grid-column-start: 1;
     grid-column-end: 4;
@@ -74,7 +75,11 @@
 
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url(../../images/slider.svg);
+    background-image: url('../../images/slider.svg');
     cursor: pointer;
+
+    @include onTablet {
+      margin: 0 0 0 16px;
+    }
   }
 }

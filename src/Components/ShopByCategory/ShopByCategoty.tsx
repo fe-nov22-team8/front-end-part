@@ -1,18 +1,9 @@
 import React from 'react';
 import './ShopByCategory.scss';
 import { Link } from 'react-router-dom';
-// import fotoCategory1 from 'Category-2.pn';
-// import fotoCategory2 from 'Category-2.png';
-// import fotoCategory3 from 'Category-3.png';
 
 export const ShopByCategory: React.FC = () => (
-  <div
-    className="
-      shopByCategory
-      page__section
-      page__section--1
-      "
-  >
+  <div>
     <h2 className="shopByCategory__title">Shop by category</h2>
 
     <div className="shopByCategory__sections section">

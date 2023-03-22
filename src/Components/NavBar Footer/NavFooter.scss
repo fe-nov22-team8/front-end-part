@@ -1,4 +1,5 @@
 @import '../../utilsScss/colors.scss';
+@import '../../utilsScss/mixins.scss';
 
 .nav {
   &--footer {
@@ -21,11 +22,14 @@
   }
 
   &__bar--footer {
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 32px;
 
-    @media (max-width: 639px) {
-      flex-direction: column;
-      align-items: flex-start;
+    @include onTablet {
+      flex-direction: row;
+      margin-top: 0;
     }
   }
 
