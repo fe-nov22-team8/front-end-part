@@ -4,7 +4,7 @@
 import { getPhoneById } from 'api/phones';
 import classNames from 'classnames';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Phone } from 'types/phoneType';
 import './OnePhonePage.scss';
 import '../../grid.scss';
@@ -12,18 +12,51 @@ import { TechSpecs } from './TechSesction';
 import { AboutPhone } from './AboutSection';
 
 export const OnePhonePage = () => {
-  const [iphone, setIphone] = useState<Phone | null>(null);
+  const [product, setProduct] = useState<Phone | null>(null);
+  const [mainPhoto, setMainPhoto] = useState('');
+
+  const { phoneSlug } = useParams();
 
   useEffect(() => {
     const getPhone = async () => {
-      const data = await getPhoneById('apple-iphone-11-256gb-red');
-      setIphone(data);
+      const data = await getPhoneById(phoneSlug);
+      setProduct(data);
     };
 
     getPhone();
-  }, []);
+  }, [phoneSlug]);
 
-  if (iphone) {
+  useEffect(() => {
+    if (product?.images) {
+      setMainPhoto(`${product?.images[0]}`);
+    }
+  }, [product?.images]);
+
+  const changePhoneColor = (color: string) => {
+    if (phoneSlug) {
+      const colorToChange = phoneSlug.split('-').reverse();
+
+      colorToChange[0] = color;
+
+      return colorToChange.reverse().join('-');
+    }
+
+    return null;
+  };
+
+  const changePhoneCapacity = (capacity: string) => {
+    if (phoneSlug) {
+      const colorToChange = phoneSlug.split('-').reverse();
+
+      colorToChange[1] = capacity.toLowerCase();
+
+      return colorToChange.reverse().join('-');
+    }
+
+    return null;
+  };
+
+  if (product) {
     return (
       <div className="phone-page">
         <div className="phone-page__container">
@@ -36,36 +69,40 @@ export const OnePhonePage = () => {
               </Link>
               <div className="history-block__arrow icon-arrow" />
               <Link className="history-block__title" to="/">
-                {iphone?.name}
+                {product?.name}
               </Link>
             </div>
-            <h1 className="phone-title">{iphone?.name}</h1>
+            <h1 className="phone-title">{product?.name}</h1>
           </div>
           <div className="phone-block grid">
             <div className="images grid__item--desktop-1-12 grid__item--tablet-1-6 grid__item--mobile-1-4">
               <div className="images-main ">
                 <img
-                  src={`https://back-end-part.onrender.com/${iphone?.images[0].replace(
+                  src={`https://back-end-part.onrender.com/${mainPhoto.replace(
                     'jpg',
                     'png',
                   )}`}
-                  alt={iphone?.name}
+                  alt={product?.name}
                   height={442}
                   className="images-main__img"
                 />
               </div>
               <div className="images-column">
-                {iphone?.images.map((image) => (
+                {product?.images.map((image) => (
+                  // eslint-disable-next-line jsx-a11y/no-static-element-interactions
                   <div
-                    className="images-column__item"
-                    key={iphone.images.indexOf(image)}
+                    className={classNames('images-column__item', {
+                      'images-column__item--active': mainPhoto === image,
+                    })}
+                    key={product.images.indexOf(image)}
+                    onClick={() => setMainPhoto(image)}
                   >
                     <img
                       src={`https://back-end-part.onrender.com/${image.replace(
                         'jpg',
                         'png',
                       )}`}
-                      alt={iphone?.name}
+                      alt={product?.name}
                       className="images-column__img"
                     />
                   </div>
@@ -76,15 +113,16 @@ export const OnePhonePage = () => {
               <div className="purchase-color">
                 <p className="purchase-name">Available colors</p>
                 <div className="purchase-colors">
-                  {iphone?.colorsAvailable.map((color) => (
-                    <button
+                  {product?.colorsAvailable.map((color) => (
+                    <Link
                       key={color}
-                      type="button"
+                      to={`/phones/${changePhoneColor(color)}`}
+                      onClick={() => changePhoneColor(color)}
                       className={classNames(
                         'purchase-color__item',
                         `purchase-color__item--${color}`,
                         {
-                          'purchase-color__item--active': iphone.name
+                          'purchase-color__item--active': product.name
                             .toLowerCase()
                             .includes(color),
                         },
@@ -96,25 +134,27 @@ export const OnePhonePage = () => {
               <div className="purchase-capacity">
                 <p className="purchase-name">Select capacity</p>
                 <div className="purchase-capacity__buttons">
-                  {iphone?.capacityAvailable.map((capacity) => (
-                    <button
+                  {product?.capacityAvailable.map((capacity) => (
+                    <Link
+                      to={`/phones/${changePhoneCapacity(capacity)}`}
+                      onClick={() => changePhoneCapacity(capacity)}
                       key={capacity}
                       type="button"
                       className={classNames('purchase-capacity__item', {
                         'purchase-capacity__item--active':
-                          iphone.name.includes(capacity),
+                          product.name.includes(capacity),
                       })}
                     >
                       {capacity}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               </div>
               <div className="purchase-price">
                 <p className="purchase-price__discont">
-                  ${iphone?.priceDiscount}
+                  ${product?.priceDiscount}
                 </p>
-                <s className="purchase-price__full">${iphone?.priceRegular}</s>
+                <s className="purchase-price__full">${product?.priceRegular}</s>
               </div>
               <div className="purchase-buttons">
                 <a
@@ -160,7 +200,7 @@ export const OnePhonePage = () => {
               <AboutPhone />
             </div>
             <div className="techSpecs grid__item--desktop-14-24 grid__item--tablet-1-12 grid__item--mobile-1-4">
-              <TechSpecs phoneInfo={iphone} />
+              <TechSpecs phoneInfo={product} />
             </div>
           </div>
         </div>

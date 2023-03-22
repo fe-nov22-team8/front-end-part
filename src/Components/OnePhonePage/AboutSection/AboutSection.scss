@@ -21,12 +21,11 @@
     color: #f1f2f9;
 
     &::after {
+      margin-top: 20px;
       display: block;
-      content: url('../../../images/LineLong.svg');
-
-      @media (min-width: 1200px) {
-        content: url('../../../images/Line.svg');
-      }
+      content: '';
+      height: 1px;
+      background-color: #3b3e4a;
     }
 
     @media (min-width: 1200px) {
