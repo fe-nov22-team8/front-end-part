@@ -6,7 +6,7 @@ export interface Phone {
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: string[];
+  colors_available: string[];
   color: string;
   images: string[];
   description: string;

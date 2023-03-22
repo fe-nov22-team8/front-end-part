@@ -10,6 +10,7 @@ import './OnePhonePage.scss';
 import '../../grid.scss';
 import { BrandSlider } from 'Components/ShopBySlider';
 import { Product } from 'types/productType';
+import { LoaderBox } from 'Components/LoaderBox';
 import { TechSpecs } from './TechSesction';
 import { AboutPhone } from './AboutSection';
 
@@ -18,6 +19,7 @@ export const OnePhonePage = () => {
   const [mainPhoto, setMainPhoto] = useState('');
   const [isError, setIsError] = useState<boolean>(false);
   const [discountPhones, setDiscountPhones] = useState<Product[]>([]);
+  const { phoneSlug } = useParams();
 
   useEffect(() => {
     const fetchAllPhones = async () => {
@@ -33,11 +35,10 @@ export const OnePhonePage = () => {
     fetchAllPhones();
   }, []);
 
-  const { phoneSlug } = useParams();
-
   useEffect(() => {
     const getPhone = async () => {
       const data = await getPhoneById(phoneSlug);
+
       setProduct(data);
     };
 
@@ -82,7 +83,7 @@ export const OnePhonePage = () => {
             <div className="history-block">
               <Link to="/" className="history-block__home" />
               <div className="history-block__arrow icon-arrow" />
-              <Link className="history-block__title" to="/">
+              <Link className="history-block__title" to="/phones">
                 Phones
               </Link>
               <div className="history-block__arrow icon-arrow" />
@@ -132,7 +133,7 @@ export const OnePhonePage = () => {
               <div className="purchase-color">
                 <p className="purchase-name">Available colors</p>
                 <div className="purchase-colors">
-                  {product?.colorsAvailable.map((color) => (
+                  {product?.colors_available.map((color) => (
                     <Link
                       key={color}
                       to={`/phones/${changePhoneColor(color)}`}
@@ -232,5 +233,9 @@ export const OnePhonePage = () => {
     );
   }
 
-  return <div>loading</div>;
+  return (
+    <div className="phone-page">
+      <LoaderBox />
+    </div>
+  );
 };
