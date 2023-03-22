@@ -1,13 +1,16 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { CartItem } from 'Components/CartItem';
 import { Checkout } from 'Components/Checkout';
 import { EmptyCart } from 'Components/EmptyCart';
 import { LocalStorageContext } from 'localStorageContex';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Cart.scss';
 
 export const Cart: React.FC = () => {
   const { cartItems } = useContext(LocalStorageContext);
+
+  const navigate = useNavigate();
 
   const isCartEmpty = cartItems?.length === 0;
 
@@ -15,7 +18,8 @@ export const Cart: React.FC = () => {
     <div className="container">
       <div className="cart grid">
         <Link
-          to="/"
+          to="#"
+          onClick={() => navigate(-1)}
           className="nav__link
           cart__link--back
           grid__item--desktop-1-4
