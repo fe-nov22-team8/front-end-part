@@ -84,7 +84,6 @@ body {
   justify-content: center;
   flex-direction: row;
 
-
   @include onTablet {
     flex-direction: column;
     justify-content: flex-start;
@@ -96,7 +95,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #3B3E4A;
+  border: 1px solid #3b3e4a;
   height: 50px;
   width: 50px;
 

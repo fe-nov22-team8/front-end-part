@@ -84,13 +84,26 @@ export const ContactsPage: React.FC = () => (
 
     <p className="ContactsPage__text">
       <strong style={{ textDecoration: 'underline' }}>Client side:</strong>
-      <br />
-      React/React-Router/Redux/Redux-Toolkit
-      /TypeScript/LocalStorage/Fetch/HTML5/CSS3(SASS)
+      <ul>
+        <li>React</li>
+        <li>React-Router</li>
+        <li>Redux</li>
+        <li>Redux-Toolkit</li>
+        <li>TypeScript</li>
+        <li>LocalStorage</li>
+        <li>Fetch</li>
+        <li>HTML5CSS3(SASS)</li>
+      </ul>
       <br />
       <strong style={{ textDecoration: 'underline' }}>Server side:</strong>
-      <br />
-      REST API/NodeJS/Express/CORS/PostgresSQL/SequelizeORM
+      <ul>
+        <li>REST API</li>
+        <li>NodeJS</li>
+        <li>Express</li>
+        <li>CORS</li>
+        <li>PostgresSQL</li>
+        <li>SequelizeORM</li>
+      </ul>
     </p>
   </div>
 );

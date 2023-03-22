@@ -2,8 +2,9 @@
 @import '../../utilsScss/colors.scss';
 
 .ContactsPage {
-  height:100vh;
-  background-color: #0F1121;
+  height: 100%;
+  width: 100%;
+  background-color: #0f1121;
 
   &__title {
     font-family: 'Mont';
@@ -12,7 +13,7 @@
     font-size: 32px;
     line-height: 140%;
 
-    color: #F1F2F9;
+    color: #f1f2f9;
 
     &::after {
       content: '';
@@ -38,7 +39,7 @@
     font-size: 20px;
     line-height: 26px;
 
-    color: #F1F2F9;
+    color: #f1f2f9;
   }
 
   &__text {
@@ -50,6 +51,6 @@
     font-size: 14px;
     line-height: 21px;
 
-    color: #75767F;
+    color: #75767f;
   }
 }
