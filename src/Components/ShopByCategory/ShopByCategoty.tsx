@@ -49,7 +49,7 @@ export const ShopByCategory: React.FC = () => (
 
         <h3 className="section__title">Accessories</h3>
 
-        <p className="section__numberOfModels">2 models</p>
+        <p className="section__numberOfModels">4 models</p>
       </div>
     </div>
   </div>
