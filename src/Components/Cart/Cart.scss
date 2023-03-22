@@ -21,6 +21,11 @@
     padding: 0 32px;
   }
 
+  &__list {
+    display: grid;
+    row-gap: 16px;
+  }
+
   &__h1 {
     font-family: 'Mont', sans-serif;
     font-weight: 800;

@@ -11,36 +11,44 @@ export const Cart: React.FC = () => {
   return (
     <div className="container">
       <div className="cart grid">
-        <div className="history-block">
-          <Link to="/" className="history-block__home" />
-          <div className="history-block__arrow icon-arrow" />
-          <Link className="history-block__title" to="/">
-            Back
-          </Link>
-        </div>
+        <Link
+          to="/"
+          className="nav__link
+          cart__link--back
+          grid__item--desktop-1-4
+          grid__item--tablet-1-4
+          grid__item--mobile-1-4"
+        >
+          <span className="cart__arrow" />
+          Back
+        </Link>
         <h1
           className="cart__h1
-              grid__item--desktop-1-4
-              grid__item--tablet-1-4
-              grid__item--mobile-1-4"
+            grid__item--desktop-1-4
+            grid__item--tablet-1-4
+            grid__item--mobile-1-4"
         >
           Cart
         </h1>
 
         <div
-          className="grid__item--desktop-1-16
-          grid__item--tablet-1-12
-          grid__item--mobile-1-4"
+          className="cart__content
+            grid
+            grid__item--desktop-1-24
+            grid__item--tablet-1-12
+            grid__item--mobile-1-4"
         >
-          {cartItems?.map((item) => (
-            <CartItem item={item} key={item.good.id} />
-          ))}
-        </div>
-        <div
-          className="grid__item--desktop-17-24
-          grid__item--tablet-1-12
-          grid__item--mobile-1-4"
-        >
+          <div
+            className="cart__list
+              grid__item--desktop-1-16
+              grid__item--tablet-1-12
+              grid__item--mobile-1-4"
+          >
+            {cartItems?.map((item) => (
+              <CartItem item={item} key={item.good.id} />
+            ))}
+          </div>
+
           <Checkout />
         </div>
       </div>
