@@ -27,7 +27,7 @@ export async function getAllPhonesByPage(
 // запит за усіма телефонами
 export const getAllPhones = () => client.get<Product[]>(`/products`);
 
-export const getPhoneById = (phoneId: string) =>
+export const getPhoneById = (phoneId = '') =>
   client.get<Phone>(`/phones/${phoneId}`);
 
 export const getNewPhones = async () => {

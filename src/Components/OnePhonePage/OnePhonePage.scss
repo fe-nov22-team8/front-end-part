@@ -98,6 +98,11 @@ body {
   border: 1px solid #3b3e4a;
   height: 50px;
   width: 50px;
+  cursor: pointer;
+
+  &--active {
+    border: 1px solid #C4C4C4;
+  }
 
   &:not(:last-child) {
     margin-right: 8px;
@@ -177,11 +182,13 @@ body {
 
   &-colors {
     display: flex;
+    align-items: center;
     margin-top: 9px;
     margin-bottom: 24px;
   }
 
   &-color__item {
+    display: block;
     margin: 0;
     width: 30px;
     height: 30px;
@@ -203,8 +210,28 @@ body {
       background-color: #daf0d9;
     }
 
-    &--yellow {
+    &--gold {
       background-color: #f4e8ce;
+    }
+
+    &--rosegold {
+      background-color: #F9D4CC;
+    }
+
+    &--silver {
+      background-color: #f0f2f2;
+    }
+
+    &--spacegray {
+      background-color: #161617;
+    }
+
+    &--midnightgreen {
+      background-color: #283529;
+    }
+
+    &--yellow {
+      background-color: #FEEE82;
     }
 
     &--white {
@@ -219,8 +246,14 @@ body {
       background-color: #db3d3d;
     }
 
+    &--coral {
+      background-color: #ff6a59;
+    }
+
     &--active {
-      border: 1px solid white;
+      border: 2px solid whitesmoke;
+      width: 35px;
+      height: 35px;
     }
   }
 
