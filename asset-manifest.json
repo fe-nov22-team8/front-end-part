@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/front-end-part/static/css/main.eb607e6e.css",
-    "main.js": "/front-end-part/static/js/main.2aa04736.js",
+    "main.css": "/front-end-part/static/css/main.f82d01f8.css",
+    "main.js": "/front-end-part/static/js/main.4c7f2932.js",
     "static/js/787.a4ffb315.chunk.js": "/front-end-part/static/js/787.a4ffb315.chunk.js",
-    "static/media/logo.svg": "/front-end-part/static/media/logo.2889a2bc871809c9a913.svg",
     "static/media/logoFooter.svg": "/front-end-part/static/media/logoFooter.7c86cf5336d53d092e30.svg",
+    "static/media/logo.svg": "/front-end-part/static/media/logo.6d87825305517572bd7f.svg",
+    "static/media/iphone-banner-3.png": "/front-end-part/static/media/iphone-banner-3.17bfea35e28c1d405a0a.png",
     "static/media/Mont-SemiBold.eot": "/front-end-part/static/media/Mont-SemiBold.2dc79e1cb836e6342c2e.eot",
     "static/media/Mont-SemiBold.ttf": "/front-end-part/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
     "static/media/baner-desktop.jpg": "/front-end-part/static/media/baner-desktop.ca78b2e6a7e0b72cdfab.jpg",
+    "static/media/baner-tablet.jpg": "/front-end-part/static/media/baner-tablet.ca78b2e6a7e0b72cdfab.jpg",
     "static/media/Category-3.png": "/front-end-part/static/media/Category-3.f97da0dc0fcd6230e9d3.png",
     "static/media/Category-2.png": "/front-end-part/static/media/Category-2.70cceed369d267762189.png",
+    "static/media/iphone-banner-2.png": "/front-end-part/static/media/iphone-banner-2.a82abb0822dba0feef63.png",
     "static/media/Category-1.png": "/front-end-part/static/media/Category-1.d3090abd5e973ee85475.png",
     "static/media/Mont-SemiBold.woff": "/front-end-part/static/media/Mont-SemiBold.5d4afcfe00f8d6a38e5f.woff",
     "static/media/baner-mobile.jpg": "/front-end-part/static/media/baner-mobile.386cecd69d3d8c309082.jpg",
-    "static/media/baner-tablet.jpg": "/front-end-part/static/media/baner-tablet.fe25dfd7f570ac043297.jpg",
     "static/media/Mont-SemiBold.woff2": "/front-end-part/static/media/Mont-SemiBold.95ab478c134f9e9da545.woff2",
     "static/media/slick.svg": "/front-end-part/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/front-end-part/static/media/slick.a4e97f5a2a64f0ab1323.eot",
@@ -44,12 +46,12 @@
     "static/media/minus.svg": "/front-end-part/static/media/minus.d5e79f9288080f709cca.svg",
     "static/media/Line.svg": "/front-end-part/static/media/Line.278e30dfc7523926f7ea.svg",
     "static/media/LineLong.svg": "/front-end-part/static/media/LineLong.13fe418492440acc8189.svg",
-    "main.eb607e6e.css.map": "/front-end-part/static/css/main.eb607e6e.css.map",
-    "main.2aa04736.js.map": "/front-end-part/static/js/main.2aa04736.js.map",
+    "main.f82d01f8.css.map": "/front-end-part/static/css/main.f82d01f8.css.map",
+    "main.4c7f2932.js.map": "/front-end-part/static/js/main.4c7f2932.js.map",
     "787.a4ffb315.chunk.js.map": "/front-end-part/static/js/787.a4ffb315.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.eb607e6e.css",
-    "static/js/main.2aa04736.js"
+    "static/css/main.f82d01f8.css",
+    "static/js/main.4c7f2932.js"
   ]
 }
