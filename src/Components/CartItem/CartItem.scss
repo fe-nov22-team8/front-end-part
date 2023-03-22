@@ -111,7 +111,8 @@
       background: url('../../images/plus.svg') no-repeat center;
     }
 
-    &--plus:hover, &--plus:focus {
+    &--plus:hover,
+    &--plus:focus {
       background: $gray-surface2 url('../../images/plus.svg') no-repeat center;
     }
 

@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/anchor-has-content */
+// eslint-disable-next-line jsx-a11y/no-static-element-interactions
 import { getDiscountPhones, getPhoneById } from 'api/phones';
 import classNames from 'classnames';
 import React, { useState, useEffect } from 'react';
@@ -50,6 +52,10 @@ export const OnePhonePage = () => {
       setMainPhoto(`${product?.images[0]}`);
     }
   }, [product?.images]);
+
+  function handleClick() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   const changePhoneColor = (color: string) => {
     if (phoneSlug) {
@@ -224,8 +230,7 @@ export const OnePhonePage = () => {
               <TechSpecs phoneInfo={product} />
             </div>
           </div>
-
-          <div>
+          <div onClick={handleClick}>
             <BrandSlider phones={discountPhones} title="You may also like" />
           </div>
         </div>
