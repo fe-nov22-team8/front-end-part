@@ -17,10 +17,11 @@ import { TechSpecs } from './TechSesction';
 import { AboutPhone } from './AboutSection';
 import { AboutTablet } from './AboutSectionTablet';
 
-export const OnePhonePage = () => {
+export const OnePhonePage: React.FC = () => {
   const [product, setProduct] = useState<Phone | null>(null);
   const [mainPhoto, setMainPhoto] = useState('');
   const [, setIsError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [discountPhones, setDiscountPhones] = useState<Product[]>([]);
   const { phoneSlug } = useParams();
 
@@ -101,10 +102,12 @@ export const OnePhonePage = () => {
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
     const getProduct = async () => {
       const data = await getPhoneById(phoneSlug);
 
       setProduct(data);
+      setIsLoading(false);
     };
 
     getProduct();
@@ -141,184 +144,186 @@ export const OnePhonePage = () => {
     return null;
   };
 
-  if (product) {
-    return (
-      <div className="phone-page">
-        <div className="phone-page__container">
-          <div className="phone-page__header">
-            <div className="history-block">
-              <Link to="/" className="history-block__home" />
-              <div className="history-block__arrow icon-arrow" />
-              <Link className="history-block__title" to="/phones">
-                Phones
-              </Link>
-              <div className="history-block__arrow icon-arrow" />
-              <Link className="history-block__title" to="/">
-                {product?.name}
-              </Link>
-            </div>
-            <Link
-              to="#"
-              onClick={() => navigate(-1)}
-              className="
+  return (
+    <div className="phone-page">
+      <div className="phone-page__container">
+        {!isLoading ? (
+          <>
+            <div className="phone-page__header">
+              <div className="history-block">
+                <Link to="/" className="history-block__home" />
+                <div className="history-block__arrow icon-arrow" />
+                <Link className="history-block__title" to="/phones">
+                  Phones
+                </Link>
+                <div className="history-block__arrow icon-arrow" />
+                <Link className="history-block__title" to="/">
+                  {product?.name}
+                </Link>
+              </div>
+              <Link
+                to="#"
+                onClick={() => navigate(-1)}
+                className="
               phone-page__back
           cart__link--back
           grid__item--desktop-1-4
           grid__item--tablet-1-4
           grid__item--mobile-1-4"
-            >
-              <span className="cart__arrow" />
-              Back
-            </Link>
-            <h1 className="phone-title">{product?.name}</h1>
-          </div>
-
-          <div className="phone-block grid">
-            <div className="images grid__item--desktop-1-12 grid__item--tablet-1-6 grid__item--mobile-1-4">
-              <div className="images-main ">
-                <img
-                  src={`https://back-end-part.onrender.com/${mainPhoto.replace(
-                    'jpg',
-                    'png',
-                  )}`}
-                  alt={product?.name}
-                  height={442}
-                  className="images-main__img"
-                />
-              </div>
-              <div className="images-column">
-                {product?.images.map((image) => (
-                  <div
-                    className={classNames('images-column__item', {
-                      'images-column__item--active': mainPhoto === image,
-                    })}
-                    key={product.images.indexOf(image)}
-                    onClick={() => setMainPhoto(image)}
-                  >
-                    <img
-                      src={`https://back-end-part.onrender.com/${image.replace(
-                        'jpg',
-                        'png',
-                      )}`}
-                      alt={product?.name}
-                      className="images-column__img"
-                    />
-                  </div>
-                ))}
-              </div>
+              >
+                <span className="cart__arrow" />
+                Back
+              </Link>
+              <h1 className="phone-title">{product?.name}</h1>
             </div>
-            <div className="purchase grid__item--desktop-14-20 grid__item--tablet-8-12 grid__item--mobile-1-4">
-              <div className="purchase-color">
-                <p className="purchase-name">Available colors</p>
-                <div className="purchase-colors">
-                  {product?.colors_available.map((color) => (
-                    <Link
-                      key={color}
-                      to={`/phones/${changePhoneColor(color)}`}
-                      onClick={() => changePhoneColor(color)}
-                      className={classNames(
-                        'purchase-color__item',
-                        `purchase-color__item--${color}`,
-                        {
-                          'purchase-color__item--active': product.name
-                            .toLowerCase()
-                            .includes(color),
-                        },
-                      )}
-                    />
-                  ))}
+            <div className="phone-block grid">
+              <div className="images grid__item--desktop-1-12 grid__item--tablet-1-6 grid__item--mobile-1-4">
+                <div className="images-main ">
+                  <img
+                    src={`https://back-end-part.onrender.com/${mainPhoto.replace(
+                      'jpg',
+                      'png',
+                    )}`}
+                    alt={product?.name}
+                    height={442}
+                    className="images-main__img"
+                  />
                 </div>
-              </div>
-              <div className="purchase-capacity">
-                <p className="purchase-name">Select capacity</p>
-                <div className="purchase-capacity__buttons">
-                  {product?.capacityAvailable.map((capacity) => (
-                    <Link
-                      to={`/phones/${changePhoneCapacity(capacity)}`}
-                      onClick={() => changePhoneCapacity(capacity)}
-                      key={capacity}
-                      type="button"
-                      className={classNames('purchase-capacity__item', {
-                        'purchase-capacity__item--active':
-                          product.name.includes(capacity),
+                <div className="images-column">
+                  {product?.images.map((image) => (
+                    <div
+                      className={classNames('images-column__item', {
+                        'images-column__item--active': mainPhoto === image,
                       })}
+                      key={product.images.indexOf(image)}
+                      onClick={() => setMainPhoto(image)}
                     >
-                      {capacity}
-                    </Link>
+                      <img
+                        src={`https://back-end-part.onrender.com/${image.replace(
+                          'jpg',
+                          'png',
+                        )}`}
+                        alt={product?.name}
+                        className="images-column__img"
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
-              <div className="purchase-price">
-                <p className="purchase-price__discont">
-                  ${product?.priceDiscount}
-                </p>
-                <s className="purchase-price__full">${product?.priceRegular}</s>
-              </div>
-              <div className="purchase-buttons">
-                <button
-                  type="button"
-                  onClick={hendlerCart}
-                  className={classNames('product-card__button-add', {
-                    'product-card__button-add--active': isAddedToCart,
-                  })}
-                  aria-label="add to cart"
-                >
-                  {isAddedToCart ? 'Added' : 'Add to cart'}
-                </button>
-                <button
-                  type="button"
-                  onClick={hendlerFavorites}
-                  className={classNames('product-card__button-favorite', {
-                    'product-card__button-favorite--active': isAddedToFavorite,
-                  })}
-                  aria-label="add to favorite"
-                />
-              </div>
-              <div className="purchase-info">
-                <div className="purchase-info__block">
-                  <p className="purchase-name">Screen</p>
-                  <p className="purchase-value">6.5” OLED</p>
+              <div className="purchase grid__item--desktop-14-20 grid__item--tablet-8-12 grid__item--mobile-1-4">
+                <div className="purchase-color">
+                  <p className="purchase-name">Available colors</p>
+                  <div className="purchase-colors">
+                    {product?.colors_available.map((color) => (
+                      <Link
+                        key={color}
+                        to={`/phones/${changePhoneColor(color)}`}
+                        onClick={() => changePhoneColor(color)}
+                        className={classNames(
+                          'purchase-color__item',
+                          `purchase-color__item--${color}`,
+                          {
+                            'purchase-color__item--active': product.name
+                              .toLowerCase()
+                              .includes(color),
+                          },
+                        )}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <div className="purchase-info__block">
-                  <p className="purchase-name">Resolution</p>
-                  <p className="purchase-value">2688x1242</p>
+                <div className="purchase-capacity">
+                  <p className="purchase-name">Select capacity</p>
+                  <div className="purchase-capacity__buttons">
+                    {product?.capacityAvailable.map((capacity) => (
+                      <Link
+                        to={`/phones/${changePhoneCapacity(capacity)}`}
+                        onClick={() => changePhoneCapacity(capacity)}
+                        key={capacity}
+                        type="button"
+                        className={classNames('purchase-capacity__item', {
+                          'purchase-capacity__item--active':
+                            product.name.includes(capacity),
+                        })}
+                      >
+                        {capacity}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
-                <div className="purchase-info__block">
-                  <p className="purchase-name">Processor</p>
-                  <p
-                    className="purchase-value
-                  "
-                  >
-                    Apple A12 Bionic
+                <div className="purchase-price">
+                  <p className="purchase-price__discont">
+                    ${product?.priceDiscount}
                   </p>
+                  <s className="purchase-price__full">
+                    ${product?.priceRegular}
+                  </s>
                 </div>
-                <div className="purchase-info__block">
-                  <p className="purchase-name">RAM</p>
-                  <p className="purchase-value">3 GB</p>
+                <div className="purchase-buttons">
+                  <button
+                    type="button"
+                    onClick={hendlerCart}
+                    className={classNames('product-card__button-add', {
+                      'product-card__button-add--active': isAddedToCart,
+                    })}
+                    aria-label="add to cart"
+                  >
+                    {isAddedToCart ? 'Added' : 'Add to cart'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={hendlerFavorites}
+                    className={classNames('product-card__button-favorite', {
+                      'product-card__button-favorite--active':
+                        isAddedToFavorite,
+                    })}
+                    aria-label="add to favorite"
+                  />
+                </div>
+                <div className="purchase-info">
+                  <div className="purchase-info__block">
+                    <p className="purchase-name">Screen</p>
+                    <p className="purchase-value">6.5” OLED</p>
+                  </div>
+                  <div className="purchase-info__block">
+                    <p className="purchase-name">Resolution</p>
+                    <p className="purchase-value">2688x1242</p>
+                  </div>
+                  <div className="purchase-info__block">
+                    <p className="purchase-name">Processor</p>
+                    <p
+                      className="purchase-value
+                  "
+                    >
+                      Apple A12 Bionic
+                    </p>
+                  </div>
+                  <div className="purchase-info__block">
+                    <p className="purchase-name">RAM</p>
+                    <p className="purchase-value">3 GB</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="phone-block phone-block--bottom grid">
-            <div className="techSpecs grid__item--desktop-1-12 grid__item--tablet-1-12 grid__item--mobile-1-4">
-              {productName === 'ipad' ? <AboutTablet /> : <AboutPhone />}
+            <div className="phone-block phone-block--bottom grid">
+              <div className="techSpecs grid__item--desktop-1-12 grid__item--tablet-1-12 grid__item--mobile-1-4">
+                {productName === 'ipad' ? <AboutTablet /> : <AboutPhone />}
+              </div>
+              <div className="techSpecs grid__item--desktop-14-24 grid__item--tablet-1-12 grid__item--mobile-1-4">
+                {!!product && <TechSpecs phoneInfo={product} />}
+              </div>
             </div>
-            <div className="techSpecs grid__item--desktop-14-24 grid__item--tablet-1-12 grid__item--mobile-1-4">
-              <TechSpecs phoneInfo={product} />
+            <div>
+              <BrandSlider phones={discountPhones} title="You may also like" />
             </div>
+          </>
+        ) : (
+          <div className="phone-page">
+            <LoaderBox />
           </div>
-          <div>
-            <BrandSlider phones={discountPhones} title="You may also like" />
-          </div>
-        </div>
+        )}
       </div>
-    );
-  }
-
-  return (
-    <div className="phone-page">
-      <LoaderBox />
     </div>
   );
 };
