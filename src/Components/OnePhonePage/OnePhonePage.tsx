@@ -6,9 +6,10 @@
 // eslint-disable-next-line jsx-a11y/no-static-element-interactions
 import { getDiscountPhones, getPhoneById, getProductById } from 'api/phones';
 import classNames from 'classnames';
+import { LocalStorageContext } from 'Components/Context';
+
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { LocalStorageContext } from 'localStorageContex';
 import { Phone } from 'types/phoneType';
 import './OnePhonePage.scss';
 import '../../grid.scss';

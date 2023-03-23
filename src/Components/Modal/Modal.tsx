@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import { LocalStorageContext } from 'localStorageContex';
 import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './Modal.scss';
 import FocusTrap from 'focus-trap-react';
+import { LocalStorageContext } from 'Components/Context';
 
 interface Props {
   shouldShowLocal: boolean;

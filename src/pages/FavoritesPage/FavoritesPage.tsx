@@ -1,5 +1,5 @@
+import { LocalStorageContext } from 'Components/Context';
 import { ProductCard } from 'Components/ProductCard';
-import { LocalStorageContext } from 'localStorageContex';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './FavoritesPage.scss';

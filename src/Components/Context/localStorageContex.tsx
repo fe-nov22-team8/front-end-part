@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable arrow-body-style */
 import React, { useMemo, useState } from 'react';
-import { Item } from 'types/Item';
 import { Product } from 'types/productType';
 import { useLocalStorage } from 'utils/customHook';
 
 export type ItemCart = {
-  good: Item;
+  good: Product;
   count: number;
 };
 
