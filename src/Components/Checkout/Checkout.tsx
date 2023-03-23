@@ -33,7 +33,12 @@ export const Checkout: React.FC = () => {
       <span className="checkout__total-items">
         Total for {totalGoods} items
       </span>
-      <button type="button" className="checkout__btn" onClick={modalCall}>
+      <button
+        type="button"
+        className="checkout__btn"
+        onClick={modalCall}
+        disabled={!cartItems?.length}
+      >
         Checkout
       </button>
     </div>
