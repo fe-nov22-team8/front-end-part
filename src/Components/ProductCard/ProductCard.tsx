@@ -1,12 +1,14 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-has-content */
 
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from 'types/productType';
+import { LocalStorageContext } from 'localStorageContex';
+import { getUp } from '../../utils/getUp';
 
 import './ProductCard.scss';
-import { LocalStorageContext } from 'localStorageContex';
 
 type Props = {
   phone: Product;
@@ -70,11 +72,26 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     addToFavorites(phone);
   }, [favoritesItems]);
 
+  const handlerEndPoint = () => {
+    const product = itemId.split('-')[1];
+
+    switch (true) {
+      case product === 'iphone':
+        return `/phones/${itemId}`;
+
+      case product === 'ipad':
+        return `/tablets/${itemId}`;
+
+      default:
+        return `/accessories/${itemId}`;
+    }
+  };
+
   return (
     <article className="product-card">
       <div className="product-card__container">
-        <div>
-          <Link to={`/phones/${itemId}`}>
+        <div onClick={() => handlerEndPoint()}>
+          <Link to={handlerEndPoint()} onClick={getUp}>
             <img
               src={`https://back-end-part.onrender.com/${image.replace(
                 'jpg',

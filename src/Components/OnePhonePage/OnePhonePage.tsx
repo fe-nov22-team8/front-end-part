@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/anchor-has-content */
 // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-import { getDiscountPhones, getPhoneById } from 'api/phones';
+import { getDiscountPhones, getProductById } from 'api/phones';
 import classNames from 'classnames';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -15,13 +15,16 @@ import { Product } from 'types/productType';
 import { LoaderBox } from 'Components/LoaderBox';
 import { TechSpecs } from './TechSesction';
 import { AboutPhone } from './AboutSection';
+import { AboutTablet } from './AboutSectionTablet';
 
 export const OnePhonePage = () => {
   const [product, setProduct] = useState<Phone | null>(null);
   const [mainPhoto, setMainPhoto] = useState('');
-  const [isError, setIsError] = useState<boolean>(false);
+  const [, setIsError] = useState<boolean>(false);
   const [discountPhones, setDiscountPhones] = useState<Product[]>([]);
   const { phoneSlug } = useParams();
+
+  const productName = phoneSlug?.split('-')[1];
 
   useEffect(() => {
     const fetchAllPhones = async () => {
@@ -38,13 +41,13 @@ export const OnePhonePage = () => {
   }, []);
 
   useEffect(() => {
-    const getPhone = async () => {
-      const data = await getPhoneById(phoneSlug);
+    const getProduct = async () => {
+      const data = await getProductById(phoneSlug);
 
       setProduct(data);
     };
 
-    getPhone();
+    getProduct();
   }, [phoneSlug]);
 
   useEffect(() => {
@@ -52,10 +55,6 @@ export const OnePhonePage = () => {
       setMainPhoto(`${product?.images[0]}`);
     }
   }, [product?.images]);
-
-  function handleClick() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
 
   const changePhoneColor = (color: string) => {
     if (phoneSlug) {
@@ -222,15 +221,15 @@ export const OnePhonePage = () => {
             </div>
           </div>
 
-          <div className="phone-block grid">
+          <div className="phone-block phone-block--bottom grid">
             <div className="techSpecs grid__item--desktop-1-12 grid__item--tablet-1-12 grid__item--mobile-1-4">
-              <AboutPhone />
+              {productName === 'ipad' ? <AboutTablet /> : <AboutPhone />}
             </div>
             <div className="techSpecs grid__item--desktop-14-24 grid__item--tablet-1-12 grid__item--mobile-1-4">
               <TechSpecs phoneInfo={product} />
             </div>
           </div>
-          <div onClick={handleClick}>
+          <div>
             <BrandSlider phones={discountPhones} title="You may also like" />
           </div>
         </div>

@@ -29,9 +29,15 @@ export function App() {
             <Route path=":phoneSlug" element={<OnePhonePage />} />
           </Route>
 
-          <Route path="/tablets" element={<TabletPage />} />
+          <Route path="/tablets">
+            <Route index element={<TabletPage />} />
+            <Route path=":phoneSlug" element={<OnePhonePage />} />
+          </Route>
 
-          <Route path="/accessories" element={<AccessoriesPage />} />
+          <Route path="/accessories">
+            <Route index element={<AccessoriesPage />} />
+            <Route path=":phoneSlug" element={<OnePhonePage />} />
+          </Route>
 
           <Route path="/favorites" element={<FavoritesPage />} />
           <Route path="/cart" element={<Cart />} />
