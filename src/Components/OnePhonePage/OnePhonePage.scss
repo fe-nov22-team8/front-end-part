@@ -29,6 +29,18 @@ body {
   &__header {
     margin-bottom: 40px;
   }
+
+  &__back {
+    margin: 15px 0;
+
+    :hover {
+      color: #75767f;
+    }
+
+    :active {
+      color: #75767f;
+    }
+  }
 }
 
 .phone-title {
@@ -372,6 +384,7 @@ body {
     }
 
     &__full {
+      margin-left: 10px;
       font-size: 22px;
       color: #75767f;
       font-weight: 300;
