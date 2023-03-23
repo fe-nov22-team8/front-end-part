@@ -1,5 +1,6 @@
 import React from 'react';
-import { LocalStorageProvider } from 'localStorageContex';
+import { LocalStorageProvider } from 'Components/Context';
+
 import { Footer } from 'Components/Footer';
 import { Cart } from 'Components/Cart';
 import { PageNotFound } from 'pages/PageNotFound';

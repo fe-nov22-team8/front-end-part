@@ -2,11 +2,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/anchor-has-content */
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
+import { LocalStorageContext } from 'Components/Context';
 import { getDiscountPhones, getPhoneById, getProductById } from 'api/phones';
-import React, { useState, useEffect, useCallback, useContext } from 'react';
-import { LocalStorageContext } from 'localStorageContex';
 import { Phone } from 'types/phoneType';
 import './OnePhonePage.scss';
 import '../../grid.scss';

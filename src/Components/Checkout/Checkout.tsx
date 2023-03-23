@@ -1,4 +1,4 @@
-import { LocalStorageContext } from 'localStorageContex';
+import { LocalStorageContext } from 'Components/Context';
 import React, { useContext } from 'react';
 import { Modal } from '../Modal';
 
