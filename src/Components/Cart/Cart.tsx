@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { CartItem } from 'Components/CartItem';
 import { Checkout } from 'Components/Checkout';
+import { LocalStorageContext } from 'Components/Context';
 import { EmptyCart } from 'Components/EmptyCart';
-import { LocalStorageContext } from 'localStorageContex';
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Cart.scss';

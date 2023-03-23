@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/button-has-type */
-import { ItemCart, LocalStorageContext } from 'localStorageContex';
+import { ItemCart, LocalStorageContext } from 'Components/Context';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 

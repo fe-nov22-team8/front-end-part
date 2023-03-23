@@ -2,12 +2,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-has-content */
 
+import classNames from 'classnames';
+import { LocalStorageContext } from 'Components/Context';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from 'types/productType';
-import { LocalStorageContext } from 'localStorageContex';
 import { getUp } from '../../utils/getUp';
-
 import './ProductCard.scss';
 
 type Props = {
@@ -29,55 +29,46 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     addToFavorites,
   } = useContext(LocalStorageContext);
 
-  const checkAddToCart = () => {
-    const cartItem = cartItems?.find(({ good }) => good.id === id);
-
-    if (cartItem) {
-      setIsAddedToCart(true);
-    }
-  };
-
-  const checkAddToFavorites = () => {
-    const favoriteItem = favoritesItems?.find((phone) => phone.id === id);
-
-    if (favoriteItem) {
-      setIsAddedToFavorite(true);
-    }
-  };
+  const isCart = Boolean(cartItems?.find((item) => item.good.id === id));
+  const isFavorites = Boolean(favoritesItems?.find((item) => item.id === id));
 
   useEffect(() => {
-    checkAddToCart();
-    checkAddToFavorites();
-  }, [cartItems, isAddedToFavorite]);
+    setIsAddedToCart(isCart);
+    setIsAddedToFavorite(isFavorites);
+  }, [isCart, isFavorites]);
 
-  const henlerAddToCart = useCallback(() => {
-    setIsAddedToCart(true);
+  const hendlerCart = useCallback(() => {
+    if (isCart) {
+      removeFromCart(phone);
+      setIsAddedToCart(false);
+      return;
+    }
+
     addToCart(phone);
+    setIsAddedToCart(true);
   }, [cartItems]);
 
-  const henlerRemoveToCart = useCallback(() => {
-    setIsAddedToCart(false);
-    removeFromCart(phone);
-  }, [cartItems]);
+  const hendlerFavorites = useCallback(() => {
+    if (isFavorites && phone) {
+      removeFavoritesItems(phone);
+      setIsAddedToFavorite(false);
+      return;
+    }
 
-  const henlerRemoveToFavorites = useCallback(() => {
-    setIsAddedToFavorite(false);
-    removeFavoritesItems(phone);
-  }, [favoritesItems]);
-
-  const henlerAddToFavorites = useCallback(() => {
-    setIsAddedToFavorite(true);
-    addToFavorites(phone);
+    if (phone) {
+      addToFavorites(phone);
+      setIsAddedToFavorite(true);
+    }
   }, [favoritesItems]);
 
   const handlerEndPoint = () => {
     const product = itemId.split('-')[1];
 
-    switch (true) {
-      case product === 'iphone':
+    switch (product) {
+      case 'iphone':
         return `/phones/${itemId}`;
 
-      case product === 'ipad':
+      case 'ipad':
         return `/tablets/${itemId}`;
 
       default:
@@ -132,43 +123,25 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
       </div>
 
       <div className="product-card__button-container">
-        {isAddedToCart ? (
-          <button
-            type="button"
-            onClick={henlerRemoveToCart}
-            aria-label="remove from cart"
-            className="product-card__button-add
-            product-card__button-add--active
-              "
-          >
-            Added
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={henlerAddToCart}
-            className="product-card__button-add"
-            aria-label="add to cart"
-          >
-            Add to cart
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={hendlerCart}
+          className={classNames('product-card__button-add', {
+            'product-card__button-add--active': isAddedToCart,
+          })}
+          aria-label={isAddedToCart ? 'remove from cart' : 'add to cart'}
+        >
+          {isAddedToCart ? 'Added' : 'Add to cart'}
+        </button>
 
-        {isAddedToFavorite ? (
-          <button
-            type="button"
-            onClick={henlerRemoveToFavorites}
-            className="product-card__button-favorite product-card__button-favorite--active"
-            aria-label="remove from favorite"
-          />
-        ) : (
-          <button
-            type="button"
-            onClick={henlerAddToFavorites}
-            className="product-card__button-favorite"
-            aria-label="add to favorite"
-          />
-        )}
+        <button
+          type="button"
+          onClick={hendlerFavorites}
+          className={classNames('product-card__button-favorite', {
+            'product-card__button-favorite--active': isAddedToFavorite,
+          })}
+          aria-label="add to favorite"
+        />
       </div>
     </article>
   );

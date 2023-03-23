@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useContext, useEffect, useState } from 'react';
-import { LocalStorageContext } from 'localStorageContex';
-
+import React, { useContext, useState, useEffect } from 'react';
+import { LocalStorageContext } from 'Components/Context';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Link, NavLink } from 'react-router-dom';
 import { NavLinks } from 'Components/NavLinks';
