@@ -27,7 +27,6 @@ export const Modal: React.FC<Props> = ({ shouldShowLocal }) => {
       document.body.style.overflow = 'auto';
     };
   }, [isModalVisible, shouldShowLocal]);
-
   return isModalVisible && shouldShowLocal
     ? ReactDOM.createPortal(
         <div className="modal-backdrop">
