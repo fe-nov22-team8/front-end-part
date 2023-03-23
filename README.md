@@ -1,37 +1,45 @@
-# Getting Started with Create React App
+# 👌Nice Gadgets E-Commerce Web Application by FightClub team
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ✨About project:
+Nice Gadgets is E-Commerce Web Application for buying phones, tablets etc.
+The project was developed by a team of developers using the front-end React library.
+As well as technologies such as React-Router, Redux(Redux-Toolkit), TypeScript, HTML5, CSS3(SASS) etc.
+The backend part of the application is built with Node.JS (Express).
+The client part uses a component approach to development, as well as strong typing using TypeScript.
+The server part is built according to the MVC pattern and works according to the principles of the REST API.
 
-## Available Scripts
+## ✨Available Scripts:
 
-In the project directory, you can run:
+- `npm install` - install dependencies;
+- `npm start` - start dev server;
+- `npm run deploy` - deploy current main brunch on GitHub-Pages;
+- `npm run build` - make a production build;
 
-### `npm start`
+## ✨FightClub Team:
+> - Olha Yevstifieieva - olhayevstifieieva@gmail.com
+> - Serhii Tretiak - tretiak.srg@gmail.com
+> - Oleh Chermak - oleh.chermak@gmail.com
+> - Ihor Soloviov - igor.musson.55@gmail.com
+> - Artem Stepanskyy - ArtemStepanskyy@gmail.com (team-lead)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## ✨Application parts:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [DEPLOYED APPLICATION](https://fe-nov22-team8.github.io/front-end-part/)
+- [Backend Part](https://github.com/fe-nov22-team8/back-end-part)
+- [Frontend Part](https://github.com/fe-nov22-team8/front-end-part)
+- [FightClub Team GitHub](https://github.com/fe-nov22-team8)
 
-### `npm test`
+## ✨Technologies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Client side:**
+React/React-Router/Redux/Redux-Toolkit/TypeScript/HTML5/CSS3(SASS)
 
-### `npm run build`
+**Server side:**
+REST API/NodeJS/Express/CORS/PostgresSQL/SequelizeORM/Cookies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*This project is made by **FightClub Team*** 🇺🇦
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
