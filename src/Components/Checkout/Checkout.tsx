@@ -13,6 +13,10 @@ export const Checkout: React.FC = () => {
       .reduce((acc, price) => acc + price, 0);
     return total;
   };
+  const modalCall = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    setTimeout(handleModal, 200);
+  };
 
   const totalPrice = getTotalPrice() || 0;
   const totalGoods = cartItems?.reduce((acc, item) => acc + item.count, 0);
@@ -29,7 +33,7 @@ export const Checkout: React.FC = () => {
       <span className="checkout__total-items">
         Total for {totalGoods} items
       </span>
-      <button type="button" className="checkout__btn" onClick={handleModal}>
+      <button type="button" className="checkout__btn" onClick={modalCall}>
         Checkout
       </button>
     </div>
