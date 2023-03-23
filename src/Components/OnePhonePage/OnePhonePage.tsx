@@ -1,17 +1,16 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/button-has-type */
-/* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/anchor-has-content */
-// eslint-disable-next-line jsx-a11y/no-static-element-interactions
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getDiscountPhones, getProductById } from 'api/phones';
 import classNames from 'classnames';
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Phone } from 'types/phoneType';
 import './OnePhonePage.scss';
 import '../../grid.scss';
-import { BrandSlider } from 'Components/ShopBySlider';
+import { Phone } from 'types/phoneType';
 import { Product } from 'types/productType';
+import { BrandSlider } from 'Components/ShopBySlider';
 import { LoaderBox } from 'Components/LoaderBox';
 import { TechSpecs } from './TechSesction';
 import { AboutPhone } from './AboutSection';
@@ -23,11 +22,11 @@ export const OnePhonePage = () => {
   const [, setIsError] = useState<boolean>(false);
   const [discountPhones, setDiscountPhones] = useState<Product[]>([]);
   const { phoneSlug } = useParams();
-
   const productName = phoneSlug?.split('-')[1];
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchAllPhones = async () => {
+    const fetchRecomendations = async () => {
       try {
         const discountPhones = await getDiscountPhones();
 
@@ -37,7 +36,7 @@ export const OnePhonePage = () => {
       }
     };
 
-    fetchAllPhones();
+    fetchRecomendations();
   }, []);
 
   useEffect(() => {
@@ -96,6 +95,19 @@ export const OnePhonePage = () => {
                 {product?.name}
               </Link>
             </div>
+            <Link
+              to="#"
+              onClick={() => navigate(-1)}
+              className="
+              phone-page__back
+          cart__link--back
+          grid__item--desktop-1-4
+          grid__item--tablet-1-4
+          grid__item--mobile-1-4"
+            >
+              <span className="cart__arrow" />
+              Back
+            </Link>
             <h1 className="phone-title">{product?.name}</h1>
           </div>
 
@@ -114,7 +126,6 @@ export const OnePhonePage = () => {
               </div>
               <div className="images-column">
                 {product?.images.map((image) => (
-                  // eslint-disable-next-line jsx-a11y/no-static-element-interactions
                   <div
                     className={classNames('images-column__item', {
                       'images-column__item--active': mainPhoto === image,
