@@ -29,8 +29,6 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
     addToFavorites,
   } = useContext(LocalStorageContext);
 
-  const item = { name, price, image, id };
-
   const checkAddToCart = () => {
     const cartItem = cartItems?.find(({ good }) => good.id === id);
 
@@ -54,12 +52,12 @@ export const ProductCard: React.FC<Props> = React.memo(({ phone }) => {
 
   const henlerAddToCart = useCallback(() => {
     setIsAddedToCart(true);
-    addToCart(item);
+    addToCart(phone);
   }, [cartItems]);
 
   const henlerRemoveToCart = useCallback(() => {
     setIsAddedToCart(false);
-    removeFromCart(item);
+    removeFromCart(phone);
   }, [cartItems]);
 
   const henlerRemoveToFavorites = useCallback(() => {

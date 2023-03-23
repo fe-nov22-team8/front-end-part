@@ -2,13 +2,14 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { getDiscountPhones, getProductById } from 'api/phones';
 import classNames from 'classnames';
+import { getDiscountPhones, getPhoneById, getProductById } from 'api/phones';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
+import { LocalStorageContext } from 'localStorageContex';
+import { Phone } from 'types/phoneType';
 import './OnePhonePage.scss';
 import '../../grid.scss';
-import { Phone } from 'types/phoneType';
 import { Product } from 'types/productType';
 import { BrandSlider } from 'Components/ShopBySlider';
 import { LoaderBox } from 'Components/LoaderBox';
@@ -22,8 +23,68 @@ export const OnePhonePage = () => {
   const [, setIsError] = useState<boolean>(false);
   const [discountPhones, setDiscountPhones] = useState<Product[]>([]);
   const { phoneSlug } = useParams();
+
+  const [phone, setPhone] = useState<Product>();
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
+
+  const {
+    cartItems,
+    favoritesItems,
+    addToCart,
+    removeFromCart,
+    removeFavoritesItems,
+    addToFavorites,
+  } = useContext(LocalStorageContext);
+
+  const isCart = Boolean(cartItems?.find((item) => item.good.id === phone?.id));
+  const isFavorites = Boolean(
+    favoritesItems?.find((item) => item.id === phone?.id),
+  );
+
   const productName = phoneSlug?.split('-')[1];
   const navigate = useNavigate();
+
+  const hendlerCart = () => {
+    if (isCart && phone) {
+      removeFromCart(phone);
+      setIsAddedToCart(false);
+      return;
+    }
+
+    if (phone) {
+      addToCart(phone);
+      setIsAddedToCart(true);
+    }
+  };
+
+  useEffect(() => {
+    setIsAddedToCart(isCart);
+    setIsAddedToFavorite(isFavorites);
+  }, [isCart, isFavorites]);
+
+  const hendlerFavorites = () => {
+    if (isFavorites && phone) {
+      removeFavoritesItems(phone);
+      setIsAddedToFavorite(false);
+      return;
+    }
+
+    if (phone) {
+      addToFavorites(phone);
+      setIsAddedToFavorite(true);
+    }
+  };
+
+  const fetchProductById = useCallback(async () => {
+    try {
+      const product = await getProductById(phoneSlug);
+
+      setPhone(product);
+    } catch {
+      setIsError(true);
+    }
+  }, [phoneSlug]);
 
   useEffect(() => {
     const fetchRecomendations = async () => {
@@ -41,13 +102,14 @@ export const OnePhonePage = () => {
 
   useEffect(() => {
     const getProduct = async () => {
-      const data = await getProductById(phoneSlug);
+      const data = await getPhoneById(phoneSlug);
 
       setProduct(data);
     };
 
     getProduct();
-  }, [phoneSlug]);
+    fetchProductById();
+  }, [fetchProductById, phoneSlug]);
 
   useEffect(() => {
     if (product?.images) {
@@ -193,16 +255,22 @@ export const OnePhonePage = () => {
                 <s className="purchase-price__full">${product?.priceRegular}</s>
               </div>
               <div className="purchase-buttons">
-                <a
-                  href="/"
-                  className="purchase-buttons__add"
+                <button
+                  type="button"
+                  onClick={hendlerCart}
+                  className={classNames('product-card__button-add', {
+                    'product-card__button-add--active': isAddedToCart,
+                  })}
                   aria-label="add to cart"
                 >
-                  Add to cart
-                </a>
-                <a
-                  href="/"
-                  className="purchase-buttons__favorite"
+                  {isAddedToCart ? 'Added' : 'Add to cart'}
+                </button>
+                <button
+                  type="button"
+                  onClick={hendlerFavorites}
+                  className={classNames('product-card__button-favorite', {
+                    'product-card__button-favorite--active': isAddedToFavorite,
+                  })}
                   aria-label="add to favorite"
                 />
               </div>
