@@ -57,8 +57,6 @@ export const PhonesPage: React.FC = () => {
     setPage(newPageNum);
   };
 
-  // const totalPage = Math.ceil(data.length / size);
-
   return (
     <section className="phones-page">
       <div className="phones-page__container">

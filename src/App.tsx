@@ -14,6 +14,7 @@ import { OnePhonePage } from 'Components/OnePhonePage';
 import { ContactsPage } from 'pages/ContactsPage';
 import { RightsPage } from 'pages/RightsPage/RightsPage';
 import { AccessoriesPage } from 'pages/AccessoriesPage';
+import { HeadphonesPage } from 'Components/HeadphonesPage';
 import { Header } from './Components/Header';
 
 export function App() {
@@ -37,7 +38,7 @@ export function App() {
 
           <Route path="/accessories">
             <Route index element={<AccessoriesPage />} />
-            <Route path=":phoneSlug" element={<OnePhonePage />} />
+            <Route path=":phoneSlug" element={<HeadphonesPage />} />
           </Route>
 
           <Route path="/favorites" element={<FavoritesPage />} />
