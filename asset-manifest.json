@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/front-end-part/static/css/main.7dc6bbb9.css",
-    "main.js": "/front-end-part/static/js/main.16685329.js",
+    "main.css": "/front-end-part/static/css/main.d23a5e60.css",
+    "main.js": "/front-end-part/static/js/main.193505f0.js",
     "static/js/787.a4ffb315.chunk.js": "/front-end-part/static/js/787.a4ffb315.chunk.js",
     "static/media/logoFooter.svg": "/front-end-part/static/media/logoFooter.7c86cf5336d53d092e30.svg",
     "static/media/logo.svg": "/front-end-part/static/media/logo.6d87825305517572bd7f.svg",
@@ -17,7 +17,6 @@
     "static/media/Mont-SemiBold.woff": "/front-end-part/static/media/Mont-SemiBold.5d4afcfe00f8d6a38e5f.woff",
     "static/media/baner-mobile.jpg": "/front-end-part/static/media/baner-mobile.386cecd69d3d8c309082.jpg",
     "static/media/Mont-SemiBold.woff2": "/front-end-part/static/media/Mont-SemiBold.95ab478c134f9e9da545.woff2",
-    "static/media/coming_soon.png": "/front-end-part/static/media/coming_soon.891e704f6e3fe279048d.png",
     "static/media/slick.svg": "/front-end-part/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/front-end-part/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/front-end-part/static/media/slick.c94f7671dcc99dce43e2.ttf",
@@ -44,13 +43,14 @@
     "static/media/user-solid.svg": "/front-end-part/static/media/user-solid.563eb5b97ae9d483c75c.svg",
     "static/media/arrow-back-hover.svg": "/front-end-part/static/media/arrow-back-hover.9fb5e5069671cc30b9c7.svg",
     "static/media/arrow-back.svg": "/front-end-part/static/media/arrow-back.4dc386686e1f77999a38.svg",
+    "static/media/search.svg": "/front-end-part/static/media/search.3c9b3dc1aa77a9452298.svg",
     "static/media/minus.svg": "/front-end-part/static/media/minus.d5e79f9288080f709cca.svg",
-    "main.7dc6bbb9.css.map": "/front-end-part/static/css/main.7dc6bbb9.css.map",
-    "main.16685329.js.map": "/front-end-part/static/js/main.16685329.js.map",
+    "main.d23a5e60.css.map": "/front-end-part/static/css/main.d23a5e60.css.map",
+    "main.193505f0.js.map": "/front-end-part/static/js/main.193505f0.js.map",
     "787.a4ffb315.chunk.js.map": "/front-end-part/static/js/787.a4ffb315.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7dc6bbb9.css",
-    "static/js/main.16685329.js"
+    "static/css/main.d23a5e60.css",
+    "static/js/main.193505f0.js"
   ]
 }
