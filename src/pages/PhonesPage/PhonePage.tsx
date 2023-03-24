@@ -1,48 +1,36 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable no-console */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import { sort } from 'types/sortBy';
 import { Product } from 'types/productType';
 import { getAllPhonesByPage } from 'api/phones';
 import { ProductCard } from 'Components/ProductCard';
 import { LoaderBox } from 'Components/LoaderBox';
 import './PhonePage.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { getSearchWith } from 'utils/searchHelper';
+import { SearchBar } from 'Components/SearchBar';
 import { Pagination } from './PaginationButtons';
 
 export const PhonesPage: React.FC = () => {
   const [phones, setPhones] = useState<Product[]>([]);
-
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(1);
-  const [size, updateItemsPerPage] = useState<number>(16);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [totalPages, setTotalPages] = useState<number>(0);
-  const [sortBy, setSortBy] = useState<string>(sort.Newest);
-  const order =
-    sortBy === sort.Newest || sortBy === sort.Expensive ? 'desc' : 'asc';
-  const handleSortBy = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = event.target;
-    setSortBy(value);
-  };
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleItemsPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    updateItemsPerPage(+event.target.value);
-    setPage(1);
-  };
-
-  const totalItems = 71;
-  const totalPage = Math.ceil(totalItems / size);
+  const location = useLocation();
+  const searchParam = new URLSearchParams(location.search).toString();
+  const sortSearch = searchParams.get('sort') || 'name';
+  const sizeSearch = searchParams.get('size') || '71';
+  const page = searchParams.get('page') || '1';
 
   useEffect(() => {
     const fetchAllPhones = async () => {
       setIsLoading(true);
       try {
         setIsError(false);
-        const data = await getAllPhonesByPage(page, size, sortBy, order);
+        const data = await getAllPhonesByPage(searchParam);
         setPhones(data);
-        setTotalPages(Math.ceil(data.length / size));
       } catch (error) {
         setIsError(true);
       }
@@ -51,10 +39,53 @@ export const PhonesPage: React.FC = () => {
     };
 
     fetchAllPhones();
-  }, [page, size, sortBy, order]);
+  }, [searchParam]);
+
+  const handleSortBy = (sort: string) => {
+    if (sort === 'price') {
+      const newSearchParams = getSearchWith(searchParams, {
+        sort: 'price',
+        order: 'asc',
+      });
+
+      setSearchParams(newSearchParams);
+      return;
+    }
+    if (sort === 'year') {
+      const newSearchParams = getSearchWith(searchParams, {
+        sort: 'year',
+        order: 'desc',
+      });
+
+      setSearchParams(newSearchParams);
+      return;
+    }
+
+    const newSearchParams = getSearchWith(searchParams, {
+      sort: 'name',
+      order: 'asc',
+    });
+
+    setSearchParams(newSearchParams);
+  };
+
+  const handleItemsPerPage = (size: string) => {
+    const newSearchParams = getSearchWith(searchParams, {
+      size,
+      page,
+    });
+
+    setSearchParams(newSearchParams);
+  };
+
+  const totalPage = Math.ceil(71 / +sizeSearch);
 
   const onPageChange = (newPageNum: number) => {
-    setPage(newPageNum);
+    const newSearchParams = getSearchWith(searchParams, {
+      page: newPageNum,
+    });
+
+    setSearchParams(newSearchParams);
   };
 
   return (
@@ -74,58 +105,63 @@ export const PhonesPage: React.FC = () => {
               <h1 className="objectsTitle">Mobile phones</h1>
               <h5 className="objectsSubTitle">71 models</h5>
               <div className="filter">
-                <div className="filter__sortBy sortBy">
-                  <p className="sortBy__title">Sort by</p>
-                  <select className="sortBy__select" onChange={handleSortBy}>
-                    <option
-                      className="select__option"
-                      value={sort.Newest}
-                      defaultChecked
+                <div className="filter-wrap">
+                  <div className="filter__sortBy sortBy">
+                    <p className="sortBy__title">Sort by</p>
+                    <select
+                      className="sortBy__select"
+                      onChange={(event) => handleSortBy(event.target.value)}
+                      value={sortSearch}
                     >
-                      Newest
-                    </option>
-                    <option className="select__option" value={sort.Alphabet}>
-                      Alphabetically
-                    </option>
-                    <option className="select__option" value={sort.Cheapest}>
-                      Cheapest
-                    </option>
-                    <option className="select__option" value={sort.Expensive}>
-                      Expensive
-                    </option>
-                  </select>
+                      <option className="select__option" value="name">
+                        Choose one
+                      </option>
+
+                      <option className="select__option" value="year">
+                        Newest
+                      </option>
+
+                      <option className="select__option" value="price">
+                        Lowest price
+                      </option>
+                    </select>
+                  </div>
+
+                  <div className="filter__itemsOnPage sortBy">
+                    <p className="sortBy__title">Items on page</p>
+                    <select
+                      onChange={(event) =>
+                        handleItemsPerPage(event.target.value)
+                      }
+                      value={sizeSearch}
+                      className="sortBy__select sortBy__select-items"
+                      name="amount-select"
+                      id="amount-select"
+                    >
+                      <option className="select__option" value="71">
+                        All
+                      </option>
+                      <option className="select__option" value="4">
+                        4
+                      </option>
+                      <option className="select__option" value="8">
+                        8
+                      </option>
+                      <option className="select__option" value="16">
+                        16
+                      </option>
+                    </select>
+                  </div>
                 </div>
 
-                <div className="filter__itemsOnPage sortBy">
-                  <p className="sortBy__title">Items on page</p>
-                  <select
-                    onChange={handleItemsPerPage}
-                    value={size}
-                    className="sortBy__select sortBy__select-items"
-                    name="amount-select"
-                    id="amount-select"
-                  >
-                    <option className="select__option" value="4">
-                      4
-                    </option>
-                    <option className="select__option" value="8">
-                      8
-                    </option>
-                    <option className="select__option" selected value="16">
-                      16
-                    </option>
-                    <option className="select__option" value="all">
-                      all
-                    </option>
-                  </select>
-                </div>
+                <SearchBar />
               </div>
             </div>
           </div>
         </div>
 
         {isLoading && (
-          <div style={{ paddingTop: '150px' }}>
+          <div style={{ paddingTop: '200px' }}>
             <LoaderBox />
           </div>
         )}
@@ -143,13 +179,16 @@ export const PhonesPage: React.FC = () => {
             <h2 className="headingError">There are no phones</h2>
           )}
         </div>
-        <div className="phones-page__buttons">
-          <Pagination
-            currentPage={page}
-            totalPage={totalPage}
-            onPageChange={onPageChange}
-          />
-        </div>
+
+        {!!phones.length && (
+          <div className="phones-page__buttons">
+            <Pagination
+              currentPage={+page}
+              totalPage={totalPage}
+              onPageChange={onPageChange}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

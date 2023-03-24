@@ -2,8 +2,13 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/anchor-has-content */
+
+// eslint-disable-next-line jsx-a11y/no-static-element-interactions
+import { getPhoneById, getRecommendedPhones } from 'api/phones';
+
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+
 import classNames from 'classnames';
 import { LocalStorageContext } from 'Components/Context';
 import { getDiscountPhones, getPhoneById, getProductById } from 'api/phones';
@@ -20,9 +25,14 @@ import { AboutTablet } from './AboutSectionTablet';
 export const OnePhonePage: React.FC = () => {
   const [product, setProduct] = useState<Phone | null>(null);
   const [mainPhoto, setMainPhoto] = useState('');
+
+  const [isError, setIsError] = useState<boolean>(false);
+  const [recommendedPhones, setRecommendedPhones] = useState<Product[]>([]);
+
   const [, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
   const [discountPhones, setDiscountPhones] = useState<Product[]>([]);
+
   const { phoneSlug } = useParams();
 
   const [phone, setPhone] = useState<Product>();
@@ -90,9 +100,9 @@ export const OnePhonePage: React.FC = () => {
   useEffect(() => {
     const fetchRecomendations = async () => {
       try {
-        const discountPhones = await getDiscountPhones();
+        const recommendedPhone = await getRecommendedPhones(phoneSlug);
 
-        setDiscountPhones(discountPhones);
+        setRecommendedPhones(recommendedPhone);
       } catch (error) {
         setIsError(true);
       }
@@ -313,6 +323,7 @@ export const OnePhonePage: React.FC = () => {
               <div className="techSpecs grid__item--desktop-14-24 grid__item--tablet-1-12 grid__item--mobile-1-4">
                 {!!product && <TechSpecs phoneInfo={product} />}
               </div>
+
             </div>
             <div>
               <BrandSlider phones={discountPhones} title="You may also like" />
@@ -322,7 +333,12 @@ export const OnePhonePage: React.FC = () => {
           <div className="phone-page">
             <LoaderBox />
           </div>
-        )}
+
+          <div onClick={handleClick}>
+            <BrandSlider phones={recommendedPhones} title="You may also like" />
+          </div>
+        </div>
+
       </div>
     </div>
   );

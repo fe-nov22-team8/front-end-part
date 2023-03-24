@@ -1,0 +1,82 @@
+@import '../../utilsScss/mixins';
+@import '../../utilsScss/colors.scss';
+
+.input-container {
+  position: relative;
+  width: 100%;
+  margin-top: 12px;
+  -moz-box-flex: 0;
+  flex-grow: 0;
+
+  @include onTablet {
+    flex-basis: 56%;
+    margin-left: 12px;
+    margin-top: 0;
+  }
+
+  @include onDesktop{
+    width: 100%;
+    flex-basis: 70.333%;
+    -moz-box-flex: 0;
+    flex-grow: 0;
+  }
+}
+
+.input {
+  max-width: 100%;
+  width: 100%;
+  background: #323542;
+  color: $gray-white;
+  border: none;
+  font-family: 'Mont';
+  font-weight: 600;
+  font-size: 14px;
+  height: 40px;
+  border: none;
+  outline: none;
+  padding: 10px 30px;
+  position: relative;
+
+  &::placeholder {
+    color: $gray-white;
+  }
+
+  &:hover {
+    border: 1px solid #4a4d58;
+  }
+
+  &:focus {
+    border: 1px solid #4a4d58;
+  }
+
+  &-icon {
+    display: block;
+    background: center url('../../images/Icons/search.svg') no-repeat;
+    top: 29px;
+    left: 5px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+input[type='search']::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.clear-input {
+  height: 15px;
+  width: 17px;
+  cursor: pointer;
+}
+.clear-input-icon {
+  top: 29px;
+  right: 8px;
+  position: absolute;
+  display: inline-block;
+  color: $secondary-color;
+  height: 15px;
+  width: 17px;
+  font-size: 16px;
+  cursor: pointer;
+}

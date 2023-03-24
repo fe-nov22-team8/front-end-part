@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
             <CSSTransition timeout={600} classNames="mob-menu">
               <Menu>
                 <div className="header">
-                  <Link to="/" className="logo" />
+                  <Link to="/" className="logo logo--burger" />
                 </div>
 
                 <NavLinks isOpen={isOpen} closeMenu={closeMenu} />
@@ -107,7 +107,7 @@ export const Header: React.FC = () => {
         </TransitionGroup>
       </div>
 
-      <div className="header">
+      <div className="header header--sticky ">
         <Link to="/" className="logo" />
 
         <NavBar />

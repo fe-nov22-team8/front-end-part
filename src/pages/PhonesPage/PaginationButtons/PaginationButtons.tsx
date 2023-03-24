@@ -9,10 +9,6 @@ export const Pagination: React.FC<{
   const showPrevious = currentPage > 1;
   const showNext = currentPage < totalPage;
 
-  const handlePageChange = (newPage: number) => {
-    onPageChange(newPage);
-  };
-
   const maxPageButtons = 5;
   const delta = Math.floor(maxPageButtons / 2);
   let start = Math.max(currentPage - delta, 1);
@@ -39,7 +35,7 @@ export const Pagination: React.FC<{
         className={`buttons__button ${
           i === currentPage ? 'buttons__button--active' : ''
         }`}
-        onClick={() => handlePageChange(i)}
+        onClick={() => onPageChange(i)}
       >
         <div className="buttons__text">{i}</div>
       </button>,
@@ -52,7 +48,7 @@ export const Pagination: React.FC<{
         <button
           type="button"
           className="buttons__button buttons__button--arrow"
-          onClick={() => handlePageChange(currentPage - 1)}
+          onClick={() => onPageChange(currentPage - 1)}
         >
           <div className="icon-arrow icon-arrow--left" />
         </button>
@@ -63,7 +59,7 @@ export const Pagination: React.FC<{
             key={1}
             type="button"
             className="buttons__button"
-            onClick={() => handlePageChange(1)}
+            onClick={() => onPageChange(1)}
           >
             <div className="buttons__text">{1}</div>
           </button>
@@ -90,7 +86,7 @@ export const Pagination: React.FC<{
             key={totalPage}
             type="button"
             className="buttons__button"
-            onClick={() => handlePageChange(totalPage)}
+            onClick={() => onPageChange(totalPage)}
           >
             <div className="buttons__text">{totalPage}</div>
           </button>
@@ -100,7 +96,7 @@ export const Pagination: React.FC<{
         <button
           type="button"
           className="buttons__button buttons__button--arrow"
-          onClick={() => handlePageChange(currentPage + 1)}
+          onClick={() => onPageChange(currentPage + 1)}
         >
           <div className="icon-arrow" />
         </button>
