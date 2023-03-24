@@ -42,29 +42,27 @@ export const PhonesPage: React.FC = () => {
   }, [searchParam]);
 
   const handleSortBy = (sort: string) => {
+    let newSearchParams;
+
     if (sort === 'price') {
-      const newSearchParams = getSearchWith(searchParams, {
+      newSearchParams = getSearchWith(searchParams, {
         sort: 'price',
         order: 'asc',
+        page: '1',
       });
-
-      setSearchParams(newSearchParams);
-      return;
-    }
-    if (sort === 'year') {
-      const newSearchParams = getSearchWith(searchParams, {
+    } else if (sort === 'year') {
+      newSearchParams = getSearchWith(searchParams, {
         sort: 'year',
         order: 'desc',
+        page: '1',
       });
-
-      setSearchParams(newSearchParams);
-      return;
+    } else {
+      newSearchParams = getSearchWith(searchParams, {
+        sort: 'name',
+        order: 'asc',
+        page: '1',
+      });
     }
-
-    const newSearchParams = getSearchWith(searchParams, {
-      sort: 'name',
-      order: 'asc',
-    });
 
     setSearchParams(newSearchParams);
   };
