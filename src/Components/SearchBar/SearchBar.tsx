@@ -29,11 +29,7 @@ export const SearchBar: React.FC = () => {
   };
 
   const handleClearInput = () => {
-    const newSearchParams = getSearchWith(searchParams, {
-      query: '',
-      page: 1,
-    });
-    setSearchParams(newSearchParams);
+    setQuery('');
   };
 
   return (
