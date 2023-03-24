@@ -3,41 +3,34 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/anchor-has-content */
 
-// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-import { getPhoneById, getRecommendedPhones } from 'api/phones';
-
+import { getPhoneById, getRecommendedPhones, getProductById } from 'api/phones';
 import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import classNames from 'classnames';
 import { LocalStorageContext } from 'Components/Context';
-import { getDiscountPhones, getPhoneById, getProductById } from 'api/phones';
 import { Phone } from 'types/phoneType';
 import './OnePhonePage.scss';
 import '../../grid.scss';
 import { Product } from 'types/productType';
 import { BrandSlider } from 'Components/ShopBySlider';
 import { LoaderBox } from 'Components/LoaderBox';
+import { getUp } from 'utils/getUp';
 import { TechSpecs } from './TechSesction';
 import { AboutPhone } from './AboutSection';
 import { AboutTablet } from './AboutSectionTablet';
 
 export const OnePhonePage: React.FC = () => {
   const [product, setProduct] = useState<Phone | null>(null);
+  const [phone, setPhone] = useState<Product>();
   const [mainPhoto, setMainPhoto] = useState('');
-
-  const [isError, setIsError] = useState<boolean>(false);
   const [recommendedPhones, setRecommendedPhones] = useState<Product[]>([]);
-
   const [, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [discountPhones, setDiscountPhones] = useState<Product[]>([]);
-
-  const { phoneSlug } = useParams();
-
-  const [phone, setPhone] = useState<Product>();
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFavorite, setIsAddedToFavorite] = useState(false);
+
+  const { phoneSlug } = useParams();
 
   const {
     cartItems,
@@ -109,7 +102,7 @@ export const OnePhonePage: React.FC = () => {
     };
 
     fetchRecomendations();
-  }, []);
+  }, [phoneSlug]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -323,22 +316,28 @@ export const OnePhonePage: React.FC = () => {
               <div className="techSpecs grid__item--desktop-14-24 grid__item--tablet-1-12 grid__item--mobile-1-4">
                 {!!product && <TechSpecs phoneInfo={product} />}
               </div>
-
             </div>
             <div>
-              <BrandSlider phones={discountPhones} title="You may also like" />
+              <BrandSlider
+                phones={recommendedPhones}
+                title="You may also like"
+              />
             </div>
           </>
         ) : (
-          <div className="phone-page">
-            <LoaderBox />
-          </div>
+          <>
+            <div className="phone-page">
+              <LoaderBox />
+            </div>
 
-          <div onClick={handleClick}>
-            <BrandSlider phones={recommendedPhones} title="You may also like" />
-          </div>
-        </div>
-
+            <div onClick={getUp}>
+              <BrandSlider
+                phones={recommendedPhones}
+                title="You may also like"
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
