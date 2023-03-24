@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
 
   return (
     <div className="footer">
-      <Link to="/" className="logo--footer" />
+      <Link to="/" className="logo--footer" onClick={getUp} />
       <NavFooter />
       {isVisible ? (
         <div className="back-to-top" onClick={getUp} aria-label="scroll to top">
