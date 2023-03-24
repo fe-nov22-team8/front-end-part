@@ -16,6 +16,7 @@
     "focus-trap": "^7.4.0",
     "focus-trap-react": "^10.1.1",
     "gh-pages": "^5.0.0",
+    "lodash.debounce": "^4.0.8",
     "pure-react-carousel": "^1.30.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -25,6 +26,7 @@
     "react-router": "^6.9.0",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
+    "react-select": "^5.7.2",
     "react-slick": "^0.29.0",
     "react-transition-group": "^4.4.5",
     "sass": "^1.59.3",
@@ -69,6 +71,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.7",
     "@types/react-slick": "^0.23.10",
     "@types/react-transition-group": "^4.4.5",
     "@typescript-eslint/eslint-plugin": "^5.55.0",
