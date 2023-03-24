@@ -4,7 +4,7 @@
 
 Nice Gadgets is E-Commerce Web Application for buying phones, tablets etc.
 The project was developed by a team of developers using the front-end React library.
-As well as technologies such as React-Router, Redux(Redux-Toolkit), TypeScript, HTML5, CSS3(SASS) etc.
+As well as technologies such as React-Router, TypeScript, HTML5, CSS3(SASS) etc.
 The backend part of the application is built with Node.JS (Express).
 The client part uses a component approach to development, as well as strong typing using TypeScript.
 The server part is built according to the MVC pattern and works according to the principles of the REST API.
@@ -34,7 +34,7 @@ The server part is built according to the MVC pattern and works according to the
 ## ✨Technologies:
 
 **Client side:**
-React/React-Router/Redux/Redux-Toolkit/TypeScript/HTML5/CSS3(SASS)
+React/React-Router/TypeScript/HTML5/CSS3(SASS)
 
 **Server side:**
 REST API/NodeJS/Express/CORS/PostgresSQL/SequelizeORM/Cookies
