@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { ChangeEvent, useCallback, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from 'utils/searchHelper';
@@ -37,7 +38,6 @@ export const SearchBar: React.FC = () => {
       <p className="sortBy__title">Search something</p>
       <input
         className="input"
-        type="search"
         placeholder="Search"
         value={query}
         onChange={handleQueryChange}
