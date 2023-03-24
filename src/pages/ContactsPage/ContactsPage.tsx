@@ -90,8 +90,6 @@ export const ContactsPage: React.FC = () => (
         <li>Redux</li>
         <li>Redux-Toolkit</li>
         <li>TypeScript</li>
-        <li>LocalStorage</li>
-        <li>Fetch</li>
         <li>HTML5CSS3(SASS)</li>
       </ul>
       <br />

@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/anchor-has-content */
 // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-import { getDiscountPhones, getPhoneById } from 'api/phones';
+import { getPhoneById, getRecommendedPhones } from 'api/phones';
 import classNames from 'classnames';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -20,22 +20,22 @@ export const OnePhonePage = () => {
   const [product, setProduct] = useState<Phone | null>(null);
   const [mainPhoto, setMainPhoto] = useState('');
   const [isError, setIsError] = useState<boolean>(false);
-  const [discountPhones, setDiscountPhones] = useState<Product[]>([]);
+  const [recommendedPhones, setRecommendedPhones] = useState<Product[]>([]);
   const { phoneSlug } = useParams();
 
   useEffect(() => {
     const fetchAllPhones = async () => {
       try {
-        const discountPhones = await getDiscountPhones();
+        const recommendedPhone = await getRecommendedPhones(phoneSlug);
 
-        setDiscountPhones(discountPhones);
+        setRecommendedPhones(recommendedPhone);
       } catch (error) {
         setIsError(true);
       }
     };
 
     fetchAllPhones();
-  }, []);
+  }, [phoneSlug]);
 
   useEffect(() => {
     const getPhone = async () => {
@@ -222,7 +222,7 @@ export const OnePhonePage = () => {
             </div>
           </div>
 
-          <div className="phone-block grid">
+          <div className="phone-block phone-block--bottom grid">
             <div className="techSpecs grid__item--desktop-1-12 grid__item--tablet-1-12 grid__item--mobile-1-4">
               <AboutPhone />
             </div>
@@ -231,7 +231,7 @@ export const OnePhonePage = () => {
             </div>
           </div>
           <div onClick={handleClick}>
-            <BrandSlider phones={discountPhones} title="You may also like" />
+            <BrandSlider phones={recommendedPhones} title="You may also like" />
           </div>
         </div>
       </div>

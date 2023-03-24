@@ -53,13 +53,11 @@ body {
 
 .phone-block {
   justify-content: center;
-  &:last-child {
+  &--bottom {
     margin-top: 64px;
     padding-bottom: 56px;
-  }
 
-  @include onTablet {
-    &:last-child {
+    @include onTablet {
       margin-top: 80px;
       margin-bottom: 0;
     }

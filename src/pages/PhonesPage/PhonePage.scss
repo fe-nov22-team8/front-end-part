@@ -4,6 +4,7 @@
 .phones-page {
   background-color: $gray-black;
   min-height: 100vh;
+
   &__container {
     box-sizing: border-box;
     margin: 0 auto;
@@ -47,6 +48,7 @@
     @include onTablet {
       padding: 26px 0 40px;
     }
+
     @include onDesktop {
       padding: 26px 0 40px;
     }
@@ -54,7 +56,10 @@
 
   &__filter {
     display: grid;
-    grid-column: 1 / 4;
+
+    @include onTablet {
+      grid-column: 1 / 5;
+    }
   }
 
   &__grid {
@@ -98,9 +103,17 @@
 
 .filter {
   display: flex;
-
+  flex-direction: column;
   font-family: 'Mont', sans-serif;
   font-weight: 700;
+
+  @include onTablet {
+    flex-direction: row;
+  }
+
+  &-wrap {
+    display: flex;
+  }
 
   &__itemsOnPage {
     margin-left: 12px;
@@ -130,8 +143,10 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    outline: none;
     padding: 5px 20px 5px 10px;
     font-size: 16px;
+    font-family: Mont,sans-serif;
     cursor: pointer;
     transition: background-image 0.3s ease;
 
@@ -161,11 +176,12 @@
       background-size: 12px 12px;
     }
   }
+
 }
 
 .select {
   &__option {
-    padding: 0 30px 0 10px;
+    padding: 0;
     min-height: 40px;
     display: flex;
     align-items: center;
@@ -176,7 +192,9 @@
     box-sizing: border-box;
     overflow: hidden;
     white-space: nowrap;
+    outline: none;
 
+    font-family: Mont,sans-serif;
     font-size: 15px;
     line-height: 21px;
     color: #75767f;
@@ -194,8 +212,8 @@
       color: #f1f2f9;
     }
 
-    &:focus {
-      outline: none;
+    &:active {
+      background: red;
     }
   }
 }
@@ -299,6 +317,7 @@
   height: 16px;
   width: 16px;
   display: block;
+  margin-left: 7px;
 
   &--left {
     background-image: url('../../images/Vector_gray_left.svg');
