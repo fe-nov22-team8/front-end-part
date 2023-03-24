@@ -26,7 +26,6 @@ export const getDiscountPhones = async () => {
   return response;
 };
 
-
 export const getRecommendedPhones = async (phoneId: string | undefined) => {
   const response = await client.get<Product[]>(
     `/products/${phoneId}/recommended`,
@@ -43,4 +42,3 @@ export const getAllPhones = async () => {
 
 export const getProductById = async (productId = '') =>
   client.get<Product>(`/products/${productId}`);
-

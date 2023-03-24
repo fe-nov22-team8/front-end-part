@@ -58,6 +58,5 @@ export const ContactsPage: React.FC = () => (
         FightClub Team GitHub
       </a>
     </p>
-
   </div>
 );
