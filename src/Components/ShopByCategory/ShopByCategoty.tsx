@@ -1,6 +1,7 @@
 import React from 'react';
 import './ShopByCategory.scss';
 import { Link } from 'react-router-dom';
+import { getUp } from 'utils/getUp';
 
 export const ShopByCategory: React.FC = () => (
   <div>
@@ -10,6 +11,7 @@ export const ShopByCategory: React.FC = () => (
       <div className="section__first">
         <Link
           to="/phones"
+          onClick={getUp}
           className="section__img section__img--1"
           aria-label="phones category"
         />
@@ -22,6 +24,7 @@ export const ShopByCategory: React.FC = () => (
       <div className="section__second">
         <Link
           to="/tablets"
+          onClick={getUp}
           className="section__img section__img--2"
           aria-label="tablets category"
         />
@@ -33,6 +36,7 @@ export const ShopByCategory: React.FC = () => (
 
       <div className="section__third">
         <Link
+          onClick={getUp}
           to="/accessories"
           className="section__img section__img--3"
           aria-label="accessories category"

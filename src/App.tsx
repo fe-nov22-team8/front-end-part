@@ -10,17 +10,19 @@ import './App.scss';
 import { HomePage } from 'pages/HomePage';
 import { TabletPage } from 'pages/TabletPage';
 import { FavoritesPage } from 'pages/FavoritesPage';
-import { OnePhonePage } from 'Components/OnePhonePage';
+import { OnePhonePage } from 'pages/OnePhonePage';
 import { ContactsPage } from 'pages/ContactsPage';
 import { RightsPage } from 'pages/RightsPage/RightsPage';
 import { AccessoriesPage } from 'pages/AccessoriesPage';
 import { HeadphonesPage } from 'Components/HeadphonesPage';
+import { ScrollTop } from 'Components/SctrollTop/ScrollTop';
 import { Header } from './Components/Header';
 
 export function App() {
   return (
     <LocalStorageProvider>
       <div className="App">
+        <ScrollTop />
         <Header />
 
         <Routes>

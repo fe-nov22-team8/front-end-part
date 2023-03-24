@@ -1,7 +1,6 @@
 import { Phone } from 'types/phoneType';
 import { Product } from 'types/productType';
 import { client } from 'utils/fetch';
-import { ProductData } from 'types/productData';
 
 // запит за телефонами відносно параметрів, які користувач обирає на сторінці
 

@@ -44,7 +44,11 @@ export const Header: React.FC = () => {
             <CSSTransition timeout={600} classNames="mob-menu">
               <Menu>
                 <div className="header">
-                  <Link to="/" className="logo logo--burger" />
+                  <Link
+                    to="/"
+                    className="logo logo--burger"
+                    onClick={closeMenu}
+                  />
                 </div>
 
                 <NavLinks isOpen={isOpen} closeMenu={closeMenu} />
