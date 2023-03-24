@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable arrow-body-style */
 import React, { useMemo, useState } from 'react';
-import { Item } from 'types/Item';
 import { Product } from 'types/productType';
 import { useLocalStorage } from 'utils/customHook';
 
 export type ItemCart = {
-  good: Item;
+  good: Product;
   count: number;
 };
 
@@ -14,10 +13,10 @@ type ContextType = {
   cartItems: ItemCart[] | undefined;
   favoritesItems: Product[] | undefined;
   isModalVisible: boolean;
-  addToCart: (item: Item) => void;
-  removeFromCart: (item: Item) => void;
+  addToCart: (phone: Product) => void;
+  removeFromCart: (phone: Product) => void;
   removeFavoritesItems: (phone: Product) => void;
-  removeOneItem: (item: Item) => void;
+  removeOneItem: (phone: Product) => void;
   addToFavorites: (phone: Product) => void;
   removeAll: () => void;
   handleModal: () => void;
@@ -44,13 +43,11 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
     setIsModalVisible((prevVal) => !prevVal);
   };
 
-  // const [totalGoods, setTotalGoods] = useState(0);
-
-  const addToCart = (item: Item) => {
-    const cartItem = cartItems.find(({ good }) => good.id === item.id);
+  const addToCart = (phone: Product) => {
+    const cartItem = cartItems.find(({ good }) => good.id === phone.id);
 
     if (!cartItem) {
-      const cartToAdd = { good: item, count: 1 };
+      const cartToAdd = { good: phone, count: 1 };
 
       setCartItems((prevCartItems) => [...prevCartItems, cartToAdd]);
 
@@ -61,14 +58,14 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
     setCartItems([...cartItems]);
   };
 
-  const removeFromCart = (item: Item) => {
-    const updatedCart = cartItems.filter(({ good }) => good.id !== item.id);
+  const removeFromCart = (phone: Product) => {
+    const updatedCarts = cartItems.filter(({ good }) => good.id !== phone.id);
 
-    setCartItems(updatedCart);
+    setCartItems(updatedCarts);
   };
 
-  const removeOneItem = (item: Item) => {
-    const cartItem = cartItems.find(({ good }) => good.id === item.id);
+  const removeOneItem = (phone: Product) => {
+    const cartItem = cartItems.find(({ good }) => good.id === phone.id);
 
     if (cartItem?.count === 1) {
       return;
@@ -95,10 +92,6 @@ export const LocalStorageProvider: React.FC<Props> = ({ children }) => {
   const removeAll = (): void => {
     setCartItems([]);
   };
-
-  // useEffect(() => {
-  //   setTotalGoods(cartItems.reduce((acc, item) => acc + item.count, 0));
-  // }, [cartItems]);
 
   const contextVariables = useMemo(() => {
     return {

@@ -27,27 +27,6 @@ export const ContactsPage: React.FC = () => (
       <br />- Artem Stepanskyy - ArtemStepanskyy@gmail.com (team-lead)
     </p>
 
-    <h3 className="ContactsPage__subtitle">About project</h3>
-
-    <p className="ContactsPage__text">
-      Welcome to the Nice Gadgets.
-      <br />
-      Nice Gadgets is E-Commerce Web Application for buying phones, tablets etc.
-      <br />
-      The project was developed by a team of developers using the front-end
-      React library.
-      <br />
-      As well as technologies such as React-Router, Redux(Redux-Toolkit),
-      TypeScript, LocalStorage, Fetch, HTML5, CSS3(SASS) etc.
-      <br />
-      The backend part of the application is built with Node.JS.
-      <br />
-      The client part uses a component approach to development, as well as
-      strong typing using TypeScript.
-      <br />
-      The server part is built with MVC architecture.
-    </p>
-
     <h3 className="ContactsPage__subtitle">Application parts</h3>
 
     <p className="ContactsPage__text">
@@ -80,28 +59,5 @@ export const ContactsPage: React.FC = () => (
       </a>
     </p>
 
-    <h3 className="ContactsPage__subtitle">Technologies</h3>
-
-    <p className="ContactsPage__text">
-      <strong style={{ textDecoration: 'underline' }}>Client side:</strong>
-      <ul>
-        <li>React</li>
-        <li>React-Router</li>
-        <li>Redux</li>
-        <li>Redux-Toolkit</li>
-        <li>TypeScript</li>
-        <li>HTML5CSS3(SASS)</li>
-      </ul>
-      <br />
-      <strong style={{ textDecoration: 'underline' }}>Server side:</strong>
-      <ul>
-        <li>REST API</li>
-        <li>NodeJS</li>
-        <li>Express</li>
-        <li>CORS</li>
-        <li>PostgresSQL</li>
-        <li>SequelizeORM</li>
-      </ul>
-    </p>
   </div>
 );

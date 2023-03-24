@@ -1,4 +1,4 @@
-import { LocalStorageContext } from 'localStorageContex';
+import { LocalStorageContext } from 'Components/Context';
 import React, { useContext } from 'react';
 import { Modal } from '../Modal';
 
@@ -12,6 +12,10 @@ export const Checkout: React.FC = () => {
       ?.map((item) => item.good.price * item.count)
       .reduce((acc, price) => acc + price, 0);
     return total;
+  };
+  const modalCall = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    setTimeout(handleModal, 200);
   };
 
   const totalPrice = getTotalPrice() || 0;
@@ -29,7 +33,12 @@ export const Checkout: React.FC = () => {
       <span className="checkout__total-items">
         Total for {totalGoods} items
       </span>
-      <button type="button" className="checkout__btn" onClick={handleModal}>
+      <button
+        type="button"
+        className="checkout__btn"
+        onClick={modalCall}
+        disabled={!cartItems?.length}
+      >
         Checkout
       </button>
     </div>
