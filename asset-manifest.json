@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/front-end-part/static/css/main.7716ac3c.css",
+    "main.css": "/front-end-part/static/css/main.fd51e6bb.css",
     "main.js": "/front-end-part/static/js/main.3ee8fcea.js",
     "static/js/787.a4ffb315.chunk.js": "/front-end-part/static/js/787.a4ffb315.chunk.js",
-    "static/media/iphone-banner-4.png": "/front-end-part/static/media/iphone-banner-4.78b9dffce283a55a0ec1.png",
     "static/media/logoFooter.svg": "/front-end-part/static/media/logoFooter.7c86cf5336d53d092e30.svg",
     "static/media/logo.svg": "/front-end-part/static/media/logo.6d87825305517572bd7f.svg",
+    "static/media/iphone-banner-3.png": "/front-end-part/static/media/iphone-banner-3.17bfea35e28c1d405a0a.png",
     "static/media/Mont-SemiBold.eot": "/front-end-part/static/media/Mont-SemiBold.2dc79e1cb836e6342c2e.eot",
     "static/media/Mont-SemiBold.ttf": "/front-end-part/static/media/Mont-SemiBold.0b5e68ebb36ca4006e21.ttf",
     "static/media/baner-desktop.jpg": "/front-end-part/static/media/baner-desktop.ca78b2e6a7e0b72cdfab.jpg",
@@ -46,12 +46,12 @@
     "static/media/arrow-back.svg": "/front-end-part/static/media/arrow-back.4dc386686e1f77999a38.svg",
     "static/media/search.svg": "/front-end-part/static/media/search.3c9b3dc1aa77a9452298.svg",
     "static/media/minus.svg": "/front-end-part/static/media/minus.d5e79f9288080f709cca.svg",
-    "main.7716ac3c.css.map": "/front-end-part/static/css/main.7716ac3c.css.map",
+    "main.fd51e6bb.css.map": "/front-end-part/static/css/main.fd51e6bb.css.map",
     "main.3ee8fcea.js.map": "/front-end-part/static/js/main.3ee8fcea.js.map",
     "787.a4ffb315.chunk.js.map": "/front-end-part/static/js/787.a4ffb315.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7716ac3c.css",
+    "static/css/main.fd51e6bb.css",
     "static/js/main.3ee8fcea.js"
   ]
 }
