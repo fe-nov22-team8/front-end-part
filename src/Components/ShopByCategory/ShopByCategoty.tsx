@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { getUp } from 'utils/getUp';
 
 export const ShopByCategory: React.FC = () => (
-  <div>
+  <div className="shopByCategory__sections">
     <h2 className="shopByCategory__title">Shop by category</h2>
 
-    <div className="shopByCategory__sections section">
+    <div className="section">
       <div className="section__first">
         <Link
           to="/phones"

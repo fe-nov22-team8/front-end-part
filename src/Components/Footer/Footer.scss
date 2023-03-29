@@ -11,15 +11,14 @@
 
   @include onTablet {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    padding: 32px;
-    align-items: center;
+    padding: 32px 32px 22px;
+    align-items: baseline;
   }
 
   @include onDesktop {
     grid-template-columns: repeat(24, minmax(0, 32px));
     column-gap: 16px;
     justify-content: center;
-    align-items: center;
   }
 }
 
